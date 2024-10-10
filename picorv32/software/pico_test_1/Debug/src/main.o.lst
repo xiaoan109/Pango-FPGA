@@ -1,0 +1,531 @@
+   1              		.file	"main.c"
+   2              		.option nopic
+   3              		.text
+   4              	.Ltext0:
+   5              		.cfi_sections	.debug_frame
+   6              		.section	.text.led_blink,"ax",@progbits
+   7              		.align	1
+   8              		.globl	led_blink
+  10              	led_blink:
+  11              	.LFB1:
+  12              		.file 1 "../src/main.c"
+   1:../src/main.c **** #include "uart.h"
+   2:../src/main.c **** #include "spi.h"
+   3:../src/main.c **** 
+   4:../src/main.c **** #define led_address 			(*(volatile uint32_t*)0x00008020)
+   5:../src/main.c **** #define gpio_address 			(*(volatile uint32_t*)0x00008030)
+   6:../src/main.c **** #define gpio_point   			(volatile uint32_t*)0x00008030
+   7:../src/main.c **** 
+   8:../src/main.c **** #define SYSTEM_CNT_M			125										//系统时钟单位：MHz
+   9:../src/main.c **** #define SYSTEM_CLOCK			SYSTEM_CNT_M*1000000UL
+  10:../src/main.c **** #define BAUND_9600				((SYSTEM_CLOCK)/9600)
+  11:../src/main.c **** #define BAUND_115200			(SYSTEM_CLOCK/115200)
+  12:../src/main.c **** #define GPIO_DATA				0xaa55
+  13:../src/main.c **** //#define LED_DELAY				5000000UL
+  14:../src/main.c **** #define LED_DELAY				5000UL
+  15:../src/main.c **** 
+  16:../src/main.c **** int temp_data = 0;
+  17:../src/main.c **** void led_blink(void);
+  18:../src/main.c **** 
+  19:../src/main.c **** /********************************************************************
+  20:../src/main.c ****  ** 函数名称：led_blink
+  21:../src/main.c ****  ** 函数功能：led blin测试（采用计数器的方式）
+  22:../src/main.c ****  ** 输入参数：无
+  23:../src/main.c ****  ** 输出参数：无
+  24:../src/main.c ****  ** 返回参数：无
+  25:../src/main.c ****  ********************************************************************/
+  26:../src/main.c **** void led_blink(void)
+  27:../src/main.c **** {
+  13              		.loc 1 27 0
+  14              		.cfi_startproc
+  15              	.LVL0:
+  28:../src/main.c **** 	int cnt = 0;
+  29:../src/main.c **** 	temp_data = *gpio_point;
+  16              		.loc 1 29 0
+  17 0000 A167     		li	a5,32768
+  18 0002 985B     		lw	a4,48(a5)
+  19 0004 B7070000 		lui	a5,%hi(.LANCHOR0)
+  27:../src/main.c **** 	int cnt = 0;
+  20              		.loc 1 27 0
+  21 0008 0111     		addi	sp,sp,-32
+  22              		.cfi_def_cfa_offset 32
+  23              		.loc 1 29 0
+  24 000a 23A0E700 		sw	a4,%lo(.LANCHOR0)(a5)
+  30:../src/main.c **** 	if(GPIO_DATA == temp_data)
+  25              		.loc 1 30 0
+  26 000e AD67     		li	a5,45056
+  27:../src/main.c **** 	int cnt = 0;
+  27              		.loc 1 27 0
+  28 0010 06CE     		sw	ra,28(sp)
+  29 0012 22CC     		sw	s0,24(sp)
+  30 0014 26CA     		sw	s1,20(sp)
+  31 0016 4AC8     		sw	s2,16(sp)
+  32 0018 4EC6     		sw	s3,12(sp)
+  33 001a 52C4     		sw	s4,8(sp)
+  34              		.cfi_offset 1, -4
+  35              		.cfi_offset 8, -8
+  36              		.cfi_offset 9, -12
+  37              		.cfi_offset 18, -16
+  38              		.cfi_offset 19, -20
+  39              		.cfi_offset 20, -24
+  40              		.loc 1 30 0
+  41 001c 938757A5 		addi	a5,a5,-1451
+  42 0020 630DF704 		beq	a4,a5,.L9
+  31:../src/main.c **** 	{
+  32:../src/main.c **** 		printk("gpio success\n");
+  33:../src/main.c **** 	}
+  34:../src/main.c **** 	else
+  35:../src/main.c **** 	{
+  36:../src/main.c **** 		printk("gpio failed\n");
+  43              		.loc 1 36 0
+  44 0024 37050000 		lui	a0,%hi(.LC1)
+  45 0028 13050500 		addi	a0,a0,%lo(.LC1)
+  46 002c 97000000 		call	printk
+  46      E7800000 
+  47              	.LVL1:
+  48              	.L3:
+  37:../src/main.c **** 	}
+  38:../src/main.c **** 
+  39:../src/main.c **** 	led_address = 0xff;
+  40:../src/main.c **** 	while(1)
+  41:../src/main.c **** 	{
+  42:../src/main.c **** 		cnt++;
+  43:../src/main.c **** 		if(cnt == LED_DELAY / 2)
+  49              		.loc 1 43 0
+  50 0034 8564     		li	s1,4096
+  39:../src/main.c **** 	while(1)
+  51              		.loc 1 39 0
+  52 0036 A167     		li	a5,32768
+  53 0038 1307F00F 		li	a4,255
+  54 003c 98D3     		sw	a4,32(a5)
+  55              		.loc 1 43 0
+  56 003e 1384449C 		addi	s0,s1,-1596
+  28:../src/main.c **** 	temp_data = *gpio_point;
+  57              		.loc 1 28 0
+  58 0042 8147     		li	a5,0
+  59 0044 370A0000 		lui	s4,%hi(.LC2)
+  44:../src/main.c **** 		{
+  45:../src/main.c **** 			led_address = 0x00;
+  46:../src/main.c **** 		}
+  47:../src/main.c **** 		else if(cnt == LED_DELAY)
+  60              		.loc 1 47 0
+  61 0048 93848438 		addi	s1,s1,904
+  48:../src/main.c **** 		{
+  49:../src/main.c **** 			cnt = 0;
+  50:../src/main.c **** 			led_address = 0xff;
+  62              		.loc 1 50 0
+  63 004c 2169     		li	s2,32768
+  64 004e 9309F00F 		li	s3,255
+  65              	.LVL2:
+  66              	.L4:
+  42:../src/main.c **** 		if(cnt == LED_DELAY / 2)
+  67              		.loc 1 42 0
+  68 0052 8507     		addi	a5,a5,1
+  69              	.LVL3:
+  43:../src/main.c **** 		{
+  70              		.loc 1 43 0
+  71 0054 63808702 		beq	a5,s0,.L10
+  72              	.L5:
+  47:../src/main.c **** 		{
+  73              		.loc 1 47 0
+  74 0058 E39D97FE 		bne	a5,s1,.L4
+  75              	.LVL4:
+  76              		.loc 1 50 0
+  77 005c 23203903 		sw	s3,32(s2)
+  51:../src/main.c **** 			printk("led_blink ok\n");
+  78              		.loc 1 51 0
+  79 0060 13050A00 		addi	a0,s4,%lo(.LC2)
+  80 0064 97000000 		call	printk
+  80      E7800000 
+  81              	.LVL5:
+  49:../src/main.c **** 			led_address = 0xff;
+  82              		.loc 1 49 0
+  83 006c 8147     		li	a5,0
+  84              	.LVL6:
+  42:../src/main.c **** 		if(cnt == LED_DELAY / 2)
+  85              		.loc 1 42 0
+  86 006e 8507     		addi	a5,a5,1
+  87              	.LVL7:
+  43:../src/main.c **** 		{
+  88              		.loc 1 43 0
+  89 0070 E39487FE 		bne	a5,s0,.L5
+  90              	.L10:
+  45:../src/main.c **** 		}
+  91              		.loc 1 45 0
+  92 0074 23200902 		sw	zero,32(s2)
+  93 0078 E9BF     		j	.L4
+  94              	.LVL8:
+  95              	.L9:
+  32:../src/main.c **** 	}
+  96              		.loc 1 32 0
+  97 007a 37050000 		lui	a0,%hi(.LC0)
+  98 007e 13050500 		addi	a0,a0,%lo(.LC0)
+  99 0082 97000000 		call	printk
+  99      E7800000 
+ 100              	.LVL9:
+ 101 008a 6DB7     		j	.L3
+ 102              		.cfi_endproc
+ 103              	.LFE1:
+ 105              		.section	.text.startup.main,"ax",@progbits
+ 106              		.align	1
+ 107              		.globl	main
+ 109              	main:
+ 110              	.LFB2:
+  52:../src/main.c **** 		}
+  53:../src/main.c **** 	}
+  54:../src/main.c **** }
+  55:../src/main.c **** 
+  56:../src/main.c **** int main(void)
+  57:../src/main.c **** {
+ 111              		.loc 1 57 0
+ 112              		.cfi_startproc
+ 113 0000 4111     		addi	sp,sp,-16
+ 114              		.cfi_def_cfa_offset 16
+  58:../src/main.c **** 	reg_uart_clkdiv = BAUND_9600;
+ 115              		.loc 1 58 0
+ 116 0002 8D67     		li	a5,12288
+  57:../src/main.c **** 	reg_uart_clkdiv = BAUND_9600;
+ 117              		.loc 1 57 0
+ 118 0004 06C6     		sw	ra,12(sp)
+ 119 0006 22C4     		sw	s0,8(sp)
+ 120              		.cfi_offset 1, -4
+ 121              		.cfi_offset 8, -8
+ 122              		.loc 1 58 0
+ 123 0008 9387C72D 		addi	a5,a5,732
+ 124 000c 2164     		li	s0,32768
+ 125 000e 1CC0     		sw	a5,0(s0)
+ 126              	.LVL10:
+  59:../src/main.c **** 
+  60:../src/main.c **** //	printk("Hello Risc-V Pango 2019\n");
+  61:../src/main.c **** //	printk("test data = %d,%f,%s,0x = %x\n", 100,33.456,"2019",100);
+  62:../src/main.c **** //	printk("simple compute : 50*10 = %d,100/3 = %f,100%3 = %d\n", 50*10,(double)100/3,(int)100%3);
+  63:../src/main.c **** //	led_blink();
+  64:../src/main.c **** 	uint8_t data = 0;
+  65:../src/main.c **** 	SPI_CS_Enable();
+ 127              		.loc 1 65 0
+ 128 0010 97000000 		call	SPI_CS_Enable
+ 128      E7800000 
+ 129              	.LVL11:
+  66:../src/main.c **** 	SPI_WriteData(0xAA);
+ 130              		.loc 1 66 0
+ 131 0018 1305A00A 		li	a0,170
+ 132 001c 97000000 		call	SPI_WriteData
+ 132      E7800000 
+ 133              	.LVL12:
+  67:../src/main.c **** 	data = SPI_ReadData();
+ 134              		.loc 1 67 0
+ 135 0024 97000000 		call	SPI_ReadData
+ 135      E7800000 
+ 136              	.LVL13:
+  68:../src/main.c **** 	led_address = data;
+ 137              		.loc 1 68 0
+ 138 002c 08D0     		sw	a0,32(s0)
+  69:../src/main.c **** 	SPI_WriteData(0x55);
+ 139              		.loc 1 69 0
+ 140 002e 13055005 		li	a0,85
+ 141              	.LVL14:
+ 142 0032 97000000 		call	SPI_WriteData
+ 142      E7800000 
+ 143              	.LVL15:
+  70:../src/main.c **** 	data = SPI_ReadData();
+ 144              		.loc 1 70 0
+ 145 003a 97000000 		call	SPI_ReadData
+ 145      E7800000 
+ 146              	.LVL16:
+  71:../src/main.c **** 	led_address = data;
+ 147              		.loc 1 71 0
+ 148 0042 08D0     		sw	a0,32(s0)
+  72:../src/main.c **** 	SPI_CS_Disable();
+ 149              		.loc 1 72 0
+ 150 0044 97000000 		call	SPI_CS_Disable
+ 150      E7800000 
+ 151              	.LVL17:
+  73:../src/main.c **** 	return 0;
+  74:../src/main.c **** }
+ 152              		.loc 1 74 0
+ 153 004c B240     		lw	ra,12(sp)
+ 154              		.cfi_restore 1
+ 155 004e 2244     		lw	s0,8(sp)
+ 156              		.cfi_restore 8
+ 157 0050 0145     		li	a0,0
+ 158 0052 4101     		addi	sp,sp,16
+ 159              		.cfi_def_cfa_offset 0
+ 160 0054 8280     		jr	ra
+ 161              		.cfi_endproc
+ 162              	.LFE2:
+ 164              		.globl	temp_data
+ 165              		.section	.rodata.led_blink.str1.4,"aMS",@progbits,1
+ 166              		.align	2
+ 167              	.LC0:
+ 168 0000 6770696F 		.string	"gpio success\n"
+ 168      20737563 
+ 168      63657373 
+ 168      0A00
+ 169 000e 0000     		.zero	2
+ 170              	.LC1:
+ 171 0010 6770696F 		.string	"gpio failed\n"
+ 171      20666169 
+ 171      6C65640A 
+ 171      00
+ 172 001d 000000   		.zero	3
+ 173              	.LC2:
+ 174 0020 6C65645F 		.string	"led_blink ok\n"
+ 174      626C696E 
+ 174      6B206F6B 
+ 174      0A00
+ 175              		.section	.sbss.temp_data,"aw",@nobits
+ 176              		.align	2
+ 177              		.set	.LANCHOR0,. + 0
+ 180              	temp_data:
+ 181 0000 00000000 		.zero	4
+ 182              		.text
+ 183              	.Letext0:
+ 184              		.file 2 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 185              		.file 3 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 186              		.file 4 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 187              		.file 5 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 188              		.file 6 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 189              		.file 7 "d:\\tools\\hummingbird\\hbird-eclipse_2018_09\\gnu mcu eclipse\\risc-v embedded gcc\\7.2.
+ 190              		.file 8 "../src/spi.h"
+ 191              		.file 9 "../src/uart.h"
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 main.c
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:10     .text.led_blink:0000000000000000 led_blink
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:14     .text.led_blink:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:16     .text.led_blink:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:17     .text.led_blink:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:21     .text.led_blink:0000000000000008 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:22     .text.led_blink:000000000000000a .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:24     .text.led_blink:000000000000000a .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:26     .text.led_blink:000000000000000e .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:28     .text.led_blink:0000000000000010 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:34     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:35     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:36     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:37     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:38     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:39     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:41     .text.led_blink:000000000000001c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:44     .text.led_blink:0000000000000024 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:50     .text.led_blink:0000000000000034 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:52     .text.led_blink:0000000000000036 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:56     .text.led_blink:000000000000003e .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:58     .text.led_blink:0000000000000042 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:61     .text.led_blink:0000000000000048 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:63     .text.led_blink:000000000000004c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:68     .text.led_blink:0000000000000052 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:71     .text.led_blink:0000000000000054 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:74     .text.led_blink:0000000000000058 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:77     .text.led_blink:000000000000005c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:79     .text.led_blink:0000000000000060 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:83     .text.led_blink:000000000000006c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:86     .text.led_blink:000000000000006e .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:89     .text.led_blink:0000000000000070 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:92     .text.led_blink:0000000000000074 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:97     .text.led_blink:000000000000007a .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:102    .text.led_blink:000000000000008c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:109    .text.startup.main:0000000000000000 main
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:112    .text.startup.main:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:113    .text.startup.main:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:114    .text.startup.main:0000000000000002 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:116    .text.startup.main:0000000000000002 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:118    .text.startup.main:0000000000000004 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:120    .text.startup.main:0000000000000008 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:121    .text.startup.main:0000000000000008 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:123    .text.startup.main:0000000000000008 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:128    .text.startup.main:0000000000000010 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:131    .text.startup.main:0000000000000018 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:135    .text.startup.main:0000000000000024 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:138    .text.startup.main:000000000000002c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:140    .text.startup.main:000000000000002e .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:145    .text.startup.main:000000000000003a .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:148    .text.startup.main:0000000000000042 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:150    .text.startup.main:0000000000000044 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:153    .text.startup.main:000000000000004c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:154    .text.startup.main:000000000000004e .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:156    .text.startup.main:0000000000000050 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:159    .text.startup.main:0000000000000054 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:161    .text.startup.main:0000000000000056 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:180    .sbss.temp_data:0000000000000000 temp_data
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:177    .sbss.temp_data:0000000000000000 .LANCHOR0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:105    .text.led_blink:000000000000008c .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:165    .text.startup.main:0000000000000056 .L0 
+                     .debug_frame:0000000000000000 .L0 
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:170    .rodata.led_blink.str1.4:0000000000000010 .LC1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:173    .rodata.led_blink.str1.4:0000000000000020 .LC2
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:167    .rodata.led_blink.str1.4:0000000000000000 .LC0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:95     .text.led_blink:000000000000007a .L9
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:90     .text.led_blink:0000000000000074 .L10
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:66     .text.led_blink:0000000000000052 .L4
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:72     .text.led_blink:0000000000000058 .L5
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:48     .text.led_blink:0000000000000034 .L3
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1391   .debug_abbrev:0000000000000000 .Ldebug_abbrev0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2123   .debug_str:00000000000002a8 .LASF131
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2085   .debug_str:00000000000001b2 .LASF132
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2121   .debug_str:000000000000026b .LASF133
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1987   .debug_ranges:0000000000000000 .Ldebug_ranges0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1995   .debug_line:0000000000000000 .Ldebug_line0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2029   .debug_str:00000000000000bb .LASF0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2007   .debug_str:000000000000002c .LASF5
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2157   .debug_str:00000000000003e3 .LASF1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2163   .debug_str:00000000000003ff .LASF2
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2109   .debug_str:0000000000000228 .LASF3
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2045   .debug_str:0000000000000100 .LASF4
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2067   .debug_str:0000000000000164 .LASF6
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2095   .debug_str:00000000000001e4 .LASF7
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2027   .debug_str:00000000000000ad .LASF8
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2015   .debug_str:000000000000005c .LASF9
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2087   .debug_str:00000000000001c0 .LASF10
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2245   .debug_str:000000000000057b .LASF11
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2203   .debug_str:00000000000004bb .LASF12
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2139   .debug_str:0000000000000387 .LASF13
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2153   .debug_str:00000000000003c7 .LASF14
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2149   .debug_str:00000000000003b6 .LASF15
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2209   .debug_str:00000000000004d6 .LASF16
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2103   .debug_str:0000000000000213 .LASF17
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2125   .debug_str:000000000000034a .LASF18
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2119   .debug_str:0000000000000265 .LASF19
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2089   .debug_str:00000000000001cd .LASF20
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2201   .debug_str:00000000000004b3 .LASF21
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2225   .debug_str:000000000000051b .LASF22
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2173   .debug_str:0000000000000427 .LASF23
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2071   .debug_str:0000000000000175 .LASF24
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2231   .debug_str:0000000000000531 .LASF25
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2075   .debug_str:0000000000000186 .LASF30
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2221   .debug_str:0000000000000508 .LASF26
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2193   .debug_str:0000000000000490 .LASF27
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2069   .debug_str:000000000000016f .LASF28
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2239   .debug_str:0000000000000566 .LASF29
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2083   .debug_str:00000000000001ad .LASF31
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2025   .debug_str:00000000000000a4 .LASF32
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2215   .debug_str:00000000000004ea .LASF33
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2035   .debug_str:00000000000000d3 .LASF34
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2269   .debug_str:00000000000005e3 .LASF35
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2143   .debug_str:000000000000039a .LASF36
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2135   .debug_str:0000000000000374 .LASF37
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2241   .debug_str:000000000000056b .LASF38
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2165   .debug_str:0000000000000409 .LASF39
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2255   .debug_str:00000000000005a5 .LASF40
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2039   .debug_str:00000000000000e2 .LASF41
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2063   .debug_str:0000000000000157 .LASF42
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1997   .debug_str:0000000000000000 .LASF43
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2227   .debug_str:0000000000000523 .LASF44
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2049   .debug_str:0000000000000110 .LASF45
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2145   .debug_str:00000000000003a3 .LASF46
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2185   .debug_str:0000000000000460 .LASF47
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2065   .debug_str:000000000000015f .LASF48
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2167   .debug_str:0000000000000413 .LASF49
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2033   .debug_str:00000000000000cd .LASF50
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2001   .debug_str:0000000000000013 .LASF51
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2175   .debug_str:0000000000000432 .LASF52
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2047   .debug_str:0000000000000109 .LASF53
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2097   .debug_str:00000000000001f6 .LASF54
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2017   .debug_str:0000000000000073 .LASF55
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2041   .debug_str:00000000000000f0 .LASF56
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2079   .debug_str:000000000000019d .LASF57
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2133   .debug_str:000000000000036d .LASF58
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2205   .debug_str:00000000000004c4 .LASF59
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2259   .debug_str:00000000000005bf .LASF60
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2031   .debug_str:00000000000000c7 .LASF61
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2251   .debug_str:0000000000000597 .LASF62
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2053   .debug_str:000000000000011f .LASF63
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2057   .debug_str:0000000000000130 .LASF64
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2009   .debug_str:0000000000000036 .LASF65
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2127   .debug_str:0000000000000351 .LASF66
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2177   .debug_str:000000000000043a .LASF67
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2129   .debug_str:0000000000000357 .LASF68
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2195   .debug_str:0000000000000498 .LASF69
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2211   .debug_str:00000000000004de .LASF70
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2051   .debug_str:0000000000000118 .LASF71
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2091   .debug_str:00000000000001d4 .LASF72
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2073   .debug_str:000000000000017e .LASF73
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2183   .debug_str:000000000000045b .LASF74
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2005   .debug_str:0000000000000021 .LASF75
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2191   .debug_str:0000000000000477 .LASF76
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2187   .debug_str:0000000000000465 .LASF77
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2147   .debug_str:00000000000003ab .LASF78
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2189   .debug_str:000000000000046d .LASF79
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2117   .debug_str:000000000000025d .LASF80
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2081   .debug_str:00000000000001a3 .LASF81
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2265   .debug_str:00000000000005d9 .LASF82
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2151   .debug_str:00000000000003bd .LASF83
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2093   .debug_str:00000000000001dc .LASF84
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2055   .debug_str:0000000000000128 .LASF85
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2159   .debug_str:00000000000003f1 .LASF86
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2111   .debug_str:000000000000023b .LASF87
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2249   .debug_str:000000000000058d .LASF88
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2043   .debug_str:00000000000000f8 .LASF89
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2037   .debug_str:00000000000000dd .LASF90
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2213   .debug_str:00000000000004e5 .LASF91
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2171   .debug_str:0000000000000420 .LASF92
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2243   .debug_str:0000000000000575 .LASF93
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2105   .debug_str:000000000000021c .LASF94
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2169   .debug_str:000000000000041a .LASF95
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2003   .debug_str:0000000000000019 .LASF96
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2197   .debug_str:000000000000049f .LASF97
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2217   .debug_str:00000000000004f3 .LASF98
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2229   .debug_str:000000000000052c .LASF99
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2237   .debug_str:0000000000000559 .LASF100
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2223   .debug_str:000000000000050e .LASF101
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2115   .debug_str:0000000000000250 .LASF102
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2257   .debug_str:00000000000005b0 .LASF103
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2077   .debug_str:000000000000018e .LASF104
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2179   .debug_str:0000000000000443 .LASF105
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2261   .debug_str:00000000000005c6 .LASF106
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2181   .debug_str:000000000000044e .LASF107
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2263   .debug_str:00000000000005cb .LASF108
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2023   .debug_str:0000000000000096 .LASF109
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2247   .debug_str:0000000000000583 .LASF110
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2113   .debug_str:0000000000000244 .LASF111
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2233   .debug_str:0000000000000539 .LASF112
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2061   .debug_str:0000000000000149 .LASF113
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2021   .debug_str:0000000000000087 .LASF114
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2059   .debug_str:0000000000000138 .LASF115
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2011   .debug_str:000000000000003c .LASF116
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2013   .debug_str:000000000000004b .LASF117
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2161   .debug_str:00000000000003f6 .LASF118
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2141   .debug_str:0000000000000393 .LASF119
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2137   .debug_str:000000000000037e .LASF120
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2253   .debug_str:000000000000059d .LASF121
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2019   .debug_str:000000000000007c .LASF134
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2207   .debug_str:00000000000004ca .LASF122
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2235   .debug_str:0000000000000546 .LASF123
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2099   .debug_str:00000000000001fc .LASF124
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2267   .debug_str:00000000000005de .LASF135
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:110    .text.startup.main:0000000000000000 .LFB2
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:162    .text.startup.main:0000000000000056 .LFE2
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2107   .debug_str:0000000000000223 .LASF125
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1930   .debug_loc:0000000000000000 .LLST1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:129    .text.startup.main:0000000000000018 .LVL11
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:133    .text.startup.main:0000000000000024 .LVL12
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:136    .text.startup.main:000000000000002c .LVL13
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:143    .text.startup.main:000000000000003a .LVL15
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:146    .text.startup.main:0000000000000042 .LVL16
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:151    .text.startup.main:000000000000004c .LVL17
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2155   .debug_str:00000000000003d9 .LASF136
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:11     .text.led_blink:0000000000000000 .LFB1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:103    .text.led_blink:000000000000008c .LFE1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1946   .debug_loc:000000000000002a .LLST0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:47     .text.led_blink:0000000000000034 .LVL1
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:81     .text.led_blink:000000000000006c .LVL5
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:100    .text.led_blink:000000000000008a .LVL9
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2199   .debug_str:00000000000004a5 .LASF126
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2131   .debug_str:000000000000035f .LASF127
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2101   .debug_str:0000000000000206 .LASF128
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:2219   .debug_str:00000000000004f9 .LASF129
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:1999   .debug_str:000000000000000c .LASF130
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:126    .text.startup.main:0000000000000010 .LVL10
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:141    .text.startup.main:0000000000000032 .LVL14
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:15     .text.led_blink:0000000000000000 .LVL0
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:65     .text.led_blink:0000000000000052 .LVL2
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:75     .text.led_blink:000000000000005c .LVL4
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:84     .text.led_blink:000000000000006e .LVL6
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:94     .text.led_blink:000000000000007a .LVL8
+C:\Users\Charry\AppData\Local\Temp\ccrP8Cg2.s:193    .debug_info:0000000000000000 .Ldebug_info0
+
+UNDEFINED SYMBOLS
+printk
+SPI_CS_Enable
+SPI_WriteData
+SPI_ReadData
+SPI_CS_Disable

@@ -1,0 +1,2752 @@
+
+pico_test_1.elf:     file format elf32-littleriscv
+pico_test_1.elf
+architecture: riscv:rv32, flags 0x00000112:
+EXEC_P, HAS_SYMS, D_PAGED
+start address 0x00001000
+
+Program Header:
+    LOAD off    0x00001000 vaddr 0x00001000 paddr 0x00001000 align 2**12
+         filesz 0x000018bc memsz 0x000018bc flags r-x
+    LOAD off    0x00003000 vaddr 0x00000000 paddr 0x000028bc align 2**12
+         filesz 0x00000000 memsz 0x00000004 flags rw-
+
+Sections:
+Idx Name           Size      VMA       LMA       File off  Algn  Flags
+  0 .text          000018bc  00001000  00001000  00001000  2**3  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data          00000000  00000000  000028bc  00003000  2**0  CONTENTS, ALLOC, LOAD, DATA
+  2 .bss           00000004  00000000  000028bc  00003000  2**2  ALLOC
+  3 .heap          00000000  00000004  00000004  00003000  2**0  CONTENTS
+  4 .debug_info    000023da  00000000  00000000  00003000  2**0  CONTENTS, READONLY, DEBUGGING
+  5 .debug_abbrev  000007ec  00000000  00000000  000053da  2**0  CONTENTS, READONLY, DEBUGGING
+  6 .debug_loc     00000797  00000000  00000000  00005bc6  2**0  CONTENTS, READONLY, DEBUGGING
+  7 .debug_aranges 000000f8  00000000  00000000  00006360  2**3  CONTENTS, READONLY, DEBUGGING
+  8 .debug_ranges  00000330  00000000  00000000  00006458  2**0  CONTENTS, READONLY, DEBUGGING
+  9 .debug_line    00000e0c  00000000  00000000  00006788  2**0  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str     00000691  00000000  00000000  00007594  2**0  CONTENTS, READONLY, DEBUGGING
+ 11 .comment       0000003a  00000000  00000000  00007c25  2**0  CONTENTS, READONLY
+ 12 .debug_frame   0000033c  00000000  00000000  00007c60  2**2  CONTENTS, READONLY, DEBUGGING
+SYMBOL TABLE:
+00001000 l    d  .text	00000000 .text
+00000000 l    d  .data	00000000 .data
+00000000 l    d  .bss	00000000 .bss
+00000004 l    d  .heap	00000000 .heap
+00000000 l    d  .debug_info	00000000 .debug_info
+00000000 l    d  .debug_abbrev	00000000 .debug_abbrev
+00000000 l    d  .debug_loc	00000000 .debug_loc
+00000000 l    d  .debug_aranges	00000000 .debug_aranges
+00000000 l    d  .debug_ranges	00000000 .debug_ranges
+00000000 l    d  .debug_line	00000000 .debug_line
+00000000 l    d  .debug_str	00000000 .debug_str
+00000000 l    d  .comment	00000000 .comment
+00000000 l    d  .debug_frame	00000000 .debug_frame
+00000000 l    df *ABS*	00000000 main.c
+00000000 l    df *ABS*	00000000 spi.c
+00000000 l    df *ABS*	00000000 ./src/start.o
+00001000 l       .text	00000000 start
+0000107a l       .text	00000000 setmemloop
+000010a2 l       .text	00000000 end_init_data
+00001096 l       .text	00000000 loop_init_data
+000010b8 l       .text	00000000 end_init_bss
+000010ae l       .text	00000000 loop_init_bss
+00000000 l    df *ABS*	00000000 uart.c
+0000119e l     F .text	0000004c print_num.part.0
+00000000 l    df *ABS*	00000000 muldf3.c
+00000000 l    df *ABS*	00000000 subdf3.c
+00000000 l    df *ABS*	00000000 fixdfsi.c
+00000000 l    df *ABS*	00000000 floatunsidf.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+00000000 l    df *ABS*	00000000 libgcc2.c
+0000129e g     F .text	00000078 print_flt
+00001182 g     F .text	0000000a SPI_ReadData
+000028bc g       .text	00000000 _sidata
+000010c0 g     F .text	0000007a led_blink
+000028bc g       .text	00000000 _etext
+00000000 g       .bss	00000000 _sbss
+0000144a g     F .text	00000084 getchar_prompt
+0000120a g     F .text	00000028 print_str
+00000000 g     O .bss	00000004 temp_data
+0000117c g     F .text	00000006 SPI_WriteData
+00000000 g       .data	00000000 _sdata
+0000128e g     F .text	00000010 print_dec
+00002488 g     F .text	000000c0 .hidden __floatunsidf
+00000004 g       .bss	00000000 _ebss
+00002404 g     F .text	00000084 .hidden __fixdfsi
+00000004 g       .heap	00000000 _heap_start
+00000000 g       .data	00000000 _ram_start
+000014ce g     F .text	0000002a get_char
+00002548 g     F .text	00000094 .hidden __clzsi2
+00001316 g     F .text	00000134 printk
+000014f8 g     F .text	0000068c .hidden __muldf3
+0000127e g     F .text	00000010 print_hex2
+0000113a g     F .text	00000032 main
+00001232 g     F .text	0000004c print_hex
+00001174 g     F .text	00000008 SPI_CS_Disable
+000027bc g     O .text	00000100 .hidden __clz_tab
+0000118c g     F .text	0000000c SPI_ReadWrite
+00001198 g     F .text	00000006 print_num
+00000000 g       .data	00000000 _edata
+0000116c g     F .text	00000008 SPI_CS_Enable
+00001b84 g     F .text	00000880 .hidden __subdf3
+000011ea g     F .text	00000020 put_char
+
+
+
+Disassembly of section .text:
+
+00001000 <start>:
+start():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:5
+	.section .text
+
+start:
+	# zero-initialize register file
+	addi x1, zero, 0
+    1000:	00000093          	li	ra,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:7
+	# x2 (sp) is initialized by reset
+	addi x3, zero, 0
+    1004:	00000193          	li	gp,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:8
+	addi x4, zero, 0
+    1008:	00000213          	li	tp,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:9
+	addi x5, zero, 0
+    100c:	00000293          	li	t0,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:10
+	addi x6, zero, 0
+    1010:	00000313          	li	t1,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:11
+	addi x7, zero, 0
+    1014:	00000393          	li	t2,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:12
+	addi x8, zero, 0
+    1018:	00000413          	li	s0,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:13
+	addi x9, zero, 0
+    101c:	00000493          	li	s1,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:14
+	addi x10, zero, 0
+    1020:	00000513          	li	a0,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:15
+	addi x11, zero, 0
+    1024:	00000593          	li	a1,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:16
+	addi x12, zero, 0
+    1028:	00000613          	li	a2,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:17
+	addi x13, zero, 0
+    102c:	00000693          	li	a3,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:18
+	addi x14, zero, 0
+    1030:	00000713          	li	a4,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:19
+	addi x15, zero, 0
+    1034:	00000793          	li	a5,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:20
+	addi x16, zero, 0
+    1038:	00000813          	li	a6,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:21
+	addi x17, zero, 0
+    103c:	00000893          	li	a7,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:22
+	addi x18, zero, 0
+    1040:	00000913          	li	s2,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:23
+	addi x19, zero, 0
+    1044:	00000993          	li	s3,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:24
+	addi x20, zero, 0
+    1048:	00000a13          	li	s4,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:25
+	addi x21, zero, 0
+    104c:	00000a93          	li	s5,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:26
+	addi x22, zero, 0
+    1050:	00000b13          	li	s6,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:27
+	addi x23, zero, 0
+    1054:	00000b93          	li	s7,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:28
+	addi x24, zero, 0
+    1058:	00000c13          	li	s8,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:29
+	addi x25, zero, 0
+    105c:	00000c93          	li	s9,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:30
+	addi x26, zero, 0
+    1060:	00000d13          	li	s10,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:31
+	addi x27, zero, 0
+    1064:	00000d93          	li	s11,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:32
+	addi x28, zero, 0
+    1068:	00000e13          	li	t3,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:33
+	addi x29, zero, 0
+    106c:	00000e93          	li	t4,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:34
+	addi x30, zero, 0
+    1070:	00000f13          	li	t5,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:35
+	addi x31, zero, 0
+    1074:	00000f93          	li	t6,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:38
+
+	# zero initialize entire scratchpad memory
+	li a0, 0x00000000
+    1078:	4501                	li	a0,0
+
+0000107a <setmemloop>:
+setmemloop():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:40
+setmemloop:
+	sw a0, 0(a0)
+    107a:	c108                	sw	a0,0(a0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:41
+	addi a0, a0, 4
+    107c:	0511                	addi	a0,a0,4
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:42
+	blt a0, sp, setmemloop
+    107e:	fe254ee3          	blt	a0,sp,107a <setmemloop>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:45
+
+	# copy data section
+	la a0, _sidata
+    1082:	00002517          	auipc	a0,0x2
+    1086:	83a50513          	addi	a0,a0,-1990 # 28bc <_etext>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:46
+	la a1, _sdata
+    108a:	00000593          	li	a1,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:47
+	la a2, _edata
+    108e:	00000613          	li	a2,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:48
+	bge a1, a2, end_init_data
+    1092:	00c5d863          	ble	a2,a1,10a2 <end_init_data>
+
+00001096 <loop_init_data>:
+loop_init_data():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:50
+loop_init_data:
+	lw a3, 0(a0)
+    1096:	4114                	lw	a3,0(a0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:51
+	sw a3, 0(a1)
+    1098:	c194                	sw	a3,0(a1)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:52
+	addi a0, a0, 4
+    109a:	0511                	addi	a0,a0,4
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:53
+	addi a1, a1, 4
+    109c:	0591                	addi	a1,a1,4
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:54
+	blt a1, a2, loop_init_data
+    109e:	fec5cce3          	blt	a1,a2,1096 <loop_init_data>
+
+000010a2 <end_init_data>:
+end_init_data():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:58
+end_init_data:
+
+	# zero-init bss section
+	la a0, _sbss
+    10a2:	00000513          	li	a0,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:59
+	la a1, _ebss
+    10a6:	00400593          	li	a1,4
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:60
+	bge a0, a1, end_init_bss
+    10aa:	00b55763          	ble	a1,a0,10b8 <end_init_bss>
+
+000010ae <loop_init_bss>:
+loop_init_bss():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:62
+loop_init_bss:
+	sw zero, 0(a0)
+    10ae:	00052023          	sw	zero,0(a0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:63
+	addi a0, a0, 4
+    10b2:	0511                	addi	a0,a0,4
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:64
+	blt a0, a1, loop_init_bss
+    10b4:	feb54de3          	blt	a0,a1,10ae <loop_init_bss>
+
+000010b8 <end_init_bss>:
+end_init_bss():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:69
+end_init_bss:
+
+
+	/* jump to main C code */
+	jal ra,main
+    10b8:	082000ef          	jal	ra,113a <main>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:72
+
+1:
+	j 1b
+    10bc:	a001                	j	10bc <end_init_bss+0x4>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/start.S:75
+
+	/* trap */
+	ebreak
+    10be:	9002                	ebreak
+
+000010c0 <led_blink>:
+led_blink():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:29
+ ** 返回参数：无
+ ********************************************************************/
+void led_blink(void)
+{
+	int cnt = 0;
+	temp_data = *gpio_point;
+    10c0:	67a1                	lui	a5,0x8
+    10c2:	5b98                	lw	a4,48(a5)
+    10c4:	000007b7          	lui	a5,0x0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:27
+{
+    10c8:	1101                	addi	sp,sp,-32
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:29
+	temp_data = *gpio_point;
+    10ca:	00e7a023          	sw	a4,0(a5) # 0 <_edata>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:30
+	if(GPIO_DATA == temp_data)
+    10ce:	67ad                	lui	a5,0xb
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:27
+{
+    10d0:	ce06                	sw	ra,28(sp)
+    10d2:	cc22                	sw	s0,24(sp)
+    10d4:	ca26                	sw	s1,20(sp)
+    10d6:	c84a                	sw	s2,16(sp)
+    10d8:	c64e                	sw	s3,12(sp)
+    10da:	c452                	sw	s4,8(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:30
+	if(GPIO_DATA == temp_data)
+    10dc:	a5578793          	addi	a5,a5,-1451 # aa55 <_etext+0x8199>
+    10e0:	04f70763          	beq	a4,a5,112e <led_blink+0x6e>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:36
+	{
+		printk("gpio success\n");
+	}
+	else
+	{
+		printk("gpio failed\n");
+    10e4:	00002537          	lui	a0,0x2
+    10e8:	5ec50513          	addi	a0,a0,1516 # 25ec <__clzsi2+0xa4>
+    10ec:	242d                	jal	1316 <printk>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:43
+
+	led_address = 0xff;
+	while(1)
+	{
+		cnt++;
+		if(cnt == LED_DELAY / 2)
+    10ee:	6485                	lui	s1,0x1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:39
+	led_address = 0xff;
+    10f0:	67a1                	lui	a5,0x8
+    10f2:	0ff00713          	li	a4,255
+    10f6:	d398                	sw	a4,32(a5)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:43
+		if(cnt == LED_DELAY / 2)
+    10f8:	9c448413          	addi	s0,s1,-1596 # 9c4 <_ebss+0x9c0>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:28
+	int cnt = 0;
+    10fc:	4781                	li	a5,0
+    10fe:	00002a37          	lui	s4,0x2
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:47
+		{
+			led_address = 0x00;
+		}
+		else if(cnt == LED_DELAY)
+    1102:	38848493          	addi	s1,s1,904
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:50
+		{
+			cnt = 0;
+			led_address = 0xff;
+    1106:	6921                	lui	s2,0x8
+    1108:	0ff00993          	li	s3,255
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:42
+		cnt++;
+    110c:	0785                	addi	a5,a5,1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:43
+		if(cnt == LED_DELAY / 2)
+    110e:	00878d63          	beq	a5,s0,1128 <led_blink+0x68>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:47
+		else if(cnt == LED_DELAY)
+    1112:	fe979de3          	bne	a5,s1,110c <led_blink+0x4c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:50
+			led_address = 0xff;
+    1116:	03392023          	sw	s3,32(s2) # 8020 <_etext+0x5764>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:51
+			printk("led_blink ok\n");
+    111a:	5fca0513          	addi	a0,s4,1532 # 25fc <__clzsi2+0xb4>
+    111e:	2ae5                	jal	1316 <printk>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:49
+			cnt = 0;
+    1120:	4781                	li	a5,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:42
+		cnt++;
+    1122:	0785                	addi	a5,a5,1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:43
+		if(cnt == LED_DELAY / 2)
+    1124:	fe8797e3          	bne	a5,s0,1112 <led_blink+0x52>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:45
+			led_address = 0x00;
+    1128:	02092023          	sw	zero,32(s2)
+    112c:	b7c5                	j	110c <led_blink+0x4c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:32
+		printk("gpio success\n");
+    112e:	00002537          	lui	a0,0x2
+    1132:	5dc50513          	addi	a0,a0,1500 # 25dc <__clzsi2+0x94>
+    1136:	22c5                	jal	1316 <printk>
+    1138:	bf5d                	j	10ee <led_blink+0x2e>
+
+0000113a <main>:
+main():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:57
+		}
+	}
+}
+
+int main(void)
+{
+    113a:	1141                	addi	sp,sp,-16
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:58
+	reg_uart_clkdiv = BAUND_9600;
+    113c:	678d                	lui	a5,0x3
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:57
+{
+    113e:	c606                	sw	ra,12(sp)
+    1140:	c422                	sw	s0,8(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:58
+	reg_uart_clkdiv = BAUND_9600;
+    1142:	2dc78793          	addi	a5,a5,732 # 32dc <_etext+0xa20>
+    1146:	6421                	lui	s0,0x8
+    1148:	c01c                	sw	a5,0(s0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:65
+//	printk("Hello Risc-V Pango 2019\n");
+//	printk("test data = %d,%f,%s,0x = %x\n", 100,33.456,"2019",100);
+//	printk("simple compute : 50*10 = %d,100/3 = %f,100%3 = %d\n", 50*10,(double)100/3,(int)100%3);
+//	led_blink();
+	uint8_t data = 0;
+	SPI_CS_Enable();
+    114a:	200d                	jal	116c <SPI_CS_Enable>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:66
+	SPI_WriteData(0xAA);
+    114c:	0aa00513          	li	a0,170
+    1150:	2035                	jal	117c <SPI_WriteData>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:67
+	data = SPI_ReadData();
+    1152:	2805                	jal	1182 <SPI_ReadData>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:68
+	led_address = data;
+    1154:	d008                	sw	a0,32(s0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:69
+	SPI_WriteData(0x55);
+    1156:	05500513          	li	a0,85
+    115a:	200d                	jal	117c <SPI_WriteData>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:70
+	data = SPI_ReadData();
+    115c:	201d                	jal	1182 <SPI_ReadData>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:71
+	led_address = data;
+    115e:	d008                	sw	a0,32(s0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:72
+	SPI_CS_Disable();
+    1160:	2811                	jal	1174 <SPI_CS_Disable>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/main.c:74
+	return 0;
+}
+    1162:	40b2                	lw	ra,12(sp)
+    1164:	4422                	lw	s0,8(sp)
+    1166:	4501                	li	a0,0
+    1168:	0141                	addi	sp,sp,16
+    116a:	8082                	ret
+
+0000116c <SPI_CS_Enable>:
+SPI_CS_Enable():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:6
+#include <stdint.h>
+#include <stdbool.h>
+#include "spi.h"
+
+void SPI_CS_Enable() {
+	reg_spi_cs = 0;
+    116c:	67a1                	lui	a5,0x8
+    116e:	0407a023          	sw	zero,64(a5) # 8040 <_etext+0x5784>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:7
+}
+    1172:	8082                	ret
+
+00001174 <SPI_CS_Disable>:
+SPI_CS_Disable():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:9
+void SPI_CS_Disable() {
+	reg_spi_cs = 1;
+    1174:	67a1                	lui	a5,0x8
+    1176:	4705                	li	a4,1
+    1178:	c3b8                	sw	a4,64(a5)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:10
+}
+    117a:	8082                	ret
+
+0000117c <SPI_WriteData>:
+SPI_WriteData():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:12
+void SPI_WriteData(uint8_t data) {
+	reg_spi_tx = data;
+    117c:	67a1                	lui	a5,0x8
+    117e:	c3e8                	sw	a0,68(a5)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:13
+}
+    1180:	8082                	ret
+
+00001182 <SPI_ReadData>:
+SPI_ReadData():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:15
+uint8_t SPI_ReadData(){
+	return (uint8_t)reg_spi_rx;
+    1182:	67a1                	lui	a5,0x8
+    1184:	47a8                	lw	a0,72(a5)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:16
+}
+    1186:	0ff57513          	andi	a0,a0,255
+    118a:	8082                	ret
+
+0000118c <SPI_ReadWrite>:
+SPI_WriteData():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:12
+	reg_spi_tx = data;
+    118c:	67a1                	lui	a5,0x8
+    118e:	c3e8                	sw	a0,68(a5)
+SPI_ReadData():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:15
+	return (uint8_t)reg_spi_rx;
+    1190:	47a8                	lw	a0,72(a5)
+SPI_ReadWrite():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/spi.c:22
+uint8_t SPI_ReadWrite(uint8_t Txdata){
+	uint8_t Rxdata;
+	SPI_WriteData(Txdata);
+	Rxdata = SPI_ReadData();
+	return Rxdata;
+}
+    1192:	0ff57513          	andi	a0,a0,255
+    1196:	8082                	ret
+
+00001198 <print_num>:
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:14
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_num(uint32_t num, int base)
+{
+	if(num == 0)
+    1198:	e111                	bnez	a0,119c <print_num+0x4>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:20
+	{
+		return;
+	}
+	print_num(num/base, base);
+	put_char("0123456789abcdef"[num%base]);							//逆序打印结果
+}
+    119a:	8082                	ret
+    119c:	a009                	j	119e <print_num.part.0>
+
+0000119e <print_num.part.0>:
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:12
+void print_num(uint32_t num, int base)
+    119e:	1141                	addi	sp,sp,-16
+    11a0:	c422                	sw	s0,8(sp)
+    11a2:	842a                	mv	s0,a0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:18
+	print_num(num/base, base);
+    11a4:	02b55533          	divu	a0,a0,a1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:12
+void print_num(uint32_t num, int base)
+    11a8:	c226                	sw	s1,4(sp)
+    11aa:	84ae                	mv	s1,a1
+    11ac:	c606                	sw	ra,12(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:18
+	print_num(num/base, base);
+    11ae:	37ed                	jal	1198 <print_num>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:19
+	put_char("0123456789abcdef"[num%base]);							//逆序打印结果
+    11b0:	02947433          	remu	s0,s0,s1
+    11b4:	000027b7          	lui	a5,0x2
+    11b8:	76878793          	addi	a5,a5,1896 # 2768 <__clzsi2+0x220>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void put_char(char c)
+{
+	if (c == '\n')
+    11bc:	4729                	li	a4,10
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:19
+	put_char("0123456789abcdef"[num%base]);							//逆序打印结果
+    11be:	943e                	add	s0,s0,a5
+    11c0:	00040783          	lb	a5,0(s0) # 8000 <_etext+0x5744>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    11c4:	00e78963          	beq	a5,a4,11d6 <print_num.part.0+0x38>
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:20
+}
+    11c8:	40b2                	lw	ra,12(sp)
+    11ca:	4422                	lw	s0,8(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+		put_char('\r');
+	reg_uart_data = c;
+    11cc:	6721                	lui	a4,0x8
+    11ce:	cb1c                	sw	a5,16(a4)
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:20
+}
+    11d0:	4492                	lw	s1,4(sp)
+    11d2:	0141                	addi	sp,sp,16
+    11d4:	8082                	ret
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    11d6:	6721                	lui	a4,0x8
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:20
+}
+    11d8:	40b2                	lw	ra,12(sp)
+    11da:	4422                	lw	s0,8(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    11dc:	46b5                	li	a3,13
+    11de:	cb14                	sw	a3,16(a4)
+    11e0:	6721                	lui	a4,0x8
+    11e2:	cb1c                	sw	a5,16(a4)
+print_num():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:20
+}
+    11e4:	4492                	lw	s1,4(sp)
+    11e6:	0141                	addi	sp,sp,16
+    11e8:	8082                	ret
+
+000011ea <put_char>:
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:30
+{
+    11ea:	1141                	addi	sp,sp,-16
+    11ec:	c422                	sw	s0,8(sp)
+    11ee:	c606                	sw	ra,12(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    11f0:	47a9                	li	a5,10
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:30
+{
+    11f2:	842a                	mv	s0,a0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    11f4:	00f50863          	beq	a0,a5,1204 <put_char+0x1a>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    11f8:	67a1                	lui	a5,0x8
+    11fa:	cb80                	sw	s0,16(a5)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:34
+}
+    11fc:	40b2                	lw	ra,12(sp)
+    11fe:	4422                	lw	s0,8(sp)
+    1200:	0141                	addi	sp,sp,16
+    1202:	8082                	ret
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:32
+		put_char('\r');
+    1204:	4535                	li	a0,13
+    1206:	37d5                	jal	11ea <put_char>
+    1208:	bfc5                	j	11f8 <put_char+0xe>
+
+0000120a <print_str>:
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_str(const char *p)
+{
+	while (*p)
+    120a:	00050783          	lb	a5,0(a0)
+    120e:	c38d                	beqz	a5,1230 <print_str+0x26>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    1210:	46a9                	li	a3,10
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1212:	6721                	lui	a4,0x8
+    1214:	4635                	li	a2,13
+    1216:	a029                	j	1220 <print_str+0x16>
+    1218:	cb1c                	sw	a5,16(a4)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    121a:	00050783          	lb	a5,0(a0)
+    121e:	cb89                	beqz	a5,1230 <print_str+0x26>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:46
+		put_char(*(p++));
+    1220:	0505                	addi	a0,a0,1
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    1222:	fed79be3          	bne	a5,a3,1218 <print_str+0xe>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1226:	cb10                	sw	a2,16(a4)
+    1228:	cb1c                	sw	a5,16(a4)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    122a:	00050783          	lb	a5,0(a0)
+    122e:	fbed                	bnez	a5,1220 <print_str+0x16>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:47
+}
+    1230:	8082                	ret
+
+00001232 <print_hex>:
+print_hex():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:58
+ ** 		digits：数据类型（十进制、十六进制、八进制）
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_hex(uint32_t v, int digits)
+{
+    1232:	000026b7          	lui	a3,0x2
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:59
+	for (int i = 7; i >= 0; i--)
+    1236:	471d                	li	a4,7
+    1238:	76868693          	addi	a3,a3,1896 # 2768 <__clzsi2+0x220>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:62
+	{
+		char c = "0123456789abcdef"[(v >> (4*i)) & 15];
+		if (c == '0' && i >= digits)
+    123c:	03000893          	li	a7,48
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1240:	6621                	lui	a2,0x8
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    1242:	4329                	li	t1,10
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1244:	4e35                	li	t3,13
+print_hex():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:59
+	for (int i = 7; i >= 0; i--)
+    1246:	587d                	li	a6,-1
+    1248:	a801                	j	1258 <print_hex+0x26>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    124a:	02678763          	beq	a5,t1,1278 <print_hex+0x46>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    124e:	85ba                	mv	a1,a4
+    1250:	ca1c                	sw	a5,16(a2)
+print_hex():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:59
+	for (int i = 7; i >= 0; i--)
+    1252:	177d                	addi	a4,a4,-1
+    1254:	03070163          	beq	a4,a6,1276 <print_hex+0x44>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:61
+		char c = "0123456789abcdef"[(v >> (4*i)) & 15];
+    1258:	00271793          	slli	a5,a4,0x2
+    125c:	00f557b3          	srl	a5,a0,a5
+    1260:	8bbd                	andi	a5,a5,15
+    1262:	97b6                	add	a5,a5,a3
+    1264:	00078783          	lb	a5,0(a5) # 8000 <_etext+0x5744>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:62
+		if (c == '0' && i >= digits)
+    1268:	ff1791e3          	bne	a5,a7,124a <print_hex+0x18>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:62 (discriminator 1)
+    126c:	feb741e3          	blt	a4,a1,124e <print_hex+0x1c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:59
+	for (int i = 7; i >= 0; i--)
+    1270:	177d                	addi	a4,a4,-1
+    1272:	ff0713e3          	bne	a4,a6,1258 <print_hex+0x26>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:67
+			continue;
+		put_char(c);
+		digits = i;
+	}
+}
+    1276:	8082                	ret
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1278:	01c62823          	sw	t3,16(a2) # 8010 <_etext+0x5754>
+    127c:	bfc9                	j	124e <print_hex+0x1c>
+
+0000127e <print_hex2>:
+print_hex2():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:78
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_hex2(uint32_t hex)
+{
+	if(0 == hex)
+    127e:	e511                	bnez	a0,128a <print_hex2+0xc>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1280:	67a1                	lui	a5,0x8
+    1282:	03000713          	li	a4,48
+    1286:	cb98                	sw	a4,16(a5)
+print_hex2():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:87
+	}
+	else
+	{
+		print_num(hex, 16);											//打印十六进制数
+	}
+}
+    1288:	8082                	ret
+print_num():
+    128a:	45c1                	li	a1,16
+    128c:	bf09                	j	119e <print_num.part.0>
+
+0000128e <print_dec>:
+print_dec():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:97
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_dec(uint32_t v)
+{
+	if(0 == v)
+    128e:	e511                	bnez	a0,129a <print_dec+0xc>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1290:	67a1                	lui	a5,0x8
+    1292:	03000713          	li	a4,48
+    1296:	cb98                	sw	a4,16(a5)
+print_dec():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:106
+	}
+	else
+	{
+		print_num(v, 10);											//打印十进制数
+	}
+}
+    1298:	8082                	ret
+print_num():
+    129a:	45a9                	li	a1,10
+    129c:	b709                	j	119e <print_num.part.0>
+
+0000129e <print_flt>:
+print_flt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:116
+ ** 输入参数：flt:打印的浮点数
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void print_flt(double flt)
+{
+    129e:	1101                	addi	sp,sp,-32
+    12a0:	cc22                	sw	s0,24(sp)
+    12a2:	c84a                	sw	s2,16(sp)
+    12a4:	c64e                	sw	s3,12(sp)
+    12a6:	ce06                	sw	ra,28(sp)
+    12a8:	ca26                	sw	s1,20(sp)
+    12aa:	892a                	mv	s2,a0
+    12ac:	89ae                	mv	s3,a1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:120
+	uint32_t icnt = 0;
+	uint32_t tmpint = 0;
+
+	tmpint = (int)(flt);
+    12ae:	156010ef          	jal	ra,2404 <__fixdfsi>
+    12b2:	842a                	mv	s0,a0
+print_dec():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:97
+	if(0 == v)
+    12b4:	ed31                	bnez	a0,1310 <print_flt+0x72>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    12b6:	67a1                	lui	a5,0x8
+    12b8:	03000713          	li	a4,48
+    12bc:	cb98                	sw	a4,16(a5)
+    12be:	02e00793          	li	a5,46
+    12c2:	64a1                	lui	s1,0x8
+    12c4:	c89c                	sw	a5,16(s1)
+print_flt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:123
+	print_dec(tmpint);
+	put_char('.');
+	flt = flt - tmpint;
+    12c6:	8522                	mv	a0,s0
+    12c8:	1c0010ef          	jal	ra,2488 <__floatunsidf>
+    12cc:	862a                	mv	a2,a0
+    12ce:	86ae                	mv	a3,a1
+    12d0:	854a                	mv	a0,s2
+    12d2:	85ce                	mv	a1,s3
+    12d4:	0b1000ef          	jal	ra,1b84 <__subdf3>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:124
+	tmpint = (int)(flt * 1000000);
+    12d8:	000027b7          	lui	a5,0x2
+    12dc:	7607a603          	lw	a2,1888(a5) # 2760 <__clzsi2+0x218>
+    12e0:	7647a683          	lw	a3,1892(a5)
+    12e4:	2c11                	jal	14f8 <__muldf3>
+    12e6:	11e010ef          	jal	ra,2404 <__fixdfsi>
+print_dec():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:97
+	if(0 == v)
+    12ea:	e919                	bnez	a0,1300 <print_flt+0x62>
+print_flt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:126
+	print_dec(tmpint);
+}
+    12ec:	40f2                	lw	ra,28(sp)
+    12ee:	4462                	lw	s0,24(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    12f0:	03000793          	li	a5,48
+    12f4:	c89c                	sw	a5,16(s1)
+print_flt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:126
+}
+    12f6:	4942                	lw	s2,16(sp)
+    12f8:	44d2                	lw	s1,20(sp)
+    12fa:	49b2                	lw	s3,12(sp)
+    12fc:	6105                	addi	sp,sp,32
+    12fe:	8082                	ret
+    1300:	4462                	lw	s0,24(sp)
+    1302:	40f2                	lw	ra,28(sp)
+    1304:	44d2                	lw	s1,20(sp)
+    1306:	4942                	lw	s2,16(sp)
+    1308:	49b2                	lw	s3,12(sp)
+print_num():
+    130a:	45a9                	li	a1,10
+print_flt():
+    130c:	6105                	addi	sp,sp,32
+print_num():
+    130e:	bd41                	j	119e <print_num.part.0>
+    1310:	45a9                	li	a1,10
+    1312:	3571                	jal	119e <print_num.part.0>
+    1314:	b76d                	j	12be <print_flt+0x20>
+
+00001316 <printk>:
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:136
+ ** 输入参数：fmt：打印的字符串内容
+ ** 输出参数：无
+ ** 返回参数：无
+ ********************************************************************/
+void printk(char *fmt, ...)
+{
+    1316:	715d                	addi	sp,sp,-80
+    1318:	c0ba                	sw	a4,64(sp)
+    131a:	d606                	sw	ra,44(sp)
+    131c:	d422                	sw	s0,40(sp)
+    131e:	d226                	sw	s1,36(sp)
+    1320:	d04a                	sw	s2,32(sp)
+    1322:	ce4e                	sw	s3,28(sp)
+    1324:	cc52                	sw	s4,24(sp)
+    1326:	ca56                	sw	s5,20(sp)
+    1328:	c85a                	sw	s6,16(sp)
+    132a:	da2e                	sw	a1,52(sp)
+    132c:	dc32                	sw	a2,56(sp)
+    132e:	de36                	sw	a3,60(sp)
+    1330:	c2be                	sw	a5,68(sp)
+    1332:	c4c2                	sw	a6,72(sp)
+    1334:	c6c6                	sw	a7,76(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:143
+	va_list vp;
+
+	va_start(vp, fmt);
+	pfmt = fmt;
+
+	while(*pfmt)
+    1336:	00050783          	lb	a5,0(a0)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:140
+	va_start(vp, fmt);
+    133a:	1858                	addi	a4,sp,52
+    133c:	c63a                	sw	a4,12(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:143
+	while(*pfmt)
+    133e:	c3b9                	beqz	a5,1384 <printk+0x6e>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:149
+	{
+		switch(*pfmt)
+		{
+			case '%':
+			{
+				switch(*(pfmt + 1))
+    1340:	6a89                	lui	s5,0x2
+    1342:	84aa                	mv	s1,a0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:145
+		switch(*pfmt)
+    1344:	4929                	li	s2,10
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1346:	69a1                	lui	s3,0x8
+    1348:	4b35                	li	s6,13
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:145
+		switch(*pfmt)
+    134a:	02500a13          	li	s4,37
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:149
+				switch(*(pfmt + 1))
+    134e:	60ca8a93          	addi	s5,s5,1548 # 260c <__clzsi2+0xc4>
+    1352:	a819                	j	1368 <printk+0x52>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:145
+		switch(*pfmt)
+    1354:	05478263          	beq	a5,s4,1398 <printk+0x82>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1358:	8722                	mv	a4,s0
+    135a:	00f9a823          	sw	a5,16(s3) # 8010 <_etext+0x5754>
+    135e:	8426                	mv	s0,s1
+    1360:	84ba                	mv	s1,a4
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:143
+	while(*pfmt)
+    1362:	00140783          	lb	a5,1(s0)
+    1366:	cf99                	beqz	a5,1384 <printk+0x6e>
+    1368:	00148413          	addi	s0,s1,1 # 8001 <_etext+0x5745>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:145
+		switch(*pfmt)
+    136c:	ff2794e3          	bne	a5,s2,1354 <printk+0x3e>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1370:	0169a823          	sw	s6,16(s3)
+    1374:	87a2                	mv	a5,s0
+    1376:	0129a823          	sw	s2,16(s3)
+    137a:	8426                	mv	s0,s1
+    137c:	84be                	mv	s1,a5
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:143
+	while(*pfmt)
+    137e:	00140783          	lb	a5,1(s0)
+    1382:	f3fd                	bnez	a5,1368 <printk+0x52>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:201
+				break;
+		}
+		pfmt++;
+	}
+	va_end(vp);
+}
+    1384:	50b2                	lw	ra,44(sp)
+    1386:	5422                	lw	s0,40(sp)
+    1388:	5492                	lw	s1,36(sp)
+    138a:	5902                	lw	s2,32(sp)
+    138c:	49f2                	lw	s3,28(sp)
+    138e:	4a62                	lw	s4,24(sp)
+    1390:	4ad2                	lw	s5,20(sp)
+    1392:	4b42                	lw	s6,16(sp)
+    1394:	6161                	addi	sp,sp,80
+    1396:	8082                	ret
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:149
+				switch(*(pfmt + 1))
+    1398:	0014c783          	lbu	a5,1(s1)
+    139c:	05300713          	li	a4,83
+    13a0:	fdb78793          	addi	a5,a5,-37
+    13a4:	0ff7f793          	andi	a5,a5,255
+    13a8:	00f76663          	bltu	a4,a5,13b4 <printk+0x9e>
+    13ac:	078a                	slli	a5,a5,0x2
+    13ae:	97d6                	add	a5,a5,s5
+    13b0:	439c                	lw	a5,0(a5)
+    13b2:	8782                	jr	a5
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    13b4:	87a2                	mv	a5,s0
+    13b6:	0149a823          	sw	s4,16(s3)
+    13ba:	8426                	mv	s0,s1
+    13bc:	84be                	mv	s1,a5
+    13be:	b755                	j	1362 <printk+0x4c>
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:152
+						put_char(va_arg(vp, int));
+    13c0:	47b2                	lw	a5,12(sp)
+    13c2:	00078703          	lb	a4,0(a5)
+    13c6:	0791                	addi	a5,a5,4
+    13c8:	c63e                	sw	a5,12(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    13ca:	07270d63          	beq	a4,s2,1444 <printk+0x12e>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    13ce:	00e9a823          	sw	a4,16(s3)
+    13d2:	0489                	addi	s1,s1,2
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:154
+						break;
+    13d4:	b779                	j	1362 <printk+0x4c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:175
+						print_hex2(va_arg(vp, int));
+    13d6:	47b2                	lw	a5,12(sp)
+    13d8:	4388                	lw	a0,0(a5)
+    13da:	0791                	addi	a5,a5,4
+    13dc:	c63e                	sw	a5,12(sp)
+print_hex2():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:78
+	if(0 == hex)
+    13de:	ed39                	bnez	a0,143c <printk+0x126>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    13e0:	03000793          	li	a5,48
+    13e4:	00f9a823          	sw	a5,16(s3)
+    13e8:	0489                	addi	s1,s1,2
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:177
+						break;
+    13ea:	bfa5                	j	1362 <printk+0x4c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:158
+						print_dec(va_arg(vp, int));
+    13ec:	47b2                	lw	a5,12(sp)
+    13ee:	4388                	lw	a0,0(a5)
+    13f0:	0791                	addi	a5,a5,4
+    13f2:	c63e                	sw	a5,12(sp)
+print_dec():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:97
+	if(0 == v)
+    13f4:	d575                	beqz	a0,13e0 <printk+0xca>
+print_num():
+    13f6:	45a9                	li	a1,10
+    13f8:	335d                	jal	119e <print_num.part.0>
+    13fa:	0489                	addi	s1,s1,2
+    13fc:	b79d                	j	1362 <printk+0x4c>
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:169
+						print_str(va_arg(vp, char*));
+    13fe:	47b2                	lw	a5,12(sp)
+    1400:	4398                	lw	a4,0(a5)
+    1402:	0791                	addi	a5,a5,4
+    1404:	c63e                	sw	a5,12(sp)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    1406:	00070783          	lb	a5,0(a4) # 8000 <_etext+0x5744>
+    140a:	dff9                	beqz	a5,13e8 <printk+0xd2>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:46
+		put_char(*(p++));
+    140c:	0705                	addi	a4,a4,1
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    140e:	01278a63          	beq	a5,s2,1422 <printk+0x10c>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1412:	00f9a823          	sw	a5,16(s3)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    1416:	00070783          	lb	a5,0(a4)
+    141a:	d7f9                	beqz	a5,13e8 <printk+0xd2>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:46
+		put_char(*(p++));
+    141c:	0705                	addi	a4,a4,1
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    141e:	ff279ae3          	bne	a5,s2,1412 <printk+0xfc>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1422:	0169a823          	sw	s6,16(s3)
+    1426:	b7f5                	j	1412 <printk+0xfc>
+printk():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:163
+						print_flt(va_arg(vp, double));
+    1428:	47b2                	lw	a5,12(sp)
+    142a:	0489                	addi	s1,s1,2
+    142c:	079d                	addi	a5,a5,7
+    142e:	9be1                	andi	a5,a5,-8
+    1430:	4388                	lw	a0,0(a5)
+    1432:	43cc                	lw	a1,4(a5)
+    1434:	07a1                	addi	a5,a5,8
+    1436:	c63e                	sw	a5,12(sp)
+    1438:	359d                	jal	129e <print_flt>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:165
+						break;
+    143a:	b725                	j	1362 <printk+0x4c>
+print_num():
+    143c:	45c1                	li	a1,16
+    143e:	3385                	jal	119e <print_num.part.0>
+    1440:	0489                	addi	s1,s1,2
+    1442:	b705                	j	1362 <printk+0x4c>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1444:	0169a823          	sw	s6,16(s3)
+    1448:	b759                	j	13ce <printk+0xb8>
+
+0000144a <getchar_prompt>:
+getchar_prompt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:215
+char getchar_prompt(char *prompt)
+{
+	int32_t c = -1;
+
+	uint32_t cycles_begin, cycles_now, cycles;
+	__asm__ volatile ("rdcycle %0" : "=r"(cycles_begin));
+    144a:	c00025f3          	rdcycle	a1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:217
+
+	if (prompt)
+    144e:	c515                	beqz	a0,147a <getchar_prompt+0x30>
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    1450:	00050783          	lb	a5,0(a0)
+    1454:	c39d                	beqz	a5,147a <getchar_prompt+0x30>
+    1456:	872a                	mv	a4,a0
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    1458:	4629                	li	a2,10
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    145a:	66a1                	lui	a3,0x8
+    145c:	4835                	li	a6,13
+    145e:	a029                	j	1468 <getchar_prompt+0x1e>
+    1460:	ca9c                	sw	a5,16(a3)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    1462:	00070783          	lb	a5,0(a4)
+    1466:	cb91                	beqz	a5,147a <getchar_prompt+0x30>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:46
+		put_char(*(p++));
+    1468:	0705                	addi	a4,a4,1
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    146a:	fec79be3          	bne	a5,a2,1460 <getchar_prompt+0x16>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    146e:	0106a823          	sw	a6,16(a3) # 8010 <_etext+0x5754>
+    1472:	ca9c                	sw	a5,16(a3)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    1474:	00070783          	lb	a5,0(a4)
+    1478:	fbe5                	bnez	a5,1468 <getchar_prompt+0x1e>
+getchar_prompt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:224
+
+	while (c == -1)
+	{
+		__asm__ volatile ("rdcycle %0" : "=r"(cycles_now));
+		cycles = cycles_now - cycles_begin;
+		if (cycles > 12000000)
+    147a:	00b728b7          	lui	a7,0xb72
+    147e:	b0088893          	addi	a7,a7,-1280 # b71b00 <_etext+0xb6f244>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    1482:	4829                	li	a6,10
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    1484:	66a1                	lui	a3,0x8
+    1486:	4e35                	li	t3,13
+getchar_prompt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:220
+	while (c == -1)
+    1488:	537d                	li	t1,-1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:222
+		__asm__ volatile ("rdcycle %0" : "=r"(cycles_now));
+    148a:	c0002673          	rdcycle	a2
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:223
+		cycles = cycles_now - cycles_begin;
+    148e:	40b607b3          	sub	a5,a2,a1
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:224
+		if (cycles > 12000000)
+    1492:	02f8f763          	bleu	a5,a7,14c0 <getchar_prompt+0x76>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:230
+		{
+			if (prompt)
+			{
+				print_str(prompt);
+			}
+			cycles_begin = cycles_now;
+    1496:	85b2                	mv	a1,a2
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:226
+			if (prompt)
+    1498:	c505                	beqz	a0,14c0 <getchar_prompt+0x76>
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    149a:	00050783          	lb	a5,0(a0)
+    149e:	c38d                	beqz	a5,14c0 <getchar_prompt+0x76>
+    14a0:	872a                	mv	a4,a0
+    14a2:	a029                	j	14ac <getchar_prompt+0x62>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    14a4:	ca9c                	sw	a5,16(a3)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    14a6:	00070783          	lb	a5,0(a4)
+    14aa:	cb91                	beqz	a5,14be <getchar_prompt+0x74>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:46
+		put_char(*(p++));
+    14ac:	0705                	addi	a4,a4,1
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    14ae:	ff079be3          	bne	a5,a6,14a4 <getchar_prompt+0x5a>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    14b2:	01c6a823          	sw	t3,16(a3) # 8010 <_etext+0x5754>
+    14b6:	ca9c                	sw	a5,16(a3)
+print_str():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:45
+	while (*p)
+    14b8:	00070783          	lb	a5,0(a4)
+    14bc:	fbe5                	bnez	a5,14ac <getchar_prompt+0x62>
+getchar_prompt():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:230
+			cycles_begin = cycles_now;
+    14be:	85b2                	mv	a1,a2
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:232
+		}
+		c = reg_uart_data;
+    14c0:	4a9c                	lw	a5,16(a3)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:220
+	while (c == -1)
+    14c2:	fc6784e3          	beq	a5,t1,148a <getchar_prompt+0x40>
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:236
+	}
+
+	return c;
+}
+    14c6:	01879513          	slli	a0,a5,0x18
+    14ca:	8561                	srai	a0,a0,0x18
+    14cc:	8082                	ret
+
+000014ce <get_char>:
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:246
+ ** 输入参数：无
+ ** 输出参数：无
+ ** 返回参数：输出的字符
+ ********************************************************************/
+char get_char()
+{
+    14ce:	1141                	addi	sp,sp,-16
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:248
+//	return getchar_prompt(0);
+	put_char(getchar_prompt(0));
+    14d0:	4501                	li	a0,0
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:246
+{
+    14d2:	c606                	sw	ra,12(sp)
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:248
+	put_char(getchar_prompt(0));
+    14d4:	3f9d                	jal	144a <getchar_prompt>
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    14d6:	4729                	li	a4,10
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:248
+	put_char(getchar_prompt(0));
+    14d8:	87aa                	mv	a5,a0
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:31
+	if (c == '\n')
+    14da:	00e50763          	beq	a0,a4,14e8 <get_char+0x1a>
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:249
+}
+    14de:	40b2                	lw	ra,12(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    14e0:	6721                	lui	a4,0x8
+    14e2:	cb1c                	sw	a5,16(a4)
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:249
+}
+    14e4:	0141                	addi	sp,sp,16
+    14e6:	8082                	ret
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    14e8:	6721                	lui	a4,0x8
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:249
+}
+    14ea:	40b2                	lw	ra,12(sp)
+put_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:33
+	reg_uart_data = c;
+    14ec:	46b5                	li	a3,13
+    14ee:	cb14                	sw	a3,16(a4)
+    14f0:	6721                	lui	a4,0x8
+    14f2:	cb1c                	sw	a5,16(a4)
+get_char():
+D:\Files\Pango\FPGA_prjs\picorv32\Software\pico_test_1\Debug/../src/uart.c:249
+}
+    14f4:	0141                	addi	sp,sp,16
+    14f6:	8082                	ret
+
+000014f8 <__muldf3>:
+__muldf3():
+    14f8:	fc010113          	addi	sp,sp,-64
+    14fc:	02812c23          	sw	s0,56(sp)
+    1500:	0145d793          	srli	a5,a1,0x14
+    1504:	00100437          	lui	s0,0x100
+    1508:	02912a23          	sw	s1,52(sp)
+    150c:	03312623          	sw	s3,44(sp)
+    1510:	00050493          	mv	s1,a0
+    1514:	fff40413          	addi	s0,s0,-1 # fffff <_etext+0xfd743>
+    1518:	02112e23          	sw	ra,60(sp)
+    151c:	03212823          	sw	s2,48(sp)
+    1520:	03412423          	sw	s4,40(sp)
+    1524:	03512223          	sw	s5,36(sp)
+    1528:	03612023          	sw	s6,32(sp)
+    152c:	01712e23          	sw	s7,28(sp)
+    1530:	7ff7f513          	andi	a0,a5,2047
+    1534:	00b47433          	and	s0,s0,a1
+    1538:	01f5d993          	srli	s3,a1,0x1f
+    153c:	1e050e63          	beqz	a0,1738 <__muldf3+0x240>
+    1540:	7ff00793          	li	a5,2047
+    1544:	0af50063          	beq	a0,a5,15e4 <__muldf3+0xec>
+    1548:	00341413          	slli	s0,s0,0x3
+    154c:	008007b7          	lui	a5,0x800
+    1550:	01d4db13          	srli	s6,s1,0x1d
+    1554:	00f46433          	or	s0,s0,a5
+    1558:	00349a13          	slli	s4,s1,0x3
+    155c:	008b6b33          	or	s6,s6,s0
+    1560:	c0150a93          	addi	s5,a0,-1023
+    1564:	00000493          	li	s1,0
+    1568:	00000b93          	li	s7,0
+    156c:	0146d893          	srli	a7,a3,0x14
+    1570:	00100437          	lui	s0,0x100
+    1574:	fff40413          	addi	s0,s0,-1 # fffff <_etext+0xfd743>
+    1578:	7ff8f893          	andi	a7,a7,2047
+    157c:	00060813          	mv	a6,a2
+    1580:	00d47433          	and	s0,s0,a3
+    1584:	01f6d913          	srli	s2,a3,0x1f
+    1588:	08088a63          	beqz	a7,161c <__muldf3+0x124>
+    158c:	7ff00793          	li	a5,2047
+    1590:	20f88463          	beq	a7,a5,1798 <__muldf3+0x2a0>
+    1594:	00800737          	lui	a4,0x800
+    1598:	00341413          	slli	s0,s0,0x3
+    159c:	00e46433          	or	s0,s0,a4
+    15a0:	c0188893          	addi	a7,a7,-1023
+    15a4:	01d65713          	srli	a4,a2,0x1d
+    15a8:	00876733          	or	a4,a4,s0
+    15ac:	00361813          	slli	a6,a2,0x3
+    15b0:	011a8ab3          	add	s5,s5,a7
+    15b4:	00000513          	li	a0,0
+    15b8:	00f00693          	li	a3,15
+    15bc:	0129c7b3          	xor	a5,s3,s2
+    15c0:	001a8593          	addi	a1,s5,1
+    15c4:	1e96e863          	bltu	a3,s1,17b4 <__muldf3+0x2bc>
+    15c8:	00001617          	auipc	a2,0x1
+    15cc:	1b460613          	addi	a2,a2,436 # 277c <__clzsi2+0x234>
+    15d0:	00249493          	slli	s1,s1,0x2
+    15d4:	00c484b3          	add	s1,s1,a2
+    15d8:	0004a683          	lw	a3,0(s1)
+    15dc:	00c686b3          	add	a3,a3,a2
+    15e0:	00068067          	jr	a3
+    15e4:	00946b33          	or	s6,s0,s1
+    15e8:	400b1663          	bnez	s6,19f4 <__muldf3+0x4fc>
+    15ec:	0146d893          	srli	a7,a3,0x14
+    15f0:	00100437          	lui	s0,0x100
+    15f4:	fff40413          	addi	s0,s0,-1 # fffff <_etext+0xfd743>
+    15f8:	7ff8f893          	andi	a7,a7,2047
+    15fc:	00800493          	li	s1,8
+    1600:	00000a13          	li	s4,0
+    1604:	7ff00a93          	li	s5,2047
+    1608:	00200b93          	li	s7,2
+    160c:	00060813          	mv	a6,a2
+    1610:	00d47433          	and	s0,s0,a3
+    1614:	01f6d913          	srli	s2,a3,0x1f
+    1618:	f6089ae3          	bnez	a7,158c <__muldf3+0x94>
+    161c:	00c46733          	or	a4,s0,a2
+    1620:	3e070663          	beqz	a4,1a0c <__muldf3+0x514>
+    1624:	4a040463          	beqz	s0,1acc <__muldf3+0x5d4>
+    1628:	00040513          	mv	a0,s0
+    162c:	00c12423          	sw	a2,8(sp)
+    1630:	719000ef          	jal	ra,2548 <__clzsi2>
+    1634:	00812603          	lw	a2,8(sp)
+    1638:	ff550793          	addi	a5,a0,-11
+    163c:	01c00713          	li	a4,28
+    1640:	44f74a63          	blt	a4,a5,1a94 <__muldf3+0x59c>
+    1644:	01d00713          	li	a4,29
+    1648:	ff850813          	addi	a6,a0,-8
+    164c:	40f70733          	sub	a4,a4,a5
+    1650:	01041433          	sll	s0,s0,a6
+    1654:	00e65733          	srl	a4,a2,a4
+    1658:	00876733          	or	a4,a4,s0
+    165c:	01061833          	sll	a6,a2,a6
+    1660:	40aa8533          	sub	a0,s5,a0
+    1664:	c0d50a93          	addi	s5,a0,-1011
+    1668:	00000513          	li	a0,0
+    166c:	f4dff06f          	j	15b8 <__muldf3+0xc0>
+    1670:	00000613          	li	a2,0
+    1674:	7ff00713          	li	a4,2047
+    1678:	000807b7          	lui	a5,0x80
+    167c:	00000813          	li	a6,0
+    1680:	001006b7          	lui	a3,0x100
+    1684:	fff68693          	addi	a3,a3,-1 # fffff <_etext+0xfd743>
+    1688:	00d7f7b3          	and	a5,a5,a3
+    168c:	801006b7          	lui	a3,0x80100
+    1690:	fff68693          	addi	a3,a3,-1 # 800fffff <_etext+0x800fd743>
+    1694:	00d7f7b3          	and	a5,a5,a3
+    1698:	03c12083          	lw	ra,60(sp)
+    169c:	03812403          	lw	s0,56(sp)
+    16a0:	01471713          	slli	a4,a4,0x14
+    16a4:	01f61693          	slli	a3,a2,0x1f
+    16a8:	00e7e7b3          	or	a5,a5,a4
+    16ac:	00d7e7b3          	or	a5,a5,a3
+    16b0:	03412483          	lw	s1,52(sp)
+    16b4:	03012903          	lw	s2,48(sp)
+    16b8:	02c12983          	lw	s3,44(sp)
+    16bc:	02812a03          	lw	s4,40(sp)
+    16c0:	02412a83          	lw	s5,36(sp)
+    16c4:	02012b03          	lw	s6,32(sp)
+    16c8:	01c12b83          	lw	s7,28(sp)
+    16cc:	00080513          	mv	a0,a6
+    16d0:	00078593          	mv	a1,a5
+    16d4:	04010113          	addi	sp,sp,64
+    16d8:	00008067          	ret
+    16dc:	00090793          	mv	a5,s2
+    16e0:	00200693          	li	a3,2
+    16e4:	02d51863          	bne	a0,a3,1714 <__muldf3+0x21c>
+    16e8:	00078613          	mv	a2,a5
+    16ec:	7ff00713          	li	a4,2047
+    16f0:	00000793          	li	a5,0
+    16f4:	00000813          	li	a6,0
+    16f8:	f89ff06f          	j	1680 <__muldf3+0x188>
+    16fc:	00098793          	mv	a5,s3
+    1700:	000b8513          	mv	a0,s7
+    1704:	00200693          	li	a3,2
+    1708:	000b0713          	mv	a4,s6
+    170c:	000a0813          	mv	a6,s4
+    1710:	fcd50ce3          	beq	a0,a3,16e8 <__muldf3+0x1f0>
+    1714:	00300693          	li	a3,3
+    1718:	f4d50ce3          	beq	a0,a3,1670 <__muldf3+0x178>
+    171c:	00100693          	li	a3,1
+    1720:	24d51a63          	bne	a0,a3,1974 <__muldf3+0x47c>
+    1724:	00078613          	mv	a2,a5
+    1728:	00000713          	li	a4,0
+    172c:	00000793          	li	a5,0
+    1730:	00000813          	li	a6,0
+    1734:	f4dff06f          	j	1680 <__muldf3+0x188>
+    1738:	00946b33          	or	s6,s0,s1
+    173c:	2a0b0263          	beqz	s6,19e0 <__muldf3+0x4e8>
+    1740:	00d12623          	sw	a3,12(sp)
+    1744:	00c12423          	sw	a2,8(sp)
+    1748:	36040663          	beqz	s0,1ab4 <__muldf3+0x5bc>
+    174c:	00040513          	mv	a0,s0
+    1750:	5f9000ef          	jal	ra,2548 <__clzsi2>
+    1754:	00812603          	lw	a2,8(sp)
+    1758:	00c12683          	lw	a3,12(sp)
+    175c:	ff550793          	addi	a5,a0,-11
+    1760:	01c00713          	li	a4,28
+    1764:	34f74063          	blt	a4,a5,1aa4 <__muldf3+0x5ac>
+    1768:	01d00b13          	li	s6,29
+    176c:	ff850a13          	addi	s4,a0,-8
+    1770:	40fb0b33          	sub	s6,s6,a5
+    1774:	01441433          	sll	s0,s0,s4
+    1778:	0164db33          	srl	s6,s1,s6
+    177c:	008b6b33          	or	s6,s6,s0
+    1780:	01449a33          	sll	s4,s1,s4
+    1784:	c0d00a93          	li	s5,-1011
+    1788:	40aa8ab3          	sub	s5,s5,a0
+    178c:	00000493          	li	s1,0
+    1790:	00000b93          	li	s7,0
+    1794:	dd9ff06f          	j	156c <__muldf3+0x74>
+    1798:	00c46733          	or	a4,s0,a2
+    179c:	7ffa8a93          	addi	s5,s5,2047
+    17a0:	26071e63          	bnez	a4,1a1c <__muldf3+0x524>
+    17a4:	0024e493          	ori	s1,s1,2
+    17a8:	00000813          	li	a6,0
+    17ac:	00200513          	li	a0,2
+    17b0:	e09ff06f          	j	15b8 <__muldf3+0xc0>
+    17b4:	00010eb7          	lui	t4,0x10
+    17b8:	fffe8613          	addi	a2,t4,-1 # ffff <_etext+0xd743>
+    17bc:	010a5693          	srli	a3,s4,0x10
+    17c0:	01085313          	srli	t1,a6,0x10
+    17c4:	00ca7a33          	and	s4,s4,a2
+    17c8:	00c87833          	and	a6,a6,a2
+    17cc:	03480633          	mul	a2,a6,s4
+    17d0:	03068e33          	mul	t3,a3,a6
+    17d4:	01065513          	srli	a0,a2,0x10
+    17d8:	034308b3          	mul	a7,t1,s4
+    17dc:	01c888b3          	add	a7,a7,t3
+    17e0:	01150533          	add	a0,a0,a7
+    17e4:	02668f33          	mul	t5,a3,t1
+    17e8:	01c57463          	bleu	t3,a0,17f0 <__muldf3+0x2f8>
+    17ec:	01df0f33          	add	t5,t5,t4
+    17f0:	00010e37          	lui	t3,0x10
+    17f4:	fffe0893          	addi	a7,t3,-1 # ffff <_etext+0xd743>
+    17f8:	011773b3          	and	t2,a4,a7
+    17fc:	01075293          	srli	t0,a4,0x10
+    1800:	01157733          	and	a4,a0,a7
+    1804:	011678b3          	and	a7,a2,a7
+    1808:	01071713          	slli	a4,a4,0x10
+    180c:	03438633          	mul	a2,t2,s4
+    1810:	011708b3          	add	a7,a4,a7
+    1814:	01055513          	srli	a0,a0,0x10
+    1818:	02768eb3          	mul	t4,a3,t2
+    181c:	01065713          	srli	a4,a2,0x10
+    1820:	03428a33          	mul	s4,t0,s4
+    1824:	01da0a33          	add	s4,s4,t4
+    1828:	01470a33          	add	s4,a4,s4
+    182c:	025686b3          	mul	a3,a3,t0
+    1830:	01da7463          	bleu	t4,s4,1838 <__muldf3+0x340>
+    1834:	01c686b3          	add	a3,a3,t3
+    1838:	00010937          	lui	s2,0x10
+    183c:	fff90713          	addi	a4,s2,-1 # ffff <_etext+0xd743>
+    1840:	010b5f93          	srli	t6,s6,0x10
+    1844:	00eb7433          	and	s0,s6,a4
+    1848:	00ea7eb3          	and	t4,s4,a4
+    184c:	00e67633          	and	a2,a2,a4
+    1850:	010e9e93          	slli	t4,t4,0x10
+    1854:	028804b3          	mul	s1,a6,s0
+    1858:	010a5a13          	srli	s4,s4,0x10
+    185c:	00ce8eb3          	add	t4,t4,a2
+    1860:	00da0a33          	add	s4,s4,a3
+    1864:	01d50533          	add	a0,a0,t4
+    1868:	02830733          	mul	a4,t1,s0
+    186c:	0104de13          	srli	t3,s1,0x10
+    1870:	030f8833          	mul	a6,t6,a6
+    1874:	01070733          	add	a4,a4,a6
+    1878:	00ee0e33          	add	t3,t3,a4
+    187c:	03f30333          	mul	t1,t1,t6
+    1880:	010e7463          	bleu	a6,t3,1888 <__muldf3+0x390>
+    1884:	01230333          	add	t1,t1,s2
+    1888:	00010937          	lui	s2,0x10
+    188c:	fff90613          	addi	a2,s2,-1 # ffff <_etext+0xd743>
+    1890:	00ce76b3          	and	a3,t3,a2
+    1894:	010e5e13          	srli	t3,t3,0x10
+    1898:	006e0333          	add	t1,t3,t1
+    189c:	01069693          	slli	a3,a3,0x10
+    18a0:	00c4f4b3          	and	s1,s1,a2
+    18a4:	02838e33          	mul	t3,t2,s0
+    18a8:	00968633          	add	a2,a3,s1
+    18ac:	027f8833          	mul	a6,t6,t2
+    18b0:	010e5713          	srli	a4,t3,0x10
+    18b4:	02828433          	mul	s0,t0,s0
+    18b8:	01040433          	add	s0,s0,a6
+    18bc:	00870433          	add	s0,a4,s0
+    18c0:	03f28fb3          	mul	t6,t0,t6
+    18c4:	01047463          	bleu	a6,s0,18cc <__muldf3+0x3d4>
+    18c8:	012f8fb3          	add	t6,t6,s2
+    18cc:	00010737          	lui	a4,0x10
+    18d0:	fff70713          	addi	a4,a4,-1 # ffff <_etext+0xd743>
+    18d4:	00e476b3          	and	a3,s0,a4
+    18d8:	01069693          	slli	a3,a3,0x10
+    18dc:	00ee7733          	and	a4,t3,a4
+    18e0:	01e50533          	add	a0,a0,t5
+    18e4:	00e686b3          	add	a3,a3,a4
+    18e8:	01d53eb3          	sltu	t4,a0,t4
+    18ec:	01468733          	add	a4,a3,s4
+    18f0:	00c50533          	add	a0,a0,a2
+    18f4:	01d70833          	add	a6,a4,t4
+    18f8:	00c536b3          	sltu	a3,a0,a2
+    18fc:	00680e33          	add	t3,a6,t1
+    1900:	00de0633          	add	a2,t3,a3
+    1904:	01d83eb3          	sltu	t4,a6,t4
+    1908:	01473733          	sltu	a4,a4,s4
+    190c:	01d76733          	or	a4,a4,t4
+    1910:	01045413          	srli	s0,s0,0x10
+    1914:	006e3333          	sltu	t1,t3,t1
+    1918:	00d636b3          	sltu	a3,a2,a3
+    191c:	00d366b3          	or	a3,t1,a3
+    1920:	00870733          	add	a4,a4,s0
+    1924:	00d70733          	add	a4,a4,a3
+    1928:	00951813          	slli	a6,a0,0x9
+    192c:	01186833          	or	a6,a6,a7
+    1930:	01f70733          	add	a4,a4,t6
+    1934:	00971713          	slli	a4,a4,0x9
+    1938:	01765893          	srli	a7,a2,0x17
+    193c:	01003833          	snez	a6,a6
+    1940:	01755513          	srli	a0,a0,0x17
+    1944:	00961693          	slli	a3,a2,0x9
+    1948:	00a86833          	or	a6,a6,a0
+    194c:	01176733          	or	a4,a4,a7
+    1950:	00d86833          	or	a6,a6,a3
+    1954:	00771693          	slli	a3,a4,0x7
+    1958:	1806d663          	bgez	a3,1ae4 <__muldf3+0x5ec>
+    195c:	00185693          	srli	a3,a6,0x1
+    1960:	00187813          	andi	a6,a6,1
+    1964:	01f71613          	slli	a2,a4,0x1f
+    1968:	0106e833          	or	a6,a3,a6
+    196c:	00c86833          	or	a6,a6,a2
+    1970:	00175713          	srli	a4,a4,0x1
+    1974:	3ff58693          	addi	a3,a1,1023
+    1978:	00078613          	mv	a2,a5
+    197c:	0ad05863          	blez	a3,1a2c <__muldf3+0x534>
+    1980:	00787793          	andi	a5,a6,7
+    1984:	02078063          	beqz	a5,19a4 <__muldf3+0x4ac>
+    1988:	00f87793          	andi	a5,a6,15
+    198c:	00400513          	li	a0,4
+    1990:	00a78a63          	beq	a5,a0,19a4 <__muldf3+0x4ac>
+    1994:	00480793          	addi	a5,a6,4
+    1998:	0107b833          	sltu	a6,a5,a6
+    199c:	01070733          	add	a4,a4,a6
+    19a0:	00078813          	mv	a6,a5
+    19a4:	00771793          	slli	a5,a4,0x7
+    19a8:	0007da63          	bgez	a5,19bc <__muldf3+0x4c4>
+    19ac:	ff0007b7          	lui	a5,0xff000
+    19b0:	fff78793          	addi	a5,a5,-1 # feffffff <_etext+0xfeffd743>
+    19b4:	00f77733          	and	a4,a4,a5
+    19b8:	40058693          	addi	a3,a1,1024
+    19bc:	7fe00793          	li	a5,2046
+    19c0:	12d7c663          	blt	a5,a3,1aec <__muldf3+0x5f4>
+    19c4:	00385793          	srli	a5,a6,0x3
+    19c8:	01d71813          	slli	a6,a4,0x1d
+    19cc:	00971713          	slli	a4,a4,0x9
+    19d0:	00f86833          	or	a6,a6,a5
+    19d4:	00c75793          	srli	a5,a4,0xc
+    19d8:	7ff6f713          	andi	a4,a3,2047
+    19dc:	ca5ff06f          	j	1680 <__muldf3+0x188>
+    19e0:	00400493          	li	s1,4
+    19e4:	00000a13          	li	s4,0
+    19e8:	00000a93          	li	s5,0
+    19ec:	00100b93          	li	s7,1
+    19f0:	b7dff06f          	j	156c <__muldf3+0x74>
+    19f4:	00048a13          	mv	s4,s1
+    19f8:	00040b13          	mv	s6,s0
+    19fc:	00c00493          	li	s1,12
+    1a00:	7ff00a93          	li	s5,2047
+    1a04:	00300b93          	li	s7,3
+    1a08:	b65ff06f          	j	156c <__muldf3+0x74>
+    1a0c:	0014e493          	ori	s1,s1,1
+    1a10:	00000813          	li	a6,0
+    1a14:	00100513          	li	a0,1
+    1a18:	ba1ff06f          	j	15b8 <__muldf3+0xc0>
+    1a1c:	0034e493          	ori	s1,s1,3
+    1a20:	00040713          	mv	a4,s0
+    1a24:	00300513          	li	a0,3
+    1a28:	b91ff06f          	j	15b8 <__muldf3+0xc0>
+    1a2c:	00100793          	li	a5,1
+    1a30:	40d787b3          	sub	a5,a5,a3
+    1a34:	0c069463          	bnez	a3,1afc <__muldf3+0x604>
+    1a38:	41e58593          	addi	a1,a1,1054
+    1a3c:	00b816b3          	sll	a3,a6,a1
+    1a40:	00b715b3          	sll	a1,a4,a1
+    1a44:	00f85833          	srl	a6,a6,a5
+    1a48:	00d036b3          	snez	a3,a3
+    1a4c:	0105e5b3          	or	a1,a1,a6
+    1a50:	00d5e5b3          	or	a1,a1,a3
+    1a54:	0075f693          	andi	a3,a1,7
+    1a58:	00f75733          	srl	a4,a4,a5
+    1a5c:	02068063          	beqz	a3,1a7c <__muldf3+0x584>
+    1a60:	00f5f793          	andi	a5,a1,15
+    1a64:	00400693          	li	a3,4
+    1a68:	00d78a63          	beq	a5,a3,1a7c <__muldf3+0x584>
+    1a6c:	00058813          	mv	a6,a1
+    1a70:	00480593          	addi	a1,a6,4
+    1a74:	0105b833          	sltu	a6,a1,a6
+    1a78:	01070733          	add	a4,a4,a6
+    1a7c:	00871793          	slli	a5,a4,0x8
+    1a80:	0e07d263          	bgez	a5,1b64 <__muldf3+0x66c>
+    1a84:	00100713          	li	a4,1
+    1a88:	00000793          	li	a5,0
+    1a8c:	00000813          	li	a6,0
+    1a90:	bf1ff06f          	j	1680 <__muldf3+0x188>
+    1a94:	fd850713          	addi	a4,a0,-40
+    1a98:	00e61733          	sll	a4,a2,a4
+    1a9c:	00000813          	li	a6,0
+    1aa0:	bc1ff06f          	j	1660 <__muldf3+0x168>
+    1aa4:	fd850413          	addi	s0,a0,-40
+    1aa8:	00849b33          	sll	s6,s1,s0
+    1aac:	00000a13          	li	s4,0
+    1ab0:	cd5ff06f          	j	1784 <__muldf3+0x28c>
+    1ab4:	00048513          	mv	a0,s1
+    1ab8:	291000ef          	jal	ra,2548 <__clzsi2>
+    1abc:	02050513          	addi	a0,a0,32
+    1ac0:	00c12683          	lw	a3,12(sp)
+    1ac4:	00812603          	lw	a2,8(sp)
+    1ac8:	c95ff06f          	j	175c <__muldf3+0x264>
+    1acc:	00060513          	mv	a0,a2
+    1ad0:	00c12423          	sw	a2,8(sp)
+    1ad4:	275000ef          	jal	ra,2548 <__clzsi2>
+    1ad8:	02050513          	addi	a0,a0,32
+    1adc:	00812603          	lw	a2,8(sp)
+    1ae0:	b59ff06f          	j	1638 <__muldf3+0x140>
+    1ae4:	000a8593          	mv	a1,s5
+    1ae8:	e8dff06f          	j	1974 <__muldf3+0x47c>
+    1aec:	7ff00713          	li	a4,2047
+    1af0:	00000793          	li	a5,0
+    1af4:	00000813          	li	a6,0
+    1af8:	b89ff06f          	j	1680 <__muldf3+0x188>
+    1afc:	03800513          	li	a0,56
+    1b00:	00f55a63          	ble	a5,a0,1b14 <__muldf3+0x61c>
+    1b04:	00000713          	li	a4,0
+    1b08:	00000793          	li	a5,0
+    1b0c:	00000813          	li	a6,0
+    1b10:	b71ff06f          	j	1680 <__muldf3+0x188>
+    1b14:	01f00513          	li	a0,31
+    1b18:	f2f550e3          	ble	a5,a0,1a38 <__muldf3+0x540>
+    1b1c:	fe100513          	li	a0,-31
+    1b20:	40d506b3          	sub	a3,a0,a3
+    1b24:	02000513          	li	a0,32
+    1b28:	00d756b3          	srl	a3,a4,a3
+    1b2c:	00a78863          	beq	a5,a0,1b3c <__muldf3+0x644>
+    1b30:	43e58593          	addi	a1,a1,1086
+    1b34:	00b71733          	sll	a4,a4,a1
+    1b38:	00e86833          	or	a6,a6,a4
+    1b3c:	01003833          	snez	a6,a6
+    1b40:	00d86833          	or	a6,a6,a3
+    1b44:	00787713          	andi	a4,a6,7
+    1b48:	00000793          	li	a5,0
+    1b4c:	02070463          	beqz	a4,1b74 <__muldf3+0x67c>
+    1b50:	00f87793          	andi	a5,a6,15
+    1b54:	00400693          	li	a3,4
+    1b58:	00000713          	li	a4,0
+    1b5c:	00080593          	mv	a1,a6
+    1b60:	f0d798e3          	bne	a5,a3,1a70 <__muldf3+0x578>
+    1b64:	00971693          	slli	a3,a4,0x9
+    1b68:	00c6d793          	srli	a5,a3,0xc
+    1b6c:	01d71713          	slli	a4,a4,0x1d
+    1b70:	00058813          	mv	a6,a1
+    1b74:	00385813          	srli	a6,a6,0x3
+    1b78:	00e86833          	or	a6,a6,a4
+    1b7c:	00000713          	li	a4,0
+    1b80:	b01ff06f          	j	1680 <__muldf3+0x188>
+
+00001b84 <__subdf3>:
+__subdf3():
+    1b84:	00100837          	lui	a6,0x100
+    1b88:	fff80813          	addi	a6,a6,-1 # fffff <_etext+0xfd743>
+    1b8c:	fe010113          	addi	sp,sp,-32
+    1b90:	00b877b3          	and	a5,a6,a1
+    1b94:	0146d893          	srli	a7,a3,0x14
+    1b98:	00d87833          	and	a6,a6,a3
+    1b9c:	00379313          	slli	t1,a5,0x3
+    1ba0:	00812c23          	sw	s0,24(sp)
+    1ba4:	01d55793          	srli	a5,a0,0x1d
+    1ba8:	00912a23          	sw	s1,20(sp)
+    1bac:	01212823          	sw	s2,16(sp)
+    1bb0:	0145d493          	srli	s1,a1,0x14
+    1bb4:	01d65913          	srli	s2,a2,0x1d
+    1bb8:	00381813          	slli	a6,a6,0x3
+    1bbc:	00112e23          	sw	ra,28(sp)
+    1bc0:	01312623          	sw	s3,12(sp)
+    1bc4:	7ff8f893          	andi	a7,a7,2047
+    1bc8:	7ff00713          	li	a4,2047
+    1bcc:	01f5d413          	srli	s0,a1,0x1f
+    1bd0:	7ff4f493          	andi	s1,s1,2047
+    1bd4:	0067e7b3          	or	a5,a5,t1
+    1bd8:	00351513          	slli	a0,a0,0x3
+    1bdc:	01f6d693          	srli	a3,a3,0x1f
+    1be0:	010965b3          	or	a1,s2,a6
+    1be4:	00361613          	slli	a2,a2,0x3
+    1be8:	0ae88663          	beq	a7,a4,1c94 <__subdf3+0x110>
+    1bec:	0016c693          	xori	a3,a3,1
+    1bf0:	41148833          	sub	a6,s1,a7
+    1bf4:	0a868863          	beq	a3,s0,1ca4 <__subdf3+0x120>
+    1bf8:	0f005463          	blez	a6,1ce0 <__subdf3+0x15c>
+    1bfc:	12089463          	bnez	a7,1d24 <__subdf3+0x1a0>
+    1c00:	00c5e733          	or	a4,a1,a2
+    1c04:	24071c63          	bnez	a4,1e5c <__subdf3+0x2d8>
+    1c08:	7ff00713          	li	a4,2047
+    1c0c:	38e80e63          	beq	a6,a4,1fa8 <__subdf3+0x424>
+    1c10:	01d79693          	slli	a3,a5,0x1d
+    1c14:	00355513          	srli	a0,a0,0x3
+    1c18:	00d569b3          	or	s3,a0,a3
+    1c1c:	0037d793          	srli	a5,a5,0x3
+    1c20:	7ff00713          	li	a4,2047
+    1c24:	56e80063          	beq	a6,a4,2184 <__subdf3+0x600>
+    1c28:	00100737          	lui	a4,0x100
+    1c2c:	fff70713          	addi	a4,a4,-1 # fffff <_etext+0xfd743>
+    1c30:	00e7f7b3          	and	a5,a5,a4
+    1c34:	7ff87813          	andi	a6,a6,2047
+    1c38:	00147593          	andi	a1,s0,1
+    1c3c:	00100737          	lui	a4,0x100
+    1c40:	fff70713          	addi	a4,a4,-1 # fffff <_etext+0xfd743>
+    1c44:	00e7f7b3          	and	a5,a5,a4
+    1c48:	80100737          	lui	a4,0x80100
+    1c4c:	fff70713          	addi	a4,a4,-1 # 800fffff <_etext+0x800fd743>
+    1c50:	00e7f7b3          	and	a5,a5,a4
+    1c54:	01481813          	slli	a6,a6,0x14
+    1c58:	80000737          	lui	a4,0x80000
+    1c5c:	01c12083          	lw	ra,28(sp)
+    1c60:	01812403          	lw	s0,24(sp)
+    1c64:	0107e7b3          	or	a5,a5,a6
+    1c68:	fff74713          	not	a4,a4
+    1c6c:	01f59593          	slli	a1,a1,0x1f
+    1c70:	00e7f7b3          	and	a5,a5,a4
+    1c74:	00b7e7b3          	or	a5,a5,a1
+    1c78:	00098513          	mv	a0,s3
+    1c7c:	01412483          	lw	s1,20(sp)
+    1c80:	01012903          	lw	s2,16(sp)
+    1c84:	00c12983          	lw	s3,12(sp)
+    1c88:	00078593          	mv	a1,a5
+    1c8c:	02010113          	addi	sp,sp,32
+    1c90:	00008067          	ret
+    1c94:	00c5e733          	or	a4,a1,a2
+    1c98:	f4070ae3          	beqz	a4,1bec <__subdf3+0x68>
+    1c9c:	41148833          	sub	a6,s1,a7
+    1ca0:	f4869ce3          	bne	a3,s0,1bf8 <__subdf3+0x74>
+    1ca4:	33005063          	blez	a6,1fc4 <__subdf3+0x440>
+    1ca8:	0c089263          	bnez	a7,1d6c <__subdf3+0x1e8>
+    1cac:	00c5e733          	or	a4,a1,a2
+    1cb0:	f4070ce3          	beqz	a4,1c08 <__subdf3+0x84>
+    1cb4:	fff80713          	addi	a4,a6,-1
+    1cb8:	48071c63          	bnez	a4,2150 <__subdf3+0x5cc>
+    1cbc:	00c509b3          	add	s3,a0,a2
+    1cc0:	00b78933          	add	s2,a5,a1
+    1cc4:	00a9b533          	sltu	a0,s3,a0
+    1cc8:	00a90333          	add	t1,s2,a0
+    1ccc:	00831793          	slli	a5,t1,0x8
+    1cd0:	00100493          	li	s1,1
+    1cd4:	2a07d663          	bgez	a5,1f80 <__subdf3+0x3fc>
+    1cd8:	00200493          	li	s1,2
+    1cdc:	0f80006f          	j	1dd4 <__subdf3+0x250>
+    1ce0:	22081063          	bnez	a6,1f00 <__subdf3+0x37c>
+    1ce4:	00148713          	addi	a4,s1,1
+    1ce8:	7ff77713          	andi	a4,a4,2047
+    1cec:	00100813          	li	a6,1
+    1cf0:	36e85663          	ble	a4,a6,205c <__subdf3+0x4d8>
+    1cf4:	40c509b3          	sub	s3,a0,a2
+    1cf8:	01353733          	sltu	a4,a0,s3
+    1cfc:	40b78933          	sub	s2,a5,a1
+    1d00:	40e90933          	sub	s2,s2,a4
+    1d04:	00891713          	slli	a4,s2,0x8
+    1d08:	3a074a63          	bltz	a4,20bc <__subdf3+0x538>
+    1d0c:	0129e7b3          	or	a5,s3,s2
+    1d10:	16079e63          	bnez	a5,1e8c <__subdf3+0x308>
+    1d14:	00000413          	li	s0,0
+    1d18:	00000993          	li	s3,0
+    1d1c:	00040813          	mv	a6,s0
+    1d20:	f09ff06f          	j	1c28 <__subdf3+0xa4>
+    1d24:	008006b7          	lui	a3,0x800
+    1d28:	7ff00713          	li	a4,2047
+    1d2c:	00d5e5b3          	or	a1,a1,a3
+    1d30:	22e48c63          	beq	s1,a4,1f68 <__subdf3+0x3e4>
+    1d34:	03800713          	li	a4,56
+    1d38:	31074663          	blt	a4,a6,2044 <__subdf3+0x4c0>
+    1d3c:	01f00713          	li	a4,31
+    1d40:	3b075063          	ble	a6,a4,20e0 <__subdf3+0x55c>
+    1d44:	02000713          	li	a4,32
+    1d48:	0105d6b3          	srl	a3,a1,a6
+    1d4c:	00e80a63          	beq	a6,a4,1d60 <__subdf3+0x1dc>
+    1d50:	04000913          	li	s2,64
+    1d54:	41090833          	sub	a6,s2,a6
+    1d58:	01059933          	sll	s2,a1,a6
+    1d5c:	01266633          	or	a2,a2,s2
+    1d60:	00c03633          	snez	a2,a2
+    1d64:	00d666b3          	or	a3,a2,a3
+    1d68:	2e40006f          	j	204c <__subdf3+0x4c8>
+    1d6c:	008006b7          	lui	a3,0x800
+    1d70:	7ff00713          	li	a4,2047
+    1d74:	00d5e5b3          	or	a1,a1,a3
+    1d78:	1ee48863          	beq	s1,a4,1f68 <__subdf3+0x3e4>
+    1d7c:	03800713          	li	a4,56
+    1d80:	35074a63          	blt	a4,a6,20d4 <__subdf3+0x550>
+    1d84:	01f00713          	li	a4,31
+    1d88:	4b074663          	blt	a4,a6,2234 <__subdf3+0x6b0>
+    1d8c:	02000713          	li	a4,32
+    1d90:	41070733          	sub	a4,a4,a6
+    1d94:	010656b3          	srl	a3,a2,a6
+    1d98:	00e599b3          	sll	s3,a1,a4
+    1d9c:	00e61633          	sll	a2,a2,a4
+    1da0:	00d9e9b3          	or	s3,s3,a3
+    1da4:	0105d933          	srl	s2,a1,a6
+    1da8:	00c036b3          	snez	a3,a2
+    1dac:	00d9e6b3          	or	a3,s3,a3
+    1db0:	012787b3          	add	a5,a5,s2
+    1db4:	00a689b3          	add	s3,a3,a0
+    1db8:	00a9b533          	sltu	a0,s3,a0
+    1dbc:	00f50333          	add	t1,a0,a5
+    1dc0:	00831793          	slli	a5,t1,0x8
+    1dc4:	1a07de63          	bgez	a5,1f80 <__subdf3+0x3fc>
+    1dc8:	00148493          	addi	s1,s1,1
+    1dcc:	7ff00793          	li	a5,2047
+    1dd0:	1ef48063          	beq	s1,a5,1fb0 <__subdf3+0x42c>
+    1dd4:	ff800937          	lui	s2,0xff800
+    1dd8:	fff90913          	addi	s2,s2,-1 # ff7fffff <_etext+0xff7fd743>
+    1ddc:	0019d793          	srli	a5,s3,0x1
+    1de0:	01237933          	and	s2,t1,s2
+    1de4:	0019f693          	andi	a3,s3,1
+    1de8:	00d7e6b3          	or	a3,a5,a3
+    1dec:	01f91993          	slli	s3,s2,0x1f
+    1df0:	00d9e9b3          	or	s3,s3,a3
+    1df4:	00195313          	srli	t1,s2,0x1
+    1df8:	0079f793          	andi	a5,s3,7
+    1dfc:	02078063          	beqz	a5,1e1c <__subdf3+0x298>
+    1e00:	00f9f593          	andi	a1,s3,15
+    1e04:	00400793          	li	a5,4
+    1e08:	00f58a63          	beq	a1,a5,1e1c <__subdf3+0x298>
+    1e0c:	00498713          	addi	a4,s3,4
+    1e10:	013736b3          	sltu	a3,a4,s3
+    1e14:	00d30333          	add	t1,t1,a3
+    1e18:	00070993          	mv	s3,a4
+    1e1c:	00831793          	slli	a5,t1,0x8
+    1e20:	5c07da63          	bgez	a5,23f4 <__subdf3+0x870>
+    1e24:	00148813          	addi	a6,s1,1
+    1e28:	7ff00793          	li	a5,2047
+    1e2c:	00147593          	andi	a1,s0,1
+    1e30:	18f80263          	beq	a6,a5,1fb4 <__subdf3+0x430>
+    1e34:	ff800737          	lui	a4,0xff800
+    1e38:	fff70713          	addi	a4,a4,-1 # ff7fffff <_etext+0xff7fd743>
+    1e3c:	00e37733          	and	a4,t1,a4
+    1e40:	0039d693          	srli	a3,s3,0x3
+    1e44:	00971793          	slli	a5,a4,0x9
+    1e48:	01d71993          	slli	s3,a4,0x1d
+    1e4c:	00d9e9b3          	or	s3,s3,a3
+    1e50:	00c7d793          	srli	a5,a5,0xc
+    1e54:	7ff87813          	andi	a6,a6,2047
+    1e58:	de5ff06f          	j	1c3c <__subdf3+0xb8>
+    1e5c:	fff80713          	addi	a4,a6,-1
+    1e60:	14071063          	bnez	a4,1fa0 <__subdf3+0x41c>
+    1e64:	40c509b3          	sub	s3,a0,a2
+    1e68:	40b78933          	sub	s2,a5,a1
+    1e6c:	01353533          	sltu	a0,a0,s3
+    1e70:	40a90333          	sub	t1,s2,a0
+    1e74:	00100493          	li	s1,1
+    1e78:	00831793          	slli	a5,t1,0x8
+    1e7c:	1007d263          	bgez	a5,1f80 <__subdf3+0x3fc>
+    1e80:	00800937          	lui	s2,0x800
+    1e84:	fff90913          	addi	s2,s2,-1 # 7fffff <_etext+0x7fd743>
+    1e88:	01237933          	and	s2,t1,s2
+    1e8c:	1a090463          	beqz	s2,2034 <__subdf3+0x4b0>
+    1e90:	00090513          	mv	a0,s2
+    1e94:	6b4000ef          	jal	ra,2548 <__clzsi2>
+    1e98:	ff850813          	addi	a6,a0,-8
+    1e9c:	01f00793          	li	a5,31
+    1ea0:	1707c663          	blt	a5,a6,200c <__subdf3+0x488>
+    1ea4:	02000313          	li	t1,32
+    1ea8:	41030333          	sub	t1,t1,a6
+    1eac:	0069d333          	srl	t1,s3,t1
+    1eb0:	01091933          	sll	s2,s2,a6
+    1eb4:	01236933          	or	s2,t1,s2
+    1eb8:	010999b3          	sll	s3,s3,a6
+    1ebc:	16984063          	blt	a6,s1,201c <__subdf3+0x498>
+    1ec0:	40980833          	sub	a6,a6,s1
+    1ec4:	00180713          	addi	a4,a6,1
+    1ec8:	01f00793          	li	a5,31
+    1ecc:	1ae7cc63          	blt	a5,a4,2084 <__subdf3+0x500>
+    1ed0:	02000793          	li	a5,32
+    1ed4:	40e787b3          	sub	a5,a5,a4
+    1ed8:	00f996b3          	sll	a3,s3,a5
+    1edc:	00e9d633          	srl	a2,s3,a4
+    1ee0:	00f917b3          	sll	a5,s2,a5
+    1ee4:	00c7e7b3          	or	a5,a5,a2
+    1ee8:	00d036b3          	snez	a3,a3
+    1eec:	00d7e9b3          	or	s3,a5,a3
+    1ef0:	00e95333          	srl	t1,s2,a4
+    1ef4:	0079f793          	andi	a5,s3,7
+    1ef8:	00000493          	li	s1,0
+    1efc:	f01ff06f          	j	1dfc <__subdf3+0x278>
+    1f00:	20048663          	beqz	s1,210c <__subdf3+0x588>
+    1f04:	7ff00713          	li	a4,2047
+    1f08:	30e88863          	beq	a7,a4,2218 <__subdf3+0x694>
+    1f0c:	00800737          	lui	a4,0x800
+    1f10:	41000833          	neg	a6,a6
+    1f14:	00e7e7b3          	or	a5,a5,a4
+    1f18:	03800713          	li	a4,56
+    1f1c:	3b074063          	blt	a4,a6,22bc <__subdf3+0x738>
+    1f20:	01f00713          	li	a4,31
+    1f24:	43074e63          	blt	a4,a6,2360 <__subdf3+0x7dc>
+    1f28:	02000713          	li	a4,32
+    1f2c:	41070733          	sub	a4,a4,a6
+    1f30:	00e799b3          	sll	s3,a5,a4
+    1f34:	01055333          	srl	t1,a0,a6
+    1f38:	00e51733          	sll	a4,a0,a4
+    1f3c:	0069e9b3          	or	s3,s3,t1
+    1f40:	00e03733          	snez	a4,a4
+    1f44:	0107d833          	srl	a6,a5,a6
+    1f48:	00e9e9b3          	or	s3,s3,a4
+    1f4c:	410585b3          	sub	a1,a1,a6
+    1f50:	413609b3          	sub	s3,a2,s3
+    1f54:	01363633          	sltu	a2,a2,s3
+    1f58:	40c58333          	sub	t1,a1,a2
+    1f5c:	00088493          	mv	s1,a7
+    1f60:	00068413          	mv	s0,a3
+    1f64:	f15ff06f          	j	1e78 <__subdf3+0x2f4>
+    1f68:	00a7e733          	or	a4,a5,a0
+    1f6c:	04070263          	beqz	a4,1fb0 <__subdf3+0x42c>
+    1f70:	7ff00813          	li	a6,2047
+    1f74:	c9dff06f          	j	1c10 <__subdf3+0x8c>
+    1f78:	0069e7b3          	or	a5,s3,t1
+    1f7c:	d8078ce3          	beqz	a5,1d14 <__subdf3+0x190>
+    1f80:	0079f793          	andi	a5,s3,7
+    1f84:	e6079ee3          	bnez	a5,1e00 <__subdf3+0x27c>
+    1f88:	01d31793          	slli	a5,t1,0x1d
+    1f8c:	0039d693          	srli	a3,s3,0x3
+    1f90:	00f6e9b3          	or	s3,a3,a5
+    1f94:	00048813          	mv	a6,s1
+    1f98:	00335793          	srli	a5,t1,0x3
+    1f9c:	c85ff06f          	j	1c20 <__subdf3+0x9c>
+    1fa0:	7ff00693          	li	a3,2047
+    1fa4:	18d81663          	bne	a6,a3,2130 <__subdf3+0x5ac>
+    1fa8:	00a7e733          	or	a4,a5,a0
+    1fac:	c60712e3          	bnez	a4,1c10 <__subdf3+0x8c>
+    1fb0:	00147593          	andi	a1,s0,1
+    1fb4:	7ff00813          	li	a6,2047
+    1fb8:	00000793          	li	a5,0
+    1fbc:	00000993          	li	s3,0
+    1fc0:	c7dff06f          	j	1c3c <__subdf3+0xb8>
+    1fc4:	18081e63          	bnez	a6,2160 <__subdf3+0x5dc>
+    1fc8:	00148893          	addi	a7,s1,1
+    1fcc:	7ff8f813          	andi	a6,a7,2047
+    1fd0:	00100713          	li	a4,1
+    1fd4:	1d075663          	ble	a6,a4,21a0 <__subdf3+0x61c>
+    1fd8:	7ff00713          	li	a4,2047
+    1fdc:	fce88ae3          	beq	a7,a4,1fb0 <__subdf3+0x42c>
+    1fe0:	00c50633          	add	a2,a0,a2
+    1fe4:	00b78933          	add	s2,a5,a1
+    1fe8:	00a63533          	sltu	a0,a2,a0
+    1fec:	00a90533          	add	a0,s2,a0
+    1ff0:	01f51693          	slli	a3,a0,0x1f
+    1ff4:	00165613          	srli	a2,a2,0x1
+    1ff8:	00c6e9b3          	or	s3,a3,a2
+    1ffc:	00155313          	srli	t1,a0,0x1
+    2000:	0079f793          	andi	a5,s3,7
+    2004:	00088493          	mv	s1,a7
+    2008:	df5ff06f          	j	1dfc <__subdf3+0x278>
+    200c:	fd850913          	addi	s2,a0,-40
+    2010:	01299933          	sll	s2,s3,s2
+    2014:	00000993          	li	s3,0
+    2018:	ea9854e3          	ble	s1,a6,1ec0 <__subdf3+0x33c>
+    201c:	ff800737          	lui	a4,0xff800
+    2020:	fff70713          	addi	a4,a4,-1 # ff7fffff <_etext+0xff7fd743>
+    2024:	410484b3          	sub	s1,s1,a6
+    2028:	00e97333          	and	t1,s2,a4
+    202c:	0079f793          	andi	a5,s3,7
+    2030:	dcdff06f          	j	1dfc <__subdf3+0x278>
+    2034:	00098513          	mv	a0,s3
+    2038:	510000ef          	jal	ra,2548 <__clzsi2>
+    203c:	02050513          	addi	a0,a0,32
+    2040:	e59ff06f          	j	1e98 <__subdf3+0x314>
+    2044:	00c5e633          	or	a2,a1,a2
+    2048:	00c036b3          	snez	a3,a2
+    204c:	40d509b3          	sub	s3,a0,a3
+    2050:	01353533          	sltu	a0,a0,s3
+    2054:	40a78333          	sub	t1,a5,a0
+    2058:	e21ff06f          	j	1e78 <__subdf3+0x2f4>
+    205c:	00a7e733          	or	a4,a5,a0
+    2060:	00c5e9b3          	or	s3,a1,a2
+    2064:	0c049a63          	bnez	s1,2138 <__subdf3+0x5b4>
+    2068:	2a071a63          	bnez	a4,231c <__subdf3+0x798>
+    206c:	32098c63          	beqz	s3,23a4 <__subdf3+0x820>
+    2070:	00058793          	mv	a5,a1
+    2074:	00060513          	mv	a0,a2
+    2078:	00048813          	mv	a6,s1
+    207c:	00068413          	mv	s0,a3
+    2080:	b91ff06f          	j	1c10 <__subdf3+0x8c>
+    2084:	fe180813          	addi	a6,a6,-31
+    2088:	02000793          	li	a5,32
+    208c:	01095833          	srl	a6,s2,a6
+    2090:	00f70a63          	beq	a4,a5,20a4 <__subdf3+0x520>
+    2094:	04000313          	li	t1,64
+    2098:	40e30333          	sub	t1,t1,a4
+    209c:	00691933          	sll	s2,s2,t1
+    20a0:	0129e9b3          	or	s3,s3,s2
+    20a4:	013036b3          	snez	a3,s3
+    20a8:	0106e9b3          	or	s3,a3,a6
+    20ac:	0079f793          	andi	a5,s3,7
+    20b0:	00000313          	li	t1,0
+    20b4:	00000493          	li	s1,0
+    20b8:	ecdff06f          	j	1f84 <__subdf3+0x400>
+    20bc:	40a609b3          	sub	s3,a2,a0
+    20c0:	40f58933          	sub	s2,a1,a5
+    20c4:	01363633          	sltu	a2,a2,s3
+    20c8:	40c90933          	sub	s2,s2,a2
+    20cc:	00068413          	mv	s0,a3
+    20d0:	dbdff06f          	j	1e8c <__subdf3+0x308>
+    20d4:	00c5e633          	or	a2,a1,a2
+    20d8:	00c036b3          	snez	a3,a2
+    20dc:	cd9ff06f          	j	1db4 <__subdf3+0x230>
+    20e0:	02000713          	li	a4,32
+    20e4:	41070733          	sub	a4,a4,a6
+    20e8:	010656b3          	srl	a3,a2,a6
+    20ec:	00e599b3          	sll	s3,a1,a4
+    20f0:	00e61633          	sll	a2,a2,a4
+    20f4:	00d9e9b3          	or	s3,s3,a3
+    20f8:	0105d933          	srl	s2,a1,a6
+    20fc:	00c036b3          	snez	a3,a2
+    2100:	00d9e6b3          	or	a3,s3,a3
+    2104:	412787b3          	sub	a5,a5,s2
+    2108:	f45ff06f          	j	204c <__subdf3+0x4c8>
+    210c:	00a7e733          	or	a4,a5,a0
+    2110:	0e071a63          	bnez	a4,2204 <__subdf3+0x680>
+    2114:	7ff00793          	li	a5,2047
+    2118:	10f88063          	beq	a7,a5,2218 <__subdf3+0x694>
+    211c:	00088813          	mv	a6,a7
+    2120:	00068413          	mv	s0,a3
+    2124:	00058793          	mv	a5,a1
+    2128:	00060513          	mv	a0,a2
+    212c:	ae5ff06f          	j	1c10 <__subdf3+0x8c>
+    2130:	00070813          	mv	a6,a4
+    2134:	c01ff06f          	j	1d34 <__subdf3+0x1b0>
+    2138:	1a071663          	bnez	a4,22e4 <__subdf3+0x760>
+    213c:	1a099063          	bnez	s3,22dc <__subdf3+0x758>
+    2140:	00000593          	li	a1,0
+    2144:	7ff00813          	li	a6,2047
+    2148:	000807b7          	lui	a5,0x80
+    214c:	af1ff06f          	j	1c3c <__subdf3+0xb8>
+    2150:	7ff00693          	li	a3,2047
+    2154:	e4d80ae3          	beq	a6,a3,1fa8 <__subdf3+0x424>
+    2158:	00070813          	mv	a6,a4
+    215c:	c21ff06f          	j	1d7c <__subdf3+0x1f8>
+    2160:	0e049e63          	bnez	s1,225c <__subdf3+0x6d8>
+    2164:	00a7e733          	or	a4,a5,a0
+    2168:	18071463          	bnez	a4,22f0 <__subdf3+0x76c>
+    216c:	7ff00793          	li	a5,2047
+    2170:	18f88a63          	beq	a7,a5,2304 <__subdf3+0x780>
+    2174:	00088813          	mv	a6,a7
+    2178:	00058793          	mv	a5,a1
+    217c:	00060513          	mv	a0,a2
+    2180:	a91ff06f          	j	1c10 <__subdf3+0x8c>
+    2184:	0137e7b3          	or	a5,a5,s3
+    2188:	e20784e3          	beqz	a5,1fb0 <__subdf3+0x42c>
+    218c:	00000593          	li	a1,0
+    2190:	7ff00813          	li	a6,2047
+    2194:	000807b7          	lui	a5,0x80
+    2198:	00000993          	li	s3,0
+    219c:	aa1ff06f          	j	1c3c <__subdf3+0xb8>
+    21a0:	00a7e733          	or	a4,a5,a0
+    21a4:	12049263          	bnez	s1,22c8 <__subdf3+0x744>
+    21a8:	04070463          	beqz	a4,21f0 <__subdf3+0x66c>
+    21ac:	00c5e733          	or	a4,a1,a2
+    21b0:	02070c63          	beqz	a4,21e8 <__subdf3+0x664>
+    21b4:	00c509b3          	add	s3,a0,a2
+    21b8:	00b78933          	add	s2,a5,a1
+    21bc:	00a9b533          	sltu	a0,s3,a0
+    21c0:	00a90333          	add	t1,s2,a0
+    21c4:	00831713          	slli	a4,t1,0x8
+    21c8:	0079f793          	andi	a5,s3,7
+    21cc:	da075ce3          	bgez	a4,1f84 <__subdf3+0x400>
+    21d0:	ff800737          	lui	a4,0xff800
+    21d4:	fff70713          	addi	a4,a4,-1 # ff7fffff <_etext+0xff7fd743>
+    21d8:	00e37333          	and	t1,t1,a4
+    21dc:	00100493          	li	s1,1
+    21e0:	c1dff06f          	j	1dfc <__subdf3+0x278>
+    21e4:	00040693          	mv	a3,s0
+    21e8:	00078593          	mv	a1,a5
+    21ec:	00050613          	mv	a2,a0
+    21f0:	00048813          	mv	a6,s1
+    21f4:	00068413          	mv	s0,a3
+    21f8:	00058793          	mv	a5,a1
+    21fc:	00060513          	mv	a0,a2
+    2200:	a11ff06f          	j	1c10 <__subdf3+0x8c>
+    2204:	fff00713          	li	a4,-1
+    2208:	18e80063          	beq	a6,a4,2388 <__subdf3+0x804>
+    220c:	7ff00713          	li	a4,2047
+    2210:	fff84813          	not	a6,a6
+    2214:	d0e892e3          	bne	a7,a4,1f18 <__subdf3+0x394>
+    2218:	00c5e7b3          	or	a5,a1,a2
+    221c:	00068413          	mv	s0,a3
+    2220:	d80788e3          	beqz	a5,1fb0 <__subdf3+0x42c>
+    2224:	00058793          	mv	a5,a1
+    2228:	00060513          	mv	a0,a2
+    222c:	7ff00813          	li	a6,2047
+    2230:	9e1ff06f          	j	1c10 <__subdf3+0x8c>
+    2234:	02000713          	li	a4,32
+    2238:	0105d6b3          	srl	a3,a1,a6
+    223c:	00e80a63          	beq	a6,a4,2250 <__subdf3+0x6cc>
+    2240:	04000913          	li	s2,64
+    2244:	41090833          	sub	a6,s2,a6
+    2248:	01059933          	sll	s2,a1,a6
+    224c:	01266633          	or	a2,a2,s2
+    2250:	00c03633          	snez	a2,a2
+    2254:	00d666b3          	or	a3,a2,a3
+    2258:	b5dff06f          	j	1db4 <__subdf3+0x230>
+    225c:	7ff00713          	li	a4,2047
+    2260:	0ae88263          	beq	a7,a4,2304 <__subdf3+0x780>
+    2264:	00800737          	lui	a4,0x800
+    2268:	41000833          	neg	a6,a6
+    226c:	00e7e7b3          	or	a5,a5,a4
+    2270:	03800713          	li	a4,56
+    2274:	0f074063          	blt	a4,a6,2354 <__subdf3+0x7d0>
+    2278:	01f00713          	li	a4,31
+    227c:	13074c63          	blt	a4,a6,23b4 <__subdf3+0x830>
+    2280:	02000713          	li	a4,32
+    2284:	41070733          	sub	a4,a4,a6
+    2288:	01055333          	srl	t1,a0,a6
+    228c:	00e796b3          	sll	a3,a5,a4
+    2290:	00e51533          	sll	a0,a0,a4
+    2294:	0066e6b3          	or	a3,a3,t1
+    2298:	00a039b3          	snez	s3,a0
+    229c:	0107d833          	srl	a6,a5,a6
+    22a0:	0136e6b3          	or	a3,a3,s3
+    22a4:	010585b3          	add	a1,a1,a6
+    22a8:	00c689b3          	add	s3,a3,a2
+    22ac:	00c9b633          	sltu	a2,s3,a2
+    22b0:	00b60333          	add	t1,a2,a1
+    22b4:	00088493          	mv	s1,a7
+    22b8:	b09ff06f          	j	1dc0 <__subdf3+0x23c>
+    22bc:	00a7e533          	or	a0,a5,a0
+    22c0:	00a039b3          	snez	s3,a0
+    22c4:	c8dff06f          	j	1f50 <__subdf3+0x3cc>
+    22c8:	00070a63          	beqz	a4,22dc <__subdf3+0x758>
+    22cc:	00c5e633          	or	a2,a1,a2
+    22d0:	ea061ee3          	bnez	a2,218c <__subdf3+0x608>
+    22d4:	7ff00813          	li	a6,2047
+    22d8:	939ff06f          	j	1c10 <__subdf3+0x8c>
+    22dc:	7ff00493          	li	s1,2047
+    22e0:	f11ff06f          	j	21f0 <__subdf3+0x66c>
+    22e4:	ea0994e3          	bnez	s3,218c <__subdf3+0x608>
+    22e8:	7ff00813          	li	a6,2047
+    22ec:	925ff06f          	j	1c10 <__subdf3+0x8c>
+    22f0:	fff00713          	li	a4,-1
+    22f4:	0ee80463          	beq	a6,a4,23dc <__subdf3+0x858>
+    22f8:	7ff00713          	li	a4,2047
+    22fc:	fff84813          	not	a6,a6
+    2300:	f6e898e3          	bne	a7,a4,2270 <__subdf3+0x6ec>
+    2304:	00c5e7b3          	or	a5,a1,a2
+    2308:	ca0784e3          	beqz	a5,1fb0 <__subdf3+0x42c>
+    230c:	00058793          	mv	a5,a1
+    2310:	00060513          	mv	a0,a2
+    2314:	7ff00813          	li	a6,2047
+    2318:	8f9ff06f          	j	1c10 <__subdf3+0x8c>
+    231c:	ec0984e3          	beqz	s3,21e4 <__subdf3+0x660>
+    2320:	40c509b3          	sub	s3,a0,a2
+    2324:	40b78333          	sub	t1,a5,a1
+    2328:	01353933          	sltu	s2,a0,s3
+    232c:	41230333          	sub	t1,t1,s2
+    2330:	00831713          	slli	a4,t1,0x8
+    2334:	c40752e3          	bgez	a4,1f78 <__subdf3+0x3f4>
+    2338:	40a609b3          	sub	s3,a2,a0
+    233c:	40f58933          	sub	s2,a1,a5
+    2340:	01363633          	sltu	a2,a2,s3
+    2344:	40c90333          	sub	t1,s2,a2
+    2348:	0079f793          	andi	a5,s3,7
+    234c:	00068413          	mv	s0,a3
+    2350:	aadff06f          	j	1dfc <__subdf3+0x278>
+    2354:	00a7e533          	or	a0,a5,a0
+    2358:	00a036b3          	snez	a3,a0
+    235c:	f4dff06f          	j	22a8 <__subdf3+0x724>
+    2360:	02000713          	li	a4,32
+    2364:	0107d9b3          	srl	s3,a5,a6
+    2368:	00e80a63          	beq	a6,a4,237c <__subdf3+0x7f8>
+    236c:	04000713          	li	a4,64
+    2370:	41070833          	sub	a6,a4,a6
+    2374:	010797b3          	sll	a5,a5,a6
+    2378:	00f56533          	or	a0,a0,a5
+    237c:	00a03533          	snez	a0,a0
+    2380:	013569b3          	or	s3,a0,s3
+    2384:	bcdff06f          	j	1f50 <__subdf3+0x3cc>
+    2388:	40a609b3          	sub	s3,a2,a0
+    238c:	40f58933          	sub	s2,a1,a5
+    2390:	01363633          	sltu	a2,a2,s3
+    2394:	40c90333          	sub	t1,s2,a2
+    2398:	00088493          	mv	s1,a7
+    239c:	00068413          	mv	s0,a3
+    23a0:	ad9ff06f          	j	1e78 <__subdf3+0x2f4>
+    23a4:	00000413          	li	s0,0
+    23a8:	00040813          	mv	a6,s0
+    23ac:	00000793          	li	a5,0
+    23b0:	879ff06f          	j	1c28 <__subdf3+0xa4>
+    23b4:	02000713          	li	a4,32
+    23b8:	0107d6b3          	srl	a3,a5,a6
+    23bc:	00e80a63          	beq	a6,a4,23d0 <__subdf3+0x84c>
+    23c0:	04000713          	li	a4,64
+    23c4:	41070833          	sub	a6,a4,a6
+    23c8:	010797b3          	sll	a5,a5,a6
+    23cc:	00f56533          	or	a0,a0,a5
+    23d0:	00a03533          	snez	a0,a0
+    23d4:	00d566b3          	or	a3,a0,a3
+    23d8:	ed1ff06f          	j	22a8 <__subdf3+0x724>
+    23dc:	00c509b3          	add	s3,a0,a2
+    23e0:	00b78933          	add	s2,a5,a1
+    23e4:	00c9b633          	sltu	a2,s3,a2
+    23e8:	00c90333          	add	t1,s2,a2
+    23ec:	00088493          	mv	s1,a7
+    23f0:	9d1ff06f          	j	1dc0 <__subdf3+0x23c>
+    23f4:	00048813          	mv	a6,s1
+    23f8:	00030793          	mv	a5,t1
+    23fc:	00098513          	mv	a0,s3
+    2400:	811ff06f          	j	1c10 <__subdf3+0x8c>
+
+00002404 <__fixdfsi>:
+__fixdfsi():
+    2404:	0145d793          	srli	a5,a1,0x14
+    2408:	001006b7          	lui	a3,0x100
+    240c:	fff68713          	addi	a4,a3,-1 # fffff <_etext+0xfd743>
+    2410:	7ff7f793          	andi	a5,a5,2047
+    2414:	3fe00613          	li	a2,1022
+    2418:	00b77733          	and	a4,a4,a1
+    241c:	01f5d593          	srli	a1,a1,0x1f
+    2420:	04f65663          	ble	a5,a2,246c <__fixdfsi+0x68>
+    2424:	41d00613          	li	a2,1053
+    2428:	02f64a63          	blt	a2,a5,245c <__fixdfsi+0x58>
+    242c:	43300613          	li	a2,1075
+    2430:	40f60633          	sub	a2,a2,a5
+    2434:	01f00813          	li	a6,31
+    2438:	00d76733          	or	a4,a4,a3
+    243c:	02c85c63          	ble	a2,a6,2474 <__fixdfsi+0x70>
+    2440:	41300693          	li	a3,1043
+    2444:	40f687b3          	sub	a5,a3,a5
+    2448:	00f757b3          	srl	a5,a4,a5
+    244c:	40f00533          	neg	a0,a5
+    2450:	02059063          	bnez	a1,2470 <__fixdfsi+0x6c>
+    2454:	00078513          	mv	a0,a5
+    2458:	00008067          	ret
+    245c:	80000537          	lui	a0,0x80000
+    2460:	fff54513          	not	a0,a0
+    2464:	00a58533          	add	a0,a1,a0
+    2468:	00008067          	ret
+    246c:	00000513          	li	a0,0
+    2470:	00008067          	ret
+    2474:	bed78793          	addi	a5,a5,-1043 # 7fbed <_etext+0x7d331>
+    2478:	00f717b3          	sll	a5,a4,a5
+    247c:	00c55533          	srl	a0,a0,a2
+    2480:	00a7e7b3          	or	a5,a5,a0
+    2484:	fc9ff06f          	j	244c <__fixdfsi+0x48>
+
+00002488 <__floatunsidf>:
+__floatunsidf():
+    2488:	ff010113          	addi	sp,sp,-16
+    248c:	00112623          	sw	ra,12(sp)
+    2490:	00812423          	sw	s0,8(sp)
+    2494:	0a050263          	beqz	a0,2538 <__floatunsidf+0xb0>
+    2498:	00050413          	mv	s0,a0
+    249c:	0ac000ef          	jal	ra,2548 <__clzsi2>
+    24a0:	41e00693          	li	a3,1054
+    24a4:	40a686b3          	sub	a3,a3,a0
+    24a8:	00a00793          	li	a5,10
+    24ac:	7ff6f693          	andi	a3,a3,2047
+    24b0:	06a7d263          	ble	a0,a5,2514 <__floatunsidf+0x8c>
+    24b4:	ff550793          	addi	a5,a0,-11 # 7ffffff5 <_etext+0x7fffd739>
+    24b8:	00100737          	lui	a4,0x100
+    24bc:	00f417b3          	sll	a5,s0,a5
+    24c0:	fff70713          	addi	a4,a4,-1 # fffff <_etext+0xfd743>
+    24c4:	00e7f7b3          	and	a5,a5,a4
+    24c8:	00000513          	li	a0,0
+    24cc:	00100737          	lui	a4,0x100
+    24d0:	fff70713          	addi	a4,a4,-1 # fffff <_etext+0xfd743>
+    24d4:	00e7f7b3          	and	a5,a5,a4
+    24d8:	80100737          	lui	a4,0x80100
+    24dc:	fff70713          	addi	a4,a4,-1 # 800fffff <_etext+0x800fd743>
+    24e0:	01469693          	slli	a3,a3,0x14
+    24e4:	00e7f733          	and	a4,a5,a4
+    24e8:	00d76733          	or	a4,a4,a3
+    24ec:	00c12083          	lw	ra,12(sp)
+    24f0:	00812403          	lw	s0,8(sp)
+    24f4:	800006b7          	lui	a3,0x80000
+    24f8:	fff6c693          	not	a3,a3
+    24fc:	00050793          	mv	a5,a0
+    2500:	00d77733          	and	a4,a4,a3
+    2504:	00078513          	mv	a0,a5
+    2508:	00070593          	mv	a1,a4
+    250c:	01010113          	addi	sp,sp,16
+    2510:	00008067          	ret
+    2514:	00b00793          	li	a5,11
+    2518:	40a787b3          	sub	a5,a5,a0
+    251c:	00100737          	lui	a4,0x100
+    2520:	01550513          	addi	a0,a0,21
+    2524:	00f457b3          	srl	a5,s0,a5
+    2528:	fff70713          	addi	a4,a4,-1 # fffff <_etext+0xfd743>
+    252c:	00a41533          	sll	a0,s0,a0
+    2530:	00e7f7b3          	and	a5,a5,a4
+    2534:	f99ff06f          	j	24cc <__floatunsidf+0x44>
+    2538:	00000693          	li	a3,0
+    253c:	00000793          	li	a5,0
+    2540:	00000513          	li	a0,0
+    2544:	f89ff06f          	j	24cc <__floatunsidf+0x44>
+
+00002548 <__clzsi2>:
+__clzsi2():
+    2548:	000107b7          	lui	a5,0x10
+    254c:	02f57463          	bleu	a5,a0,2574 <__clzsi2+0x2c>
+    2550:	0ff00793          	li	a5,255
+    2554:	02000713          	li	a4,32
+    2558:	04a7e263          	bltu	a5,a0,259c <__clzsi2+0x54>
+    255c:	00000797          	auipc	a5,0x0
+    2560:	26078793          	addi	a5,a5,608 # 27bc <__clz_tab>
+    2564:	00a78533          	add	a0,a5,a0
+    2568:	00054503          	lbu	a0,0(a0)
+    256c:	40a70533          	sub	a0,a4,a0
+    2570:	00008067          	ret
+    2574:	010007b7          	lui	a5,0x1000
+    2578:	04f56263          	bltu	a0,a5,25bc <__clzsi2+0x74>
+    257c:	00000797          	auipc	a5,0x0
+    2580:	24078793          	addi	a5,a5,576 # 27bc <__clz_tab>
+    2584:	01855513          	srli	a0,a0,0x18
+    2588:	00a78533          	add	a0,a5,a0
+    258c:	00054503          	lbu	a0,0(a0)
+    2590:	00800713          	li	a4,8
+    2594:	40a70533          	sub	a0,a4,a0
+    2598:	00008067          	ret
+    259c:	00000797          	auipc	a5,0x0
+    25a0:	22078793          	addi	a5,a5,544 # 27bc <__clz_tab>
+    25a4:	00855513          	srli	a0,a0,0x8
+    25a8:	00a78533          	add	a0,a5,a0
+    25ac:	00054503          	lbu	a0,0(a0)
+    25b0:	01800713          	li	a4,24
+    25b4:	40a70533          	sub	a0,a4,a0
+    25b8:	00008067          	ret
+    25bc:	00000797          	auipc	a5,0x0
+    25c0:	20078793          	addi	a5,a5,512 # 27bc <__clz_tab>
+    25c4:	01055513          	srli	a0,a0,0x10
+    25c8:	00a78533          	add	a0,a5,a0
+    25cc:	00054503          	lbu	a0,0(a0)
+    25d0:	01000713          	li	a4,16
+    25d4:	40a70533          	sub	a0,a4,a0
+    25d8:	00008067          	ret
+    25dc:	6f697067          	0x6f697067
+    25e0:	7320                	flw	fs0,96(a4)
+    25e2:	6375                	lui	t1,0x1d
+    25e4:	73736563          	bltu	t1,s7,2d0e <_etext+0x452>
+    25e8:	000a                	c.slli	zero,0x2
+    25ea:	0000                	unimp
+    25ec:	6f697067          	0x6f697067
+    25f0:	6620                	flw	fs0,72(a2)
+    25f2:	6961                	lui	s2,0x18
+    25f4:	656c                	flw	fa1,76(a0)
+    25f6:	0a64                	addi	s1,sp,284
+    25f8:	0000                	unimp
+    25fa:	0000                	unimp
+    25fc:	656c                	flw	fa1,76(a0)
+    25fe:	5f64                	lw	s1,124(a4)
+    2600:	6c62                	flw	fs8,24(sp)
+    2602:	6e69                	lui	t3,0x1a
+    2604:	6b6f206b          	0x6b6f206b
+    2608:	000a                	c.slli	zero,0x2
+    260a:	0000                	unimp
+    260c:	13b4                	addi	a3,sp,488
+    260e:	0000                	unimp
+    2610:	13b4                	addi	a3,sp,488
+    2612:	0000                	unimp
+    2614:	13b4                	addi	a3,sp,488
+    2616:	0000                	unimp
+    2618:	13b4                	addi	a3,sp,488
+    261a:	0000                	unimp
+    261c:	13b4                	addi	a3,sp,488
+    261e:	0000                	unimp
+    2620:	13b4                	addi	a3,sp,488
+    2622:	0000                	unimp
+    2624:	13b4                	addi	a3,sp,488
+    2626:	0000                	unimp
+    2628:	13b4                	addi	a3,sp,488
+    262a:	0000                	unimp
+    262c:	13b4                	addi	a3,sp,488
+    262e:	0000                	unimp
+    2630:	13b4                	addi	a3,sp,488
+    2632:	0000                	unimp
+    2634:	13b4                	addi	a3,sp,488
+    2636:	0000                	unimp
+    2638:	13b4                	addi	a3,sp,488
+    263a:	0000                	unimp
+    263c:	13b4                	addi	a3,sp,488
+    263e:	0000                	unimp
+    2640:	13b4                	addi	a3,sp,488
+    2642:	0000                	unimp
+    2644:	13b4                	addi	a3,sp,488
+    2646:	0000                	unimp
+    2648:	13b4                	addi	a3,sp,488
+    264a:	0000                	unimp
+    264c:	13b4                	addi	a3,sp,488
+    264e:	0000                	unimp
+    2650:	13b4                	addi	a3,sp,488
+    2652:	0000                	unimp
+    2654:	13b4                	addi	a3,sp,488
+    2656:	0000                	unimp
+    2658:	13b4                	addi	a3,sp,488
+    265a:	0000                	unimp
+    265c:	13b4                	addi	a3,sp,488
+    265e:	0000                	unimp
+    2660:	13b4                	addi	a3,sp,488
+    2662:	0000                	unimp
+    2664:	13b4                	addi	a3,sp,488
+    2666:	0000                	unimp
+    2668:	13b4                	addi	a3,sp,488
+    266a:	0000                	unimp
+    266c:	13b4                	addi	a3,sp,488
+    266e:	0000                	unimp
+    2670:	13b4                	addi	a3,sp,488
+    2672:	0000                	unimp
+    2674:	13b4                	addi	a3,sp,488
+    2676:	0000                	unimp
+    2678:	13b4                	addi	a3,sp,488
+    267a:	0000                	unimp
+    267c:	13b4                	addi	a3,sp,488
+    267e:	0000                	unimp
+    2680:	13b4                	addi	a3,sp,488
+    2682:	0000                	unimp
+    2684:	13b4                	addi	a3,sp,488
+    2686:	0000                	unimp
+    2688:	13ec                	addi	a1,sp,492
+    268a:	0000                	unimp
+    268c:	13b4                	addi	a3,sp,488
+    268e:	0000                	unimp
+    2690:	13b4                	addi	a3,sp,488
+    2692:	0000                	unimp
+    2694:	13b4                	addi	a3,sp,488
+    2696:	0000                	unimp
+    2698:	13b4                	addi	a3,sp,488
+    269a:	0000                	unimp
+    269c:	13b4                	addi	a3,sp,488
+    269e:	0000                	unimp
+    26a0:	13b4                	addi	a3,sp,488
+    26a2:	0000                	unimp
+    26a4:	13b4                	addi	a3,sp,488
+    26a6:	0000                	unimp
+    26a8:	13b4                	addi	a3,sp,488
+    26aa:	0000                	unimp
+    26ac:	13b4                	addi	a3,sp,488
+    26ae:	0000                	unimp
+    26b0:	13b4                	addi	a3,sp,488
+    26b2:	0000                	unimp
+    26b4:	13b4                	addi	a3,sp,488
+    26b6:	0000                	unimp
+    26b8:	13b4                	addi	a3,sp,488
+    26ba:	0000                	unimp
+    26bc:	13b4                	addi	a3,sp,488
+    26be:	0000                	unimp
+    26c0:	13b4                	addi	a3,sp,488
+    26c2:	0000                	unimp
+    26c4:	13fe                	slli	t2,t2,0x3f
+    26c6:	0000                	unimp
+    26c8:	13b4                	addi	a3,sp,488
+    26ca:	0000                	unimp
+    26cc:	13b4                	addi	a3,sp,488
+    26ce:	0000                	unimp
+    26d0:	13b4                	addi	a3,sp,488
+    26d2:	0000                	unimp
+    26d4:	13b4                	addi	a3,sp,488
+    26d6:	0000                	unimp
+    26d8:	13d6                	slli	t2,t2,0x35
+    26da:	0000                	unimp
+    26dc:	13b4                	addi	a3,sp,488
+    26de:	0000                	unimp
+    26e0:	13b4                	addi	a3,sp,488
+    26e2:	0000                	unimp
+    26e4:	13b4                	addi	a3,sp,488
+    26e6:	0000                	unimp
+    26e8:	13b4                	addi	a3,sp,488
+    26ea:	0000                	unimp
+    26ec:	13b4                	addi	a3,sp,488
+    26ee:	0000                	unimp
+    26f0:	13b4                	addi	a3,sp,488
+    26f2:	0000                	unimp
+    26f4:	13b4                	addi	a3,sp,488
+    26f6:	0000                	unimp
+    26f8:	13b4                	addi	a3,sp,488
+    26fa:	0000                	unimp
+    26fc:	13b4                	addi	a3,sp,488
+    26fe:	0000                	unimp
+    2700:	13b4                	addi	a3,sp,488
+    2702:	0000                	unimp
+    2704:	13c0                	addi	s0,sp,484
+    2706:	0000                	unimp
+    2708:	13ec                	addi	a1,sp,492
+    270a:	0000                	unimp
+    270c:	13b4                	addi	a3,sp,488
+    270e:	0000                	unimp
+    2710:	1428                	addi	a0,sp,552
+    2712:	0000                	unimp
+    2714:	13b4                	addi	a3,sp,488
+    2716:	0000                	unimp
+    2718:	13b4                	addi	a3,sp,488
+    271a:	0000                	unimp
+    271c:	13ec                	addi	a1,sp,492
+    271e:	0000                	unimp
+    2720:	13b4                	addi	a3,sp,488
+    2722:	0000                	unimp
+    2724:	13b4                	addi	a3,sp,488
+    2726:	0000                	unimp
+    2728:	13b4                	addi	a3,sp,488
+    272a:	0000                	unimp
+    272c:	13b4                	addi	a3,sp,488
+    272e:	0000                	unimp
+    2730:	13b4                	addi	a3,sp,488
+    2732:	0000                	unimp
+    2734:	13b4                	addi	a3,sp,488
+    2736:	0000                	unimp
+    2738:	13b4                	addi	a3,sp,488
+    273a:	0000                	unimp
+    273c:	13b4                	addi	a3,sp,488
+    273e:	0000                	unimp
+    2740:	13b4                	addi	a3,sp,488
+    2742:	0000                	unimp
+    2744:	13fe                	slli	t2,t2,0x3f
+    2746:	0000                	unimp
+    2748:	13b4                	addi	a3,sp,488
+    274a:	0000                	unimp
+    274c:	13b4                	addi	a3,sp,488
+    274e:	0000                	unimp
+    2750:	13b4                	addi	a3,sp,488
+    2752:	0000                	unimp
+    2754:	13b4                	addi	a3,sp,488
+    2756:	0000                	unimp
+    2758:	13d6                	slli	t2,t2,0x35
+	...
+    2762:	0000                	unimp
+    2764:	8480                	0x8480
+    2766:	412e                	lw	sp,200(sp)
+    2768:	3130                	fld	fa2,96(a0)
+    276a:	3332                	fld	ft6,296(sp)
+    276c:	3534                	fld	fa3,104(a0)
+    276e:	3736                	fld	fa4,360(sp)
+    2770:	3938                	fld	fa4,112(a0)
+    2772:	6261                	lui	tp,0x18
+    2774:	66656463          	bltu	a0,t1,2ddc <_etext+0x520>
+    2778:	0000                	unimp
+    277a:	0000                	unimp
+    277c:	f038                	fsw	fa4,96(s0)
+    277e:	ffff                	0xffff
+    2780:	ef64                	fsw	fs1,92(a4)
+    2782:	ffff                	0xffff
+    2784:	ef64                	fsw	fs1,92(a4)
+    2786:	ffff                	0xffff
+    2788:	ef60                	fsw	fs0,92(a4)
+    278a:	ffff                	0xffff
+    278c:	ef84                	fsw	fs1,24(a5)
+    278e:	ffff                	0xffff
+    2790:	ef84                	fsw	fs1,24(a5)
+    2792:	ffff                	0xffff
+    2794:	eef4                	fsw	fa3,92(a3)
+    2796:	ffff                	0xffff
+    2798:	ef60                	fsw	fs0,92(a4)
+    279a:	ffff                	0xffff
+    279c:	ef84                	fsw	fs1,24(a5)
+    279e:	ffff                	0xffff
+    27a0:	eef4                	fsw	fa3,92(a3)
+    27a2:	ffff                	0xffff
+    27a4:	ef84                	fsw	fs1,24(a5)
+    27a6:	ffff                	0xffff
+    27a8:	ef60                	fsw	fs0,92(a4)
+    27aa:	ffff                	0xffff
+    27ac:	ef80                	fsw	fs0,24(a5)
+    27ae:	ffff                	0xffff
+    27b0:	ef80                	fsw	fs0,24(a5)
+    27b2:	ffff                	0xffff
+    27b4:	ef80                	fsw	fs0,24(a5)
+    27b6:	ffff                	0xffff
+    27b8:	eef4                	fsw	fa3,92(a3)
+    27ba:	ffff                	0xffff
+
+000027bc <__clz_tab>:
+    27bc:	0100 0202 0303 0303 0404 0404 0404 0404     ................
+    27cc:	0505 0505 0505 0505 0505 0505 0505 0505     ................
+    27dc:	0606 0606 0606 0606 0606 0606 0606 0606     ................
+    27ec:	0606 0606 0606 0606 0606 0606 0606 0606     ................
+    27fc:	0707 0707 0707 0707 0707 0707 0707 0707     ................
+    280c:	0707 0707 0707 0707 0707 0707 0707 0707     ................
+    281c:	0707 0707 0707 0707 0707 0707 0707 0707     ................
+    282c:	0707 0707 0707 0707 0707 0707 0707 0707     ................
+    283c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    284c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    285c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    286c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    287c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    288c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    289c:	0808 0808 0808 0808 0808 0808 0808 0808     ................
+    28ac:	0808 0808 0808 0808 0808 0808 0808 0808     ................
