@@ -1,2 +1,7 @@
 *.*
 *
+!/picorv32/bench
+!/picorv32/ip
+!/picorv32/pnr/ipcore
+!/picorv32/pnr/source
+!/picorv32/pnr/*.*
