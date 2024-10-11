@@ -2,7 +2,7 @@
 *
 !*/
 !/picorv32/bench/**
-!/picorv32/ip/*
+!/picorv32/ip/**
 !/picorv32/pnr/ipcore/**
 !/picorv32/pnr/source/*
 !/picorv32/pnr/*.pds
@@ -15,3 +15,10 @@
 !/picorv32/simulation/file_list.f
 !/picorv32/software/**
 !/picorv32/src/**
+
+!/dds/bench/**
+!/dds/ip/**
+!/dds/pnr/ipcore/**
+!/dds/pnr/source/*
+!/dds/pnr/*.pds
+!/dds/src/**
