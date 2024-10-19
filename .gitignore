@@ -17,8 +17,17 @@
 !/picorv32/src/**
 
 !/dds/bench/**
+!/dds/dat/**
 !/dds/ip/**
 !/dds/pnr/ipcore/**
 !/dds/pnr/source/*
 !/dds/pnr/*.pds
 !/dds/src/**
+
+!/dso/bench/**
+!/dso/dat/**
+!/dso/ip/**
+!/dso/pnr/ipcore/**
+!/dso/pnr/source/*
+!/dso/pnr/*.pds
+!/dso/src/**
