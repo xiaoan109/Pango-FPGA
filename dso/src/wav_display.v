@@ -4,8 +4,10 @@ module wav_display (
   input  [23:0] wave_color,
   input         ad_clk,
   input         ad_buf_wr,
-  input  [11:0] ad_buf_addr,
+  input  [11:0] ad_buf_wr_addr,
   input  [ 7:0] ad_buf_data,
+  output [11:0] wave_rd_addr,
+  input  [11:0] ad_buf_rd_addr,
   input         i_hs,
   input         i_vs,
   input         i_de,
@@ -13,7 +15,8 @@ module wav_display (
   output        o_hs  /* synthesis PAP_MARK_DEBUG="true" */,
   output        o_vs  /* synthesis PAP_MARK_DEBUG="true" */,
   output        o_de  /* synthesis PAP_MARK_DEBUG="true" */,
-  output [23:0] o_data                                        /* synthesis PAP_MARK_DEBUG="true" */
+  output [23:0] o_data  /* synthesis PAP_MARK_DEBUG="true" */,
+  output        wr_over
 );
 
   wire [11:0] pos_x;
@@ -26,12 +29,19 @@ module wav_display (
   reg  [ 9:0] rdaddress  /* synthesis PAP_MARK_DEBUG="true" */;
   wire [ 7:0] q  /* synthesis PAP_MARK_DEBUG="true" */;
   reg         region_active  /* synthesis PAP_MARK_DEBUG="true" */;
-  wire [11:0] ref_sig  /* synthesis PAP_MARK_DEBUG="true" */;
-  assign ref_sig = 12'd287 - q[7:0];
-  wire ref_sig2  /* synthesis PAP_MARK_DEBUG="true" */;
-  assign ref_sig2 = ((region_active == 1'b1) && (12'd287 - pos_y == {4'd0, q[7:0]})) ? 1'b1 : 1'b0;
-  wire [9:0] ref_rd_addr  /* synthesis PAP_MARK_DEBUG="true" */;
-  assign ref_rd_addr = rdaddress[9:0];
+  // wire [11:0] ref_sig  /* synthesis PAP_MARK_DEBUG="true" */;
+  // assign ref_sig = 12'd287 - q[7:0];
+  // wire ref_sig2  /* synthesis PAP_MARK_DEBUG="true" */; 
+  // assign ref_sig2 = ((region_active == 1'b1) && (12'd287 - pos_y == {4'd0, q[7:0]})) ? 1'b1 : 1'b0;
+  // wire [9:0] ref_rd_addr  /* synthesis PAP_MARK_DEBUG="true" */;
+  // assign ref_rd_addr = rdaddress[9:0];
+  wire [11:0] wave_data;
+  wire [ 3:0] scale;
+  wire [11:0] scale_data;
+  assign wave_data = {4'd0, 8'd255 - q};
+  assign scale = 4'd4;
+  assign scale_data = 12'd533 + (wave_data - 12'd128) * scale;
+
 
   assign o_data = v_data;
   assign o_hs = pos_hs;
@@ -51,23 +61,26 @@ module wav_display (
 
   always @(posedge pclk) begin
     if (region_active == 1'b1)
-      if ((12'd1055 - pos_y) / 4 == {4'd0, q[7:0]}) v_data <= wave_color;
+      if (pos_y == scale_data) v_data <= wave_color;
       else v_data <= pos_data;
     else v_data <= pos_data;
   end
 
+  assign wave_rd_addr = rdaddress;
 
+  //标志一帧波形绘制完毕
+  assign wr_over = (pos_x == 12'd1522) && (pos_y == 12'd1075);
 
   ram1024x8 u_ram (
-    .wr_data(ad_buf_data),       // input [7:0]
-    .wr_addr(ad_buf_addr[9:0]),  // input [9:0]
-    .wr_en  (ad_buf_wr),         // input
-    .wr_clk (ad_clk),            // input
-    .wr_rst (~rst_n),            // input
-    .rd_addr(rdaddress),         // input [9:0]
-    .rd_data(q),                 // output [7:0]
-    .rd_clk (pclk),              // input
-    .rd_rst (~rst_n)             // input
+    .wr_data(ad_buf_data),          // input [7:0]
+    .wr_addr(ad_buf_wr_addr[9:0]),  // input [9:0]
+    .wr_en  (ad_buf_wr),            // input
+    .wr_clk (ad_clk),               // input
+    .wr_rst (~rst_n),               // input
+    .rd_addr(ad_buf_rd_addr[9:0]),  // input [9:0]
+    .rd_data(q),                    // output [7:0]
+    .rd_clk (pclk),                 // input
+    .rd_rst (~rst_n)                // input
   );
 
 

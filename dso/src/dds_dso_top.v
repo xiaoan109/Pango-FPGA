@@ -25,12 +25,20 @@ module dds_dso_top (
   input wire debug_key
 );
 
-  parameter FREQ_CTRL = 32'd3435973;  //相位累加器单次累加值
+  parameter FREQ_CTRL = 32'd3615292;  //相位累加器单次累加值, 100KHz
   parameter PHASE_CTRL = 12'd0;  //相位偏移量
   parameter CNT_MAX = 20'd999_999;  //计数器计数最大值
 
   wire [3:0] wave_select;
   wire key_flag;
+  wire locked;
+
+  pll u_pll (
+    .clkin1  (sys_clk),  //50MHz
+    .clkout0 (da_clk),   //118.8MHz
+    .clkout1 (ad_clk),   //29.7MHz
+    .pll_lock(locked)
+  );
 
   key_control u_key_control (
     .sys_clk  (sys_clk),    //系统时钟,50MHz
@@ -45,10 +53,10 @@ module dds_dso_top (
     .PHASE_CTRL(PHASE_CTRL)
   ) u_dds_top (
     .sys_clk    (sys_clk),     //系统时钟,50MHz
+    .dac_clk    (da_clk),
     .sys_rst_n  (sys_rst_n),   //复位信号,低电平有效
     .wave_select(wave_select), //输出波形选择
 
-    .dac_clk (da_clk),  //输入DAC模块时钟
     .dac_data(da_data)  //输入DAC模块波形数据
   );
 

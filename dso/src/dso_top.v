@@ -14,10 +14,10 @@ module dso_top (
   output wire [7:0] g_out,
   output wire [7:0] b_out,
 
-  output wire       ad_clk,
-  input  wire [7:0] ad_data,
+  input wire       ad_clk,
+  input wire [7:0] ad_data,
   //debug
-  input  wire       key
+  input wire       key
 );
 
 
@@ -25,7 +25,6 @@ module dso_top (
   parameter CLK_FS = 26'd50_000_000;  // 基准时钟频率值
   parameter DEBUG_EN = 1'b0;
 
-  wire        locked;
   wire [23:0] pixel_data;
 
   wire [ 7:0] trig_level;  //触发电平
@@ -54,10 +53,14 @@ module dso_top (
   wire        grid_hs_out;
   wire        grid_de_out;
 
-
+  wire [11:0] wave_rd_addr;
   wire        ad_buf_wr;
-  wire [11:0] ad_buf_addr;
+  wire [11:0] ad_buf_wr_addr;
   wire [ 7:0] ad_buf_data;
+  wire [11:0] ad_buf_rd_addr;
+  wire        wr_over;
+  wire        wr_over_cdc;
+  wire        cdc_busy;
 
   assign trig_level = 8'd127;
   assign deci_rate  = 10'd1;
@@ -70,12 +73,6 @@ module dso_top (
       wave_run <= !wave_run;
     end
   end
-
-  pll u_pll (
-    .clkin1  (sys_clk),  //50MHz
-    .clkout0 (ad_clk),   //35MHz
-    .pll_lock(locked)
-  );
 
   clk_test #(
     .DIV_N(26'd500)  //100KHz
@@ -149,34 +146,53 @@ module dso_top (
 
   //output hdmi wave
   wav_display u_wav_display (
-    .rst_n      (sys_rst_n),
-    .pclk       (pix_clk),
-    .wave_color (24'hff0000),
-    .ad_clk     (ad_clk),
-    .ad_buf_wr  (ad_buf_wr),
-    .ad_buf_addr(ad_buf_addr),
-    .ad_buf_data(ad_buf_data),
-    .i_hs       (grid_hs_out),
-    .i_vs       (grid_vs_out),
-    .i_de       (grid_de_out),
-    .i_data     (grid_data_out),
-    .o_hs       (hs_out),
-    .o_vs       (vs_out),
-    .o_de       (de_out),
-    .o_data     ({r_out, g_out, b_out})
+    .rst_n         (sys_rst_n),
+    .pclk          (pix_clk),
+    .wave_color    (24'hff0000),
+    .ad_clk        (ad_clk),
+    .ad_buf_wr     (ad_buf_wr),
+    .ad_buf_wr_addr(ad_buf_wr_addr),
+    .ad_buf_data   (ad_buf_data),
+    .wave_rd_addr  (wave_rd_addr),
+    .ad_buf_rd_addr(ad_buf_rd_addr),
+    .i_hs          (grid_hs_out),
+    .i_vs          (grid_vs_out),
+    .i_de          (grid_de_out),
+    .i_data        (grid_data_out),
+    .o_hs          (hs_out),
+    .o_vs          (vs_out),
+    .o_de          (de_out),
+    .o_data        ({r_out, g_out, b_out}),
+    .wr_over       (wr_over)
+  );
+
+  cdc u_cdc (
+    .clk1  (pix_clk),
+    .rst1_n(sys_rst_n),
+
+    .clk2  (ad_clk),
+    .rst2_n(sys_rst_n),
+
+    .a(wr_over),
+
+    .b_r (wr_over_cdc),
+    .busy(cdc_busy)
   );
 
   ad9280_sample u_ad9280_sample (
-    .ad_clk     (ad_clk),
-    .rst_n      (sys_rst_n),
-    .ad_data    (ad_data),
-    .deci_valid (deci_valid),
-    .wave_run   (wave_run),
-    .trig_level (trig_level),
-    .trig_edge  (trig_edge),
-    .ad_buf_wr  (ad_buf_wr),
-    .ad_buf_addr(ad_buf_addr),
-    .ad_buf_data(ad_buf_data)
+    .ad_clk        (ad_clk),
+    .rst_n         (sys_rst_n),
+    .ad_data       (ad_data),
+    .deci_valid    (deci_valid),
+    .wave_run      (wave_run),
+    .trig_level    (trig_level),
+    .trig_edge     (trig_edge),
+    .wave_rd_addr  (wave_rd_addr),
+    .wr_over       (wr_over_cdc),
+    .ad_buf_wr     (ad_buf_wr),
+    .ad_buf_wr_addr(ad_buf_wr_addr),
+    .ad_buf_data   (ad_buf_data),
+    .ad_buf_rd_addr(ad_buf_rd_addr)
   );
 
 endmodule

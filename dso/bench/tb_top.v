@@ -25,7 +25,7 @@ module tb_top ();
   wire [7:0] da_data;
 
   //defparam  define
-  defparam u_dds_dso_top.u_dds_top.key_control_inst.CNT_MAX = 24;
+  defparam u_dds_dso_top.u_key_control.CNT_MAX = 24;
   //   defparam top_dds_inst.dds_inst.FREQ_CTRL = 32'd42949672;
 
 
