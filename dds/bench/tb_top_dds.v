@@ -134,6 +134,7 @@ top_dds top_dds_inst
     .sys_clk    (sys_clk    ),
     .sys_rst_n  (sys_rst_n  ),
     .key        (key        ),
+    .vld        (vld        ),  
     .addr       (addr),
     .data_in    (data_in    ),
     .dac_clk    (dac_clk    ),

@@ -22,9 +22,9 @@ module  top_dds
     input   wire            sys_clk     ,   //系统时钟,50MHz
     input   wire            sys_rst_n   ,   //复位信号,低电平有效
     input   wire    [3:0]   key         ,   //输入4位按键
-    input   wire    vld;
-    input   [31:0]  addr;
-    input   [31:0]  data_in;  
+    input   wire    vld,
+    input   [31:0]  addr,
+    input   [31:0]  data_in,  
     output  wire            dac_clk     ,   //输入DAC模块时钟
     output  wire    [7:0]   dac_data        //输入DAC模块波形数据
 );

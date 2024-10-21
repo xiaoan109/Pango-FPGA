@@ -60,7 +60,9 @@ always@(posedge sys_clk or negedge sys_rst_n)
     else
         // fre_add <=  fre_add + FREQ_CTRL;
         fre_add <=  fre_add + freq_ctl;
-
+// 控制最小分辨率
+wire [31:0] fre_add_shift;
+assign fre_add_shift = fre_add << min_ctl;
 //rom_addr:ROM读地址
 always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
@@ -72,27 +74,27 @@ always@(posedge sys_clk or negedge sys_rst_n)
     case(wave_select)
         sin_wave:
             begin
-                rom_addr_reg    <=  fre_add[31:20] + phase_ctl;
+                rom_addr_reg    <=  fre_add_shift[31:20] + phase_ctl;
                 rom_addr        <=  rom_addr_reg;
             end     //正弦波
         squ_wave:
             begin
-                rom_addr_reg    <=  fre_add[31:20] + phase_ctl;
+                rom_addr_reg    <=  fre_add_shift[31:20] + phase_ctl;
                 rom_addr        <=  rom_addr_reg + 14'd4096;
             end     //方波
         tri_wave:
             begin
-                rom_addr_reg    <=  fre_add[31:20] + phase_ctl;
+                rom_addr_reg    <=  fre_add_shift[31:20] + phase_ctl;
                 rom_addr        <=  rom_addr_reg + 14'd8192;
             end     //三角波
         saw_wave:
         begin
-                rom_addr_reg    <=  fre_add[31:20] + phase_ctl;
+                rom_addr_reg    <=  fre_add_shift[31:20] + phase_ctl;
                 rom_addr        <=  rom_addr_reg + 14'd12288;
             end     //锯齿波
         default:
             begin
-                rom_addr_reg    <=  fre_add[31:20] + phase_ctl;
+                rom_addr_reg    <=  fre_add_shift[31:20] + phase_ctl;
                 rom_addr        <=  rom_addr_reg;
             end     //正弦波
     endcase
