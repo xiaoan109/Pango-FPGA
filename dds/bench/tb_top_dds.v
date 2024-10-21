@@ -31,6 +31,10 @@ parameter   CNT_1MS  = 20'd19000   ,
 //wire  define
 wire            dac_clk     ;
 wire    [7:0]   dac_data    ;
+//
+reg vld;
+reg [31:0] addr;
+reg  [31:0] data_in;
 
 //reg   define
 reg             sys_clk     ;
@@ -101,6 +105,26 @@ always@(posedge sys_clk or negedge sys_rst_n)
             default:key <=  4'b1111;
         endcase
 
+
+  initial begin 
+      repeat(10) @(posedge sys_clk);
+      @(posedge sys_clk);
+      vld <= 1;
+      addr <= 32'h00;
+      data_in <= 32'd128;
+      @(posedge sys_clk);
+      vld <= 0;
+      repeat(10000) @(posedge sys_clk);
+
+      @(posedge sys_clk);
+      vld <= 1;
+      addr <= 32'h0c;
+      data_in <= 32'd512;
+      @(posedge sys_clk);
+      vld <= 0;
+
+  end
+
 //**************************************************************//
 //************************ Instantiation ***********************//
 //**************************************************************//
@@ -110,7 +134,8 @@ top_dds top_dds_inst
     .sys_clk    (sys_clk    ),
     .sys_rst_n  (sys_rst_n  ),
     .key        (key        ),
-
+    .addr       (addr),
+    .data_in    (data_in    ),
     .dac_clk    (dac_clk    ),
     .dac_data   (dac_data   )
 );
