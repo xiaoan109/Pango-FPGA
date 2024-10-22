@@ -31,6 +31,7 @@ module dso_top (
   wire [ 9:0] deci_rate;  //抽样率
   reg         wave_run;
   wire        trig_edge;
+  wire [ 4:0] v_scale;
 
 
   wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */;  //AD脉冲信号的频率 
@@ -63,8 +64,9 @@ module dso_top (
   wire        cdc_busy;
 
   assign trig_level = 8'd127;
-  assign deci_rate  = 10'd1;
-  assign trig_edge  = 1'b1;
+  assign deci_rate = 10'd1;
+  assign trig_edge = 1'b1;
+  assign v_scale = {1'b1, 4'd2};
 
   always @(posedge sys_clk or negedge sys_rst_n) begin
     if (!sys_rst_n) begin
@@ -163,7 +165,8 @@ module dso_top (
     .o_vs          (vs_out),
     .o_de          (de_out),
     .o_data        ({r_out, g_out, b_out}),
-    .wr_over       (wr_over)
+    .wr_over       (wr_over),
+    .v_scale       (v_scale)
   );
 
   cdc u_cdc (

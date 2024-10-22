@@ -16,7 +16,8 @@ module wav_display (
   output        o_vs  /* synthesis PAP_MARK_DEBUG="true" */,
   output        o_de  /* synthesis PAP_MARK_DEBUG="true" */,
   output [23:0] o_data  /* synthesis PAP_MARK_DEBUG="true" */,
-  output        wr_over
+  output        wr_over,
+  input  [ 4:0] v_scale
 );
 
   wire [11:0] pos_x;
@@ -36,11 +37,10 @@ module wav_display (
   // wire [9:0] ref_rd_addr  /* synthesis PAP_MARK_DEBUG="true" */;
   // assign ref_rd_addr = rdaddress[9:0];
   wire [11:0] wave_data;
-  wire [ 3:0] scale;
   wire [11:0] scale_data;
+  reg  [11:0] pre_data;
   assign wave_data = {4'd0, 8'd255 - q};
-  assign scale = 4'd4;
-  assign scale_data = 12'd533 + (wave_data - 12'd128) * scale;
+  assign scale_data = v_scale[4] ?  (12'd533 + ((wave_data - 12'd128) << v_scale[3:1])): (12'd533 + ((wave_data - 12'd128) >> v_scale[3:1]));  // 1/2/4 scale
 
 
   assign o_data = v_data;
@@ -61,9 +61,14 @@ module wav_display (
 
   always @(posedge pclk) begin
     if (region_active == 1'b1)
-      if (pos_y == scale_data) v_data <= wave_color;
+      if ((pos_y >= pre_data && pos_y <= scale_data) || (pos_y <= pre_data && pos_y >= scale_data)) v_data <= wave_color;
       else v_data <= pos_data;
     else v_data <= pos_data;
+  end
+
+  always @(posedge pclk) begin
+    if(region_active == 1'b1)
+      pre_data <= scale_data;
   end
 
   assign wave_rd_addr = rdaddress;
