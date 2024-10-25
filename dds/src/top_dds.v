@@ -22,13 +22,33 @@ module  top_dds
     input   wire            sys_clk     ,   //系统时钟,50MHz
     input   wire            sys_rst_n   ,   //复位信号,低电平有效
     input   wire    [3:0]   key         ,   //输入4位按键
-    input   wire    vld,
-    input   [31:0]  addr,
-    input   [31:0]  data_in,  
+
+    input  wire                 dds_icb_cmd_valid,//cmd有效
+    output wire                 dds_icb_cmd_ready,//cmd准备好
+    input  wire [`MemAddrBus]   dds_icb_cmd_addr ,//cmd地址
+    input  wire                 dds_icb_cmd_read ,//cmd读使能
+    input  wire [`MemBus]       dds_icb_cmd_wdata,//cmd写数据
+    input  wire [3:0]           dds_icb_cmd_wmask,//cmd写选通  未使用
+    output reg                  dds_icb_rsp_valid,//rsp有效
+    input  wire                 dds_icb_rsp_ready,//rsp准备好
+    output wire                 dds_icb_rsp_err  ,//rsp错误
+    output wire [`MemBus]       dds_icb_rsp_rdata,//rsp读数据
+
     output  wire            dac_clk     ,   //输入DAC模块时钟
     output  wire    [7:0]   dac_data        //输入DAC模块波形数据
 );
 
+
+wire [31:0] addr;
+wire [31:0] data_in;
+
+wire icb_whsk = dds_icb_cmd_valid & ~dds_icb_cmd_read;//写握手
+wire icb_rhsk = dds_icb_cmd_valid & dds_icb_cmd_read;//读握手
+
+assign dds_icb_cmd_ready = 1'b1;  
+assign dds_icb_rsp_err   = 1'b0;
+assign addr = dds_icb_cmd_addr;
+assign data_in = dds_icb_cmd_wdata;
 // reg define
 reg [31:0] reg1,reg2,reg3,reg4;
 //  NAME |  ADDR |  FUNC 
@@ -45,7 +65,7 @@ always@(posedge sys_clk ) begin
         reg3 <= 32'd0;
         reg4 <= 12'd1024;
     end
-    else if (vld == 1'b1)
+    else if (icb_whsk == 1'b1)
     begin
         case(addr[7:0])
             32'h00: reg1 <= data_in;
@@ -56,6 +76,31 @@ always@(posedge sys_clk ) begin
         endcase
     end
 end
+
+//读响应控制
+always @(posedge sys_clk)
+if (~sys_rst_n)
+    dds_icb_rsp_valid <= 1'b0;
+else begin
+    if (icb_rhsk)
+        dds_icb_rsp_valid <=1'b1;
+    else if (dds_icb_rsp_valid & dds_icb_rsp_ready)
+        dds_icb_rsp_valid <=1'b0;
+    else
+        dds_icb_rsp_valid <= dds_icb_rsp_valid;
+end
+
+reg [31:0] rdata;
+always@(*) begin
+  case(addr[7:0])
+    32'h00:rdata = reg1;
+    32'h04:rdata = reg2;
+    32'h08:rdata = reg3;
+    32'h0c:rdata = reg4;
+    default:rdata = 32'h0;
+  endcase
+end
+assign dds_icb_rsp_rdata = rdata; 
 
 wire [8:0] amp_ctl;
 wire [31:0] freq_ctl;
