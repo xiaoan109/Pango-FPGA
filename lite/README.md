@@ -1,5 +1,6 @@
 ### lite版本的dso示波器工程（工程的顶层是dds和dso的通路测试，这是因为方便自测不需要外部的信号发生器，集成到CPU时只例化dso_top.v即可）
 ### 内部IP：fifo、ram、rom和pll，应该可以直接导入的其他工程里
+(注意PLL里包括了dac时钟的生成，要将原本dds的时钟即dds.v的sys_clk换成这个pll输出的dac时钟)
 ### 约束文件：集成可以只保留hdmi相关的接口(rgb，vs，hs，de，i2c，pix_clk，rstn_out)和ADC的接口（ad_clk和ad_data），dac相关的约束应该原先cpu+dds时就绑定了，按键同样。
 
 ### 寄存器概述：
