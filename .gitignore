@@ -31,3 +31,13 @@
 !/dso/pnr/source/*
 !/dso/pnr/*.pds
 !/dso/src/**
+
+!/lite/README.md
+
+!/lite/dso/bench/**
+!/lite/dso/dat/**
+!/lite/dso/ip/**
+!/lite/dso/pnr/ipcore/**
+!/lite/dso/pnr/source/*
+!/lite/dso/pnr/*.pds
+!/lite/dso/src/**
