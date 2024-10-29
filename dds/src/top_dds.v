@@ -33,8 +33,8 @@ module  top_dds
     input  wire                 dds_icb_rsp_ready,//rsp准备好
     output wire                 dds_icb_rsp_err  ,//rsp错误
     output wire [`MemBus]       dds_icb_rsp_rdata,//rsp读数据
-
-    output  wire            dac_clk     ,   //输入DAC模块时钟
+    input wire dac_clk, //DAC模块时钟
+    // output  wire            dac_clk     ,   //输入DAC模块时钟
     output  wire    [7:0]   dac_data        //输入DAC模块波形数据
 );
 
@@ -91,14 +91,16 @@ else begin
 end
 
 reg [31:0] rdata;
-always@(*) begin
-  case(addr[7:0])
-    32'h00:rdata = reg1;
-    32'h04:rdata = reg2;
-    32'h08:rdata = reg3;
-    32'h0c:rdata = reg4;
-    default:rdata = 32'h0;
-  endcase
+always@(posedge sys_clk) begin
+  if(icb_rhsk) begin
+    case(addr[7:0])
+      32'h00:rdata <= reg1;
+      32'h04:rdata <= reg2;
+      32'h08:rdata <= reg3;
+      32'h0c:rdata <= reg4;
+      default:rdata <= 32'h0;
+    endcase
+  end
 end
 assign dds_icb_rsp_rdata = rdata; 
 
@@ -120,7 +122,7 @@ assign phase_ctl = reg4;
 wire    [3:0]   wave_select ;   //波形选择
 
 //dac_clka:DAC模块时钟
-assign  dac_clk  = ~sys_clk;
+// assign  dac_clk  = ~sys_clk;
 
 //********************************************************************//
 //*************************** Instantiation **************************//
@@ -128,7 +130,7 @@ assign  dac_clk  = ~sys_clk;
 //-------------------------- dds_inst -----------------------------
 dds     dds_inst
 (
-    .sys_clk        (sys_clk    ),   //系统时钟,50MHz
+    .sys_clk        (dac_clk    ),   //系统时钟,50MHz
     .sys_rst_n      (sys_rst_n  ),   //复位信号,低电平有效
     .wave_select    (wave_select),   //输出波形选择
     .amp_ctl        (amp_ctl       ),   //幅值
