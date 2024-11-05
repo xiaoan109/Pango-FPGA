@@ -6,7 +6,15 @@ module dso_top (
   inout  wire       iic_tx_sda,
   output wire       led_int,
   //hdmi_out
-  output wire       pix_clk,     //pixclk
+
+  input i_vs_hdmi ,
+  input i_hs_hdmi ,
+  input i_de_hdmi ,
+  input [7:0] i_r_hdmi  ,
+  input [7:0] i_g_hdmi  ,
+  input [7:0] i_b_hdmi  ,
+
+  input wire       pix_clk,     //pixclk
   output wire       vs_out,
   output wire       hs_out,
   output wire       de_out,
@@ -44,7 +52,7 @@ module dso_top (
   // wire        trig_edge;
   // wire [ 4:0] v_scale;
   // wire         fft_en;
-
+ 
 
   // wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */;  //AD脉冲信号的频率 
   // wire [ 7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号峰峰值  
@@ -92,6 +100,13 @@ module dso_top (
 
   //   .clk_out(debug_clk)  // 输出时钟
   // );
+  assign  hdmi_hs_out = i_hs_hdmi;
+  assign  hdmi_vs_out = i_vs_hdmi;
+  assign  hdmi_de_out = i_de_hdmi;
+  assign  hdmi_r_out = i_r_hdmi;
+  assign  hdmi_g_out = i_g_hdmi;
+  assign  hdmi_b_out = i_b_hdmi;
+
 
 
   //参数测量模块，测量输入波形峰峰值和频率    
@@ -123,22 +138,22 @@ module dso_top (
   );
 
 
-  //output color bar
-  hdmi_top u_hdmi_top (
-    .sys_clk   (sys_clk),      // input system clock 50MHz
-    .rstn_out  (rstn_out),
-    .iic_tx_scl(iic_tx_scl),
-    .iic_tx_sda(iic_tx_sda),
-    .led_int   (led_int),
-    //hdmi_out
-    .pix_clk   (pix_clk),      //pixclk
-    .vs_out    (hdmi_vs_out),
-    .hs_out    (hdmi_hs_out),
-    .de_out    (hdmi_de_out),
-    .r_out     (hdmi_r_out),
-    .g_out     (hdmi_g_out),
-    .b_out     (hdmi_b_out)
-  );
+  // //output color bar
+  // hdmi_top u_hdmi_top (
+  //   .sys_clk   (sys_clk),      // input system clock 50MHz
+  //   .rstn_out  (rstn_out),
+  //   .iic_tx_scl(iic_tx_scl),
+  //   .iic_tx_sda(iic_tx_sda),
+  //   .led_int   (led_int),
+  //   //hdmi_out
+  //   .pix_clk   (pix_clk),      //pixclk
+  //   .vs_out    (hdmi_vs_out),
+  //   .hs_out    (hdmi_hs_out),
+  //   .de_out    (hdmi_de_out),
+  //   .r_out     (hdmi_r_out),
+  //   .g_out     (hdmi_g_out),
+  //   .b_out     (hdmi_b_out)
+  // );
 
   //output grid
   grid_display u_grid_display (

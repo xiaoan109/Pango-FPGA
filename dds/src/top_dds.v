@@ -78,16 +78,17 @@ always@(posedge sys_clk ) begin
 end
 
 //读响应控制
-always @(posedge sys_clk)
-if (~sys_rst_n)
-    dds_icb_rsp_valid <= 1'b0;
-else begin
-    if (icb_rhsk)
-        dds_icb_rsp_valid <=1'b1;
-    else if (dds_icb_rsp_valid & dds_icb_rsp_ready)
-        dds_icb_rsp_valid <=1'b0;
-    else
-        dds_icb_rsp_valid <= dds_icb_rsp_valid;
+always @(posedge sys_clk) begin
+  if (~sys_rst_n)
+      dds_icb_rsp_valid <= 1'b0;
+  else begin
+      if (icb_rhsk)
+          dds_icb_rsp_valid <=1'b1;
+      else if (dds_icb_rsp_valid & dds_icb_rsp_ready)
+          dds_icb_rsp_valid <=1'b0;
+      else
+          dds_icb_rsp_valid <= dds_icb_rsp_valid;
+  end
 end
 
 reg [31:0] rdata;

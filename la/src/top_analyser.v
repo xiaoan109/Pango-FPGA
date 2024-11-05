@@ -1,12 +1,22 @@
 module top_analyser(
    input               sys_clk,
    input               sys_rst_n,
-   output              rstn_out,
-   output              iic_tx_scl,
-   inout               iic_tx_sda,
-   output              led_int,
+  //  output              rstn_out,
+  //  output              iic_tx_scl,
+  //  inout               iic_tx_sda,
+  //  output              led_int,
+
+  input i_vs_hdmi ,
+  input i_hs_hdmi ,
+  input i_de_hdmi ,
+  input [7:0] i_r_hdmi  ,
+  input [7:0] i_g_hdmi  ,
+  input [7:0] i_b_hdmi  ,
+  input [9:0] pre_num,
+
+
    //hdmi_out
-   output              pix_clk,
+   input              pix_clk,
    output              o_hs_wave,
    output              o_vs_wave,
    output              o_de_wave,
@@ -18,27 +28,41 @@ module top_analyser(
    input               trigger_en,
    input    [2:0]      chn_sel,
    input    [2:0]      mode_sel,
-   input    [3:0]      freq_sel
+   input    [3:0]      freq_sel,
+   output wire finished
+   
    );
 
    wire     [7:0]      ad_wr_data;
    wire                ad_wr_en;
-   wire     [11:0]     ad_wr_addr;
+   wire     [9:0]     ad_wr_addr;
+   wire     [9:0]    start_addr; 
    wire                o_hs_grid;
    wire                o_vs_grid;
    wire                o_de_grid;
    wire     [23:0]     o_data_grid;
          
-   wire                o_hs_hdmi;
-   wire                o_vs_hdmi;
-   wire                o_de_hdmi;
-   wire     [7:0]      o_r_hdmi;
-   wire     [7:0]      o_g_hdmi;
-   wire     [7:0]      o_b_hdmi;
+wire                                    o_hs_hdmi                  ;
+wire                                    o_vs_hdmi                  ;
+wire                                    o_de_hdmi                  ;
+wire                   [   7:0]         o_r_hdmi                   ;
+wire                   [   7:0]         o_g_hdmi                   ;
+wire                   [   7:0]         o_b_hdmi                   ;
          
    wire                clken;
 
-   wave_display u_wave_display (
+
+  assign  o_hs_hdmi   = i_hs_hdmi;
+  assign  o_vs_hdmi   = i_vs_hdmi;
+  assign  o_de_hdmi   = i_de_hdmi;
+  assign  o_r_hdmi   = i_r_hdmi;
+  assign  o_g_hdmi   = i_g_hdmi;
+  assign  o_b_hdmi   = i_b_hdmi;
+
+
+
+
+   la_wave_display u_wave_display (
       .rst_n      (  sys_rst_n            ), // input
       .pclk       (  pix_clk              ), // input
       .wave_color (  24'hff0000           ), // input
@@ -46,6 +70,7 @@ module top_analyser(
       .ad_wr_data (  ad_wr_data           ), // input
       .ad_wr_en   (  ad_wr_en             ), // input
       .ad_wr_addr (  ad_wr_addr           ), // input
+      .start_addr (  start_addr  ),
       .i_hs       (  o_hs_grid            ), // input
       .i_vs       (  o_vs_grid            ), // input
       .i_de       (  o_de_grid            ), // input
@@ -56,7 +81,7 @@ module top_analyser(
       .o_data     (  {r_out,g_out,b_out}  )  // output
    );
 
-   grid_display u_grid_display (
+   la_grid_display u_grid_display (
       .rst_n      (  sys_rst_n                     ), // input
       .pclk       (  pix_clk                       ), // input
       .i_hs       (  o_hs_hdmi                     ), // input
@@ -76,31 +101,34 @@ module top_analyser(
       .clken      (  clken     )  // output
    );
 
-   hdmi_test u_hdmi_test (
-      .sys_clk    (  sys_clk     ), // input
-      .rstn_out   (  rstn_out    ), // output
-      .iic_tx_scl (  iic_tx_scl  ), // output
-      .iic_tx_sda (  iic_tx_sda  ), // inout
-      .led_int    (  led_int     ), // output
-      .pix_clk    (  pix_clk     ), // output
-      .vs_out     (  o_vs_hdmi   ), // output
-      .hs_out     (  o_hs_hdmi   ), // output
-      .de_out     (  o_de_hdmi   ), // output
-      .r_out      (  o_r_hdmi    ), // output
-      .g_out      (  o_g_hdmi    ), // output
-      .b_out      (  o_b_hdmi    )  // output
-   );
+  //  hdmi_test u_hdmi_test (
+  //     .sys_clk    (  sys_clk     ), // input
+  //     .rstn_out   (  rstn_out    ), // output
+  //     .iic_tx_scl (  iic_tx_scl  ), // output
+  //     .iic_tx_sda (  iic_tx_sda  ), // inout
+  //     .led_int    (  led_int     ), // output
+  //     .pix_clk    (  pix_clk     ), // output
+  //     .vs_out     (  o_vs_hdmi   ), // output
+  //     .hs_out     (  o_hs_hdmi   ), // output
+  //     .de_out     (  o_de_hdmi   ), // output
+  //     .r_out      (  o_r_hdmi    ), // output
+  //     .g_out      (  o_g_hdmi    ), // output
+  //     .b_out      (  o_b_hdmi    )  // output
+  //  );
 
    sample_ctrl u_sample_ctrl(
       .iSysClk    (  sys_clk     ), // input
       .iRst       (  sys_rst_n   ), // input
       .clk_en     (  clken       ), // input
+      .pre_num    (  pre_num    ), // input
       .trigger_en (  trigger_en  ), // input
       .chn_sel    (  chn_sel     ), // input
       .mode_sel   (  mode_sel    ), // input
     //.trigger_en (  1'b1        ), // input
     //.chn_sel    (  3'b100      ), // input
     //.mode_sel   (  3'd2        ), // input
+      .start_addr (  start_addr  ), // output
+      .finished   (  finished    ), // output
       .data_in    (  data_in     ), // input
       .wr_addr    (  ad_wr_addr  ), // output
       .wr_data    (  ad_wr_data  ), // output

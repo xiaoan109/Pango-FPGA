@@ -54,7 +54,7 @@ wire [31:0] tmp_data;
 //***************************** Main Code ****************************//
 //********************************************************************//
 //fre_add:相位累加器
-always@(negedge sys_clk or negedge sys_rst_n)
+always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         fre_add <=  32'd0;
     else
@@ -64,7 +64,7 @@ always@(negedge sys_clk or negedge sys_rst_n)
 wire [31:0] fre_add_shift;
 assign fre_add_shift = fre_add << min_ctl;
 //rom_addr:ROM读地址
-always@(negedge sys_clk or negedge sys_rst_n)
+always@(posedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         begin
             rom_addr        <=  14'd0;

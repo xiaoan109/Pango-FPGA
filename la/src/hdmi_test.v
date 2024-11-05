@@ -49,7 +49,7 @@ parameter   Y_WIDTH = 4'd12;
     reg  [3:0]                  reset_delay_cnt;
 
 
-    pll u_pll (
+    pll_hdmi u_pll (
         .clkin1   (  sys_clk    ),//50MHz
         .clkout0  (  pix_clk    ),//148.5MHz
         .clkout1  (  cfg_clk    ),//10MHz
