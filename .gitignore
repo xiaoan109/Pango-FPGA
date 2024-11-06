@@ -41,3 +41,11 @@
 !/lite/dso/pnr/source/*
 !/lite/dso/pnr/*.pds
 !/lite/dso/src/**
+
+!/la/bench/**
+!/la/dat/**
+!/la/ip/**
+!/la/pnr/ipcore/**
+!/la/pnr/source/*
+!/la/pnr/*.pds
+!/la/src/**
