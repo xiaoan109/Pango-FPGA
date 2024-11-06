@@ -1,87 +1,117 @@
 module top_analyser(
    input               sys_clk,
    input               sys_rst_n,
-  //  output              rstn_out,
-  //  output              iic_tx_scl,
-  //  inout               iic_tx_sda,
-  //  output              led_int,
-
-  input i_vs_hdmi ,
-  input i_hs_hdmi ,
-  input i_de_hdmi ,
-  input [7:0] i_r_hdmi  ,
-  input [7:0] i_g_hdmi  ,
-  input [7:0] i_b_hdmi  ,
-  input [9:0] pre_num,
-
-
+   output              rstn_out,
+   output              iic_tx_scl,
+   inout               iic_tx_sda,
+   output              led_int,
    //hdmi_out
-   input              pix_clk,
+   output              pix_clk,
    output              o_hs_wave,
    output              o_vs_wave,
    output              o_de_wave,
    output   [7:0]      r_out,
    output   [7:0]      g_out,
    output   [7:0]      b_out,
-   //input and params from cpu
-   input    [7:0]      data_in,
+   //params from cpu
    input               trigger_en,
-   input    [2:0]      chn_sel,
-   input    [2:0]      mode_sel,
-   input    [3:0]      freq_sel,
-   output wire finished
-   
+   input               right_shift,
+   input               left_shift,
+   input    [5:0]      interval,
+   input    [9:0]      pre_num,
+   //input    [9:0]      offset,
+   //input    [2:0]      cpu_chn_sel,
+   //input    [2:0]      cpu_mode_sel,
+   //input    [3:0]      cpu_freq_sel,
+   //input               uart_en,
+   //protocol analysis outs
+   output   [7:0]      uart_data
    );
 
-   wire     [7:0]      ad_wr_data;
-   wire                ad_wr_en;
-   wire     [9:0]     ad_wr_addr;
-   wire     [9:0]    start_addr; 
+   wire     [7:0]      wr_data;
+   wire                wr_en;
+   wire     [9:0]      wr_addr;
+   wire     [9:0]      rd_addr;
+   wire     [9:0]      start_addr;
    wire                o_hs_grid;
    wire                o_vs_grid;
    wire                o_de_grid;
    wire     [23:0]     o_data_grid;
+   wire                wr_over;
+   wire     [9:0]      rdaddress;
          
-wire                                    o_hs_hdmi                  ;
-wire                                    o_vs_hdmi                  ;
-wire                                    o_de_hdmi                  ;
-wire                   [   7:0]         o_r_hdmi                   ;
-wire                   [   7:0]         o_g_hdmi                   ;
-wire                   [   7:0]         o_b_hdmi                   ;
+   wire                o_hs_hdmi;
+   wire                o_vs_hdmi;
+   wire                o_de_hdmi;
+   wire     [7:0]      o_r_hdmi;
+   wire     [7:0]      o_g_hdmi;
+   wire     [7:0]      o_b_hdmi;
          
    wire                clken;
+   wire                chn_sel;
+   wire                mode_sel;
+   wire                freq_sel;
+
+   wire                tx_data;
+   wire     [7:0]      data_in;
+   wire                finished;
+
+   //wire                trigger_en;
+   //wire                right_shift;
+   //wire                left_shift;
+   //wire     [9:0]      pre_num;
+   //wire     [4:0]      interval;
+
+   //assign chn_sel  = uart_en ? 3'b100 : cpu_chn_sel;
+   //assign mode_sel = uart_en ? 3'b011 : cpu_mode_sel;
+   //assign freq_sel = cpu_freq_sel;
 
 
-  assign  o_hs_hdmi   = i_hs_hdmi;
-  assign  o_vs_hdmi   = i_vs_hdmi;
-  assign  o_de_hdmi   = i_de_hdmi;
-  assign  o_r_hdmi   = i_r_hdmi;
-  assign  o_g_hdmi   = i_g_hdmi;
-  assign  o_b_hdmi   = i_b_hdmi;
-
-
-
-
-   la_wave_display u_wave_display (
+   wave_display u_wave_display (
       .rst_n      (  sys_rst_n            ), // input
       .pclk       (  pix_clk              ), // input
       .wave_color (  24'hff0000           ), // input
-//    .ad_clk     (  ad_clk               ), // input
-      .ad_wr_data (  ad_wr_data           ), // input
-      .ad_wr_en   (  ad_wr_en             ), // input
-      .ad_wr_addr (  ad_wr_addr           ), // input
-      .start_addr (  start_addr  ),
+      .wr_data    (  wr_data              ), // input
+      .wr_en      (  wr_en                ), // input
+      .wr_addr    (  wr_addr              ), // input
+      .start_addr (  start_addr           ), // input
       .i_hs       (  o_hs_grid            ), // input
       .i_vs       (  o_vs_grid            ), // input
       .i_de       (  o_de_grid            ), // input
       .i_data     (  o_data_grid          ), // input
+      .trigger_en (  trigger_en           ), // input
+      //.offset     (  256                  ), // input
+      .right_shift(  0                    ), // input
+      .left_shift (  0                    ), // input
+      .interval   (  16                   ), // input
+      .pre_num    (  512                  ), // input
       .o_hs       (  o_hs_wave            ), // output
       .o_vs       (  o_vs_wave            ), // output
       .o_de       (  o_de_wave            ), // output
       .o_data     (  {r_out,g_out,b_out}  )  // output
    );
 
-   la_grid_display u_grid_display (
+   
+   sample_ctrl u_sample_ctrl(
+      .iSysClk    (  sys_clk     ),   // input
+      .iRst       (  sys_rst_n   ),   // input
+      .clk_en     (  clken       ),   // input
+      //.trigger_en (  trigger_en  ), // input
+      //.chn_sel    (  chn_sel     ), // input
+      //.mode_sel   (  mode_sel    ), // input
+      .trigger_en (  trigger_en  ),   // input
+      .chn_sel    (  3'b100      ),   // input
+      .mode_sel   (  3'd2        ),   // input
+      .data_in    (  data_in     ),   // input
+      .wr_addr    (  wr_addr     ),   // output
+      .wr_data    (  wr_data     ),   // output
+      .wr_en      (  wr_en       ),
+      .start_addr (  start_addr  ),
+      .finished   (  finished    ),
+      .pre_num    (  512         )    // output
+   );
+
+   grid_display u_grid_display (
       .rst_n      (  sys_rst_n                     ), // input
       .pclk       (  pix_clk                       ), // input
       .i_hs       (  o_hs_hdmi                     ), // input
@@ -94,51 +124,62 @@ wire                   [   7:0]         o_b_hdmi                   ;
       .o_data     (  o_data_grid                   )  // output
    );
 
-   freq_div u_freq_div (
-      .iSysClk    (  sys_clk   ), // input
-      .iRst       (  sys_rst_n ), // input
-      .freq_sel   (  freq_sel  ), // input
-      .clken      (  clken     )  // output
-   );
-
-  //  hdmi_test u_hdmi_test (
-  //     .sys_clk    (  sys_clk     ), // input
-  //     .rstn_out   (  rstn_out    ), // output
-  //     .iic_tx_scl (  iic_tx_scl  ), // output
-  //     .iic_tx_sda (  iic_tx_sda  ), // inout
-  //     .led_int    (  led_int     ), // output
-  //     .pix_clk    (  pix_clk     ), // output
-  //     .vs_out     (  o_vs_hdmi   ), // output
-  //     .hs_out     (  o_hs_hdmi   ), // output
-  //     .de_out     (  o_de_hdmi   ), // output
-  //     .r_out      (  o_r_hdmi    ), // output
-  //     .g_out      (  o_g_hdmi    ), // output
-  //     .b_out      (  o_b_hdmi    )  // output
-  //  );
-
-   sample_ctrl u_sample_ctrl(
-      .iSysClk    (  sys_clk     ), // input
-      .iRst       (  sys_rst_n   ), // input
-      .clk_en     (  clken       ), // input
-      .pre_num    (  pre_num    ), // input
-      .trigger_en (  trigger_en  ), // input
-      .chn_sel    (  chn_sel     ), // input
-      .mode_sel   (  mode_sel    ), // input
-    //.trigger_en (  1'b1        ), // input
-    //.chn_sel    (  3'b100      ), // input
-    //.mode_sel   (  3'd2        ), // input
-      .start_addr (  start_addr  ), // output
-      .finished   (  finished    ), // output
-      .data_in    (  data_in     ), // input
-      .wr_addr    (  ad_wr_addr  ), // output
-      .wr_data    (  ad_wr_data  ), // output
-      .wr_en      (  ad_wr_en    )  // output
+   pulse_gen u_pulse_gen (
+      .sys_clk   (  sys_clk     ), // input
+      .sys_rst_n (  sys_rst_n   ), // input
+      .finished  (  finished    ), // input
+      .pulse     (  trigger_en  )  // output
    );
 
    //debug_sg u_debug_sg (
    //   .sys_clk   (  sys_clk   ), // input
    //   .sys_rst_n (  sys_rst_n ), // input
    //   .test_data (  data_in   )  // output
+   //);
+
+   freq_div u_freq_div (
+      .iSysClk    (  sys_clk   ), // input
+      .iRst       (  sys_rst_n ), // input
+      .freq_sel   (  4'h2      ), // input
+      .clken      (  clken     )  // output
+   );
+
+   hdmi_test u_hdmi_test (
+      .sys_clk    (  sys_clk     ), // input
+      .rstn_out   (  rstn_out    ), // output
+      .iic_tx_scl (  iic_tx_scl  ), // output
+      .iic_tx_sda (  iic_tx_sda  ), // inout
+      .led_int    (  led_int     ), // output
+      .pix_clk    (  pix_clk     ), // output
+      .vs_out     (  o_vs_hdmi   ), // output
+      .hs_out     (  o_hs_hdmi   ), // output
+      .de_out     (  o_de_hdmi   ), // output
+      .r_out      (  o_r_hdmi    ), // output
+      .g_out      (  o_g_hdmi    ), // output
+      .b_out      (  o_b_hdmi    )  // output
+   );
+
+   lfsr u_lfsr (
+      .sys_clk   (  sys_clk   ), // input
+      .sys_rst_n (  sys_rst_n ), // input
+      .test_data (  data_in   )  // output
+   );
+
+   //uart_tx u_uart_tx (
+   //   .sys_clk   (  sys_clk   ), // input
+   //   .sys_rst_n (  sys_rst_n ), // input
+   //   .pi_data   (  data_in   ), // input
+   //   .pi_flag   (  1'b1      ), // input
+   //   .tx        (  tx_data   )  // output
+   //);
+
+   //uart_detect u_uart_detect (
+   //   .sys_clk   (  sys_clk   ), // input
+   //   .sys_rst_n (  sys_rst_n ), // input
+   //   .tx_data   (  tx_data   ), // input
+   //   .wr_en     (  ad_wr_en  ), // input
+   //   .uart_en   (  uart_en   ), // input
+   //   .uart_data (  uart_data )  // output
    //);
 
 endmodule

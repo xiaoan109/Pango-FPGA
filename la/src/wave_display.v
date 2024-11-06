@@ -1,25 +1,29 @@
-module la_wave_display(
+module wave_display(
 	input                       rst_n,   
 	input                       pclk,
 	input    [23:0]             wave_color,
-// input                       ad_clk ,
-	input    [7:0]              ad_wr_data,
-   input                       ad_wr_en,
-   input    [9:0]              ad_wr_addr,
+	input    [7:0]              wr_data,
+   input                       wr_en,
+   input    [9:0]              wr_addr,
    input    [9:0]              start_addr,
 	input                       i_hs,    
 	input                       i_vs,    
 	input                       i_de,	
-	input    [23:0]             i_data,  
+	input    [23:0]             i_data,
+
+   //inputs from cpu
+   input                       trigger_en,
+   //input    [9:0]              offset,
+   input                       right_shift,
+   input                       left_shift,
+   input    [5:0]              interval,
+   input    [9:0]              pre_num,
+
 	output                      o_hs             /* synthesis PAP_MARK_DEBUG="true" */,    
 	output                      o_vs             /* synthesis PAP_MARK_DEBUG="true" */,    
 	output                      o_de             /* synthesis PAP_MARK_DEBUG="true" */,    
 	output   [23:0]             o_data           /* synthesis PAP_MARK_DEBUG="true" */
 );
-
-// parameter IDLE = 3'b001 ;
-// parameter S_SAMPLE = 3'b010 ;
-// parameter S_WAIT = 3'b100 ;
 
    parameter   CH0_H = 70,   CH0_L = 170  ,
                CH1_H = 190,  CH1_L = 290  ,
@@ -31,10 +35,8 @@ module la_wave_display(
                CH7_H = 910,  CH7_L = 1010 ;
 
    reg      [3:0]              state;
-// wire     [9:0]              wr_addr;
    reg      [10:0]             sample_cnt;
    reg      [31:0]             wait_cnt;
-// reg                         wren;
    wire     [11:0]             pos_x;
    wire     [11:0]             pos_y;
    wire                        pos_hs;
@@ -47,17 +49,10 @@ module la_wave_display(
    reg                         region_active; 
    reg      [7:0]              q_d1         ;
    wire     [7:0]              q_edge       ;  
-/* wire     [11:0]             ref_sig      ; 
-   wire                        ref_sig2     ; 
-   wire     [9:0]              ref_rd_addr  ; 
-   reg      [7:0]              q_d1         ; 
-   reg                         region_active; 
-   wire     [7:0]              q_edge       ; 
 
-   assign ref_sig = 12'd287 - q[7:0] ;
-   assign ref_sig2 = ((region_active == 1'b1)&&(12'd287 - pos_y == {4'd0,q[7:0]})) ? 1'b1 : 1'b0 ;
-   assign ref_rd_addr = rdaddress[9:0];
-*/
+   reg [9:0] ram_addr;
+   reg [4:0] addr_cnt;
+
    assign o_data = v_data;
    assign o_hs   = pos_hs;
    assign o_vs   = pos_vs;
@@ -78,64 +73,58 @@ module la_wave_display(
    end
 
    always @(posedge pclk) begin
-      if(region_active == 1'b1 && pos_de == 1'b1) begin
+      if(region_active == 1'b1 && pos_de == 1'b1 && addr_cnt == interval - 1) begin
          rdaddress <= rdaddress + 10'd1;
+      end
+      else if (region_active == 1'b1 && pos_de == 1'b1) begin
+         rdaddress <= rdaddress;
       end
       else begin
          rdaddress <= 10'd0;
       end
    end
 
-  reg [9:0] ram_addr;
-  always@(posedge pclk) begin
-    if (~rst_n) begin
-      ram_addr <= 10'd0;
-    end
-    else if (region_active == 1'b1 && pos_de == 1'b1) begin
-      ram_addr <= rdaddress + start_addr;
-    end
-    else begin
-      ram_addr <= ram_addr;
-    end
-  end
-// always @(posedge pclk) begin
-// 	if(region_active == 1'b1) begin
-// 		if((12'd1055- pos_y)/4 == {4'd0,q[7:0]}) begin
-// 			v_data <= wave_color;
-//       end
-// 		else begin
-// 			v_data <= pos_data;
-//       end
-//    end
-// 	else begin
-// 		v_data <= pos_data;
-//    end
-// end
+   always @(posedge pclk) begin
+      if (~rst_n) begin
+         addr_cnt <= 5'd0;
+      end
+      else if (addr_cnt == interval - 1) begin
+         addr_cnt <= 5'd0;
+      end
+      else if (region_active == 1'b1 && pos_de == 1'b1) begin
+         addr_cnt <= addr_cnt + 1;
+      end
+      else begin
+         addr_cnt <= 5'd0;
+      end
+   end
 
-  //  always @(posedge pclk) begin
-  //     if (region_active) begin
-  //        if ((pos_y == CH0_H && q[0]) || (pos_y == CH0_L && ~q[0]) ||
-  //            (pos_y == CH1_H && q[1]) || (pos_y == CH1_L && ~q[1]) ||
-  //            (pos_y == CH2_H && q[2]) || (pos_y == CH2_L && ~q[2]) ||
-  //            (pos_y == CH3_H && q[3]) || (pos_y == CH3_L && ~q[3]) ||
-  //            (pos_y == CH4_H && q[4]) || (pos_y == CH4_L && ~q[4]) ||
-  //            (pos_y == CH5_H && q[5]) || (pos_y == CH5_L && ~q[5]) ||
-  //            (pos_y == CH6_H && q[6]) || (pos_y == CH6_L && ~q[6]) ||
-  //            (pos_y == CH7_H && q[7]) || (pos_y == CH7_L && ~q[7])) 
-  //        begin
-  //           v_data <= wave_color;
-  //        end
-  //        else begin
-  //           v_data <= pos_data;
-  //        end
-  //     end
-  //     else begin
-  //        v_data <= pos_data;
-  //     end
-  //  end
+   wire [9:0] trig_start_addr;
+   wire [9:0] offset_addr;
+
+   //assign offset_addr = (right_shift ? 1024 - offset : offset) / interval;
+   assign trig_start_addr = start_addr - (1024 - pre_num) - pre_num / interval;
+
+   always@(posedge pclk) begin
+     if (~rst_n) begin
+       ram_addr <= 10'd0;
+     end
+     else if (right_shift) begin
+       ram_addr <= ram_addr - interval;
+     end
+     else if (left_shift) begin
+       ram_addr <= ram_addr + interval;
+     end
+     else if (region_active == 1'b1 && pos_de == 1'b1) begin
+       ram_addr <= rdaddress + trig_start_addr + 1;
+     end
+     else begin
+       ram_addr <= ram_addr;
+     end
+   end
 
    always @(posedge pclk) begin
-      if (region_active) begin
+      if (region_active && ~trigger_en) begin
          if ((pos_y == CH0_H && q[0]) || (pos_y == CH0_L && ~q[0]) || (pos_y >=CH0_H && pos_y <= CH0_L && q_edge[0]) ||
              (pos_y == CH1_H && q[1]) || (pos_y == CH1_L && ~q[1]) || (pos_y >=CH1_H && pos_y <= CH1_L && q_edge[1]) ||
              (pos_y == CH2_H && q[2]) || (pos_y == CH2_L && ~q[2]) || (pos_y >=CH2_H && pos_y <= CH2_L && q_edge[2]) ||
@@ -156,60 +145,16 @@ module la_wave_display(
       end
    end
 
-
-// always @(posedge ad_clk ) begin
-// 	if (~rst_n) begin
-// 		state <= 3'b001 ;
-// 		//wren <= 1'b0 ;
-// 		sample_cnt <= 11'd0;
-// 		wait_cnt <= 32'd0;
-// 	end
-// 	else begin
-// 		case (state)
-// 			IDLE : begin
-// 				state <= S_SAMPLE ; 
-// 			end 
-// 			S_SAMPLE : begin
-// 				if(sample_cnt == 11'd1023)
-// 				begin
-// 					sample_cnt <= 11'd0;
-// 					//wren <= 1'b0;
-// 					state <= S_WAIT;
-// 				end
-// 				else
-// 				begin
-// 					sample_cnt <= sample_cnt + 11'd1;
-// 					//wren <= 1'b1;
-// 				end
-// 			end
-// 			S_WAIT : begin
-// 				if(wait_cnt == 32'd33_670_033)
-// 				begin
-// 					state <= S_SAMPLE;
-// 					wait_cnt <= 32'd0;
-// 				end
-// 				else
-// 				begin
-// 					wait_cnt <= wait_cnt + 32'd1;
-// 				end
-// 			end
-// 			default: state <= IDLE ; 
-// 		endcase
-// 	end 
-// end
-
-// assign wr_addr = sample_cnt[9:0] ;
-
 ram1024x8 u_ram (
-  .wr_data(ad_wr_data),                     // input [7:0]
-  .wr_addr(ad_wr_addr),        // input [9:0]
-  .wr_en(ad_wr_en),                         // input
-  .wr_clk(pclk),                            // input
-  .wr_rst(~rst_n),                           // input
-  .rd_addr(ram_addr),                 // input [9:0]
-  .rd_data(q),                              // output [7:0]
-  .rd_clk(pclk),                            // input
-  .rd_rst(~rst_n)                           // input
+  .wr_data(wr_data),        // input  [7:0]
+  .wr_addr(wr_addr),        // input  [9:0]
+  .wr_en(wr_en),            // input
+  .wr_clk(pclk),            // input
+  .wr_rst(~rst_n),          // input
+  .rd_addr(ram_addr),       // input  [9:0]
+  .rd_data(q),              // output [7:0]
+  .rd_clk(pclk),            // input
+  .rd_rst(~rst_n)           // input
 );
 
 timing_gen_xy u_timing_gen_xy(
