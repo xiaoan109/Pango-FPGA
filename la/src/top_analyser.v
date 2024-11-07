@@ -67,7 +67,7 @@ module top_analyser(
    //assign freq_sel = cpu_freq_sel;
 
 
-   wave_display u_wave_display (
+   la_wave_display u_wave_display (
       .rst_n      (  sys_rst_n            ), // input
       .pclk       (  pix_clk              ), // input
       .wave_color (  24'hff0000           ), // input
@@ -111,7 +111,7 @@ module top_analyser(
       .pre_num    (  512         )    // output
    );
 
-   grid_display u_grid_display (
+   la_grid_display u_grid_display (
       .rst_n      (  sys_rst_n                     ), // input
       .pclk       (  pix_clk                       ), // input
       .i_hs       (  o_hs_hdmi                     ), // input

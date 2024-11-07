@@ -1,4 +1,4 @@
-module wave_display(
+module la_wave_display(
 	input                       rst_n,   
 	input                       pclk,
 	input    [23:0]             wave_color,
