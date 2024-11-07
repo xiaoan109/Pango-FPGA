@@ -26,17 +26,19 @@ module dso_top (
   input wire [7:0] ad_data,
 
   //ctrl regs
-  input  wire [ 7:0] trig_level,  //触发电平
-  input  wire [ 9:0] deci_rate,   //抽样率
-  input  wire        wave_run,
-  input  wire        trig_edge,
-  input  wire [ 4:0] v_scale,
-  input  wire        fft_en,
+  input wire [7:0] trig_level,  //触发电平
+  input wire [9:0] deci_rate,  //抽样率
+  input wire wave_run,
+  input wire trig_edge,
+  input wire [4:0] v_scale,
+  input wire fft_en,
+  input wire fir_en,
+  input wire [11:0] trig_line,
   //measure regs
-  output wire [19:0] ad_freq,     //AD脉冲信号的频率 
-  output wire [ 7:0] ad_vpp,      //AD输入信号峰峰值  
-  output wire [ 7:0] ad_max,      //AD输入信号最大值  
-  output wire [ 7:0] ad_min       //AD输入信号最小值  
+  output wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */,  //AD脉冲信号的频率 
+  output wire [7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */,  //AD输入信号峰峰值  
+  output wire [7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */,  //AD输入信号最大值  
+  output wire [7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */  //AD输入信号最小值  
 );
 
 
@@ -69,6 +71,11 @@ module dso_top (
   wire        hdmi_hs_out;
   wire        hdmi_de_out;
 
+  wire [23:0] osd_data_out;
+  wire        osd_vs_out;
+  wire        osd_hs_out;
+  wire        osd_de_out;
+
   wire [23:0] grid_data_out;
   wire        grid_vs_out;
   wire        grid_hs_out;
@@ -84,6 +91,8 @@ module dso_top (
   wire        cdc_busy;
 
   wire [11:0] ram_rd_data;
+
+  wire [ 7:0] ad_filter_data;
 
   // assign trig_level = 8'd127;
   // assign deci_rate = 10'd1;
@@ -109,6 +118,16 @@ module dso_top (
 
 
 
+  fir_wrapper u_fir_wrapper (
+    .ad_clk     (ad_clk),
+    .rst_n      (sys_rst_n),
+    .ad_data    (ad_data),
+    .fir_en     (fir_en),
+    .ad_data_out(ad_filter_data)
+  );
+
+
+
   //参数测量模块，测量输入波形峰峰值和频率    
   param_measure #(
     .CLK_FS  (CLK_FS),   // 系统时钟频率值
@@ -120,7 +139,7 @@ module dso_top (
     .trig_level(trig_level),  //trig_level
 
     .ad_clk   (ad_clk),
-    .ad_data  (ad_data),
+    .ad_data  (ad_filter_data),
     .ad_pulse (ad_pulse),
     .ad_freq  (ad_freq),   // 频率
     .ad_vpp   (ad_vpp),    // 峰峰值
@@ -155,14 +174,41 @@ module dso_top (
   //   .b_out     (hdmi_b_out)
   // );
 
+  //output osd
+
+  ui_display u_ui_display (
+    .rst_n     (sys_rst_n),
+    .pclk      (pix_clk),
+    .ad_clk    (ad_clk),
+    .sys_clk   (sys_clk),
+    .i_hs      (hdmi_hs_out),
+    .i_vs      (hdmi_vs_out),
+    .i_de      (hdmi_de_out),
+    .i_data    ({hdmi_r_out, hdmi_g_out, hdmi_b_out}),
+    .ad_freq   (ad_freq),
+    .ad_vpp    (ad_vpp),
+    .ad_max    (ad_max),
+    .ad_min    (ad_min),
+    .trig_level(trig_level),
+    .trig_edge (trig_edge),
+    .fft_en    (fft_en),
+    .deci_rate (deci_rate),
+    .fir_en    (fir_en),
+    .o_hs      (osd_hs_out),
+    .o_vs      (osd_vs_out),
+    .o_de      (osd_de_out),
+    .o_data    (osd_data_out)
+  );
+
+
   //output grid
   grid_display u_grid_display (
     .rst_n (sys_rst_n),
     .pclk  (pix_clk),
-    .i_hs  (hdmi_hs_out),
-    .i_vs  (hdmi_vs_out),
-    .i_de  (hdmi_de_out),
-    .i_data({hdmi_r_out[7:0], hdmi_g_out[7:0], hdmi_b_out[7:0]}),
+    .i_hs  (osd_hs_out),
+    .i_vs  (osd_vs_out),
+    .i_de  (osd_de_out),
+    .i_data(osd_data_out),
     .o_hs  (grid_hs_out),
     .o_vs  (grid_vs_out),
     .o_de  (grid_de_out),
@@ -191,7 +237,8 @@ module dso_top (
     .o_de          (de_out),
     .o_data        ({r_out, g_out, b_out}),
     .wr_over       (wr_over),
-    .v_scale       (v_scale)
+    .v_scale       (v_scale),
+    .trig_line     (trig_line)
   );
 
   cdc u_cdc (
@@ -210,7 +257,7 @@ module dso_top (
   ad9280_sample u_ad9280_sample (
     .ad_clk        (ad_clk),
     .rst_n         (sys_rst_n),
-    .ad_data       (ad_data),
+    .ad_data       (ad_filter_data),
     .deci_valid    (deci_valid),
     .wave_run      (wave_run),
     .trig_level    (trig_level),
@@ -228,7 +275,7 @@ module dso_top (
     .sys_clk  (ad_clk),
     .sys_rst_n(sys_rst_n),
 
-    .ad_data    (ad_data),
+    .ad_data    (ad_filter_data),
     .deci_valid (deci_valid),
     .fft_en     (fft_en),
     .rd_clk     (pix_clk),

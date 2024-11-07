@@ -1,32 +1,30 @@
 module sample_ctrl #(
    parameter CHN_NUM = 8
 )(
-   input                       iSysClk, /* synthesis PAP_MARK_DEBUG="true" */
-   input                       iRst,
-   input                       clk_en,
-   input                       trigger_en,   //enable trigger
-   input      [3-1:0]          chn_sel,
-   input      [2:0]            mode_sel,
-   input      [CHN_NUM-1:0]    data_in,
-   input      [9:0]   pre_num,
-
-   output reg [9:0] start_addr, /* synthesis PAP_MARK_DEBUG="true" */
-   output reg finished,
-   output reg [9:0]    wr_addr,
-   output     [CHN_NUM-1:0]    wr_data,
-   output reg                  wr_en
+   input                          iSysClk, /* synthesis PAP_MARK_DEBUG="true" */
+   input                          iRst,
+   input                          clk_en,
+   input                          trigger_en,   //enable trigger
+   input         [3-1:0]          chn_sel,
+   input         [2:0]            mode_sel,
+   input         [CHN_NUM-1:0]    data_in,
+   input         [9:0]            pre_num,
+   output   reg  [9:0]            start_addr, /* synthesis PAP_MARK_DEBUG="true" */
+   output   reg                   finished,
+   output   reg  [9:0]            wr_addr,
+   output        [CHN_NUM-1:0]    wr_data,
+   output   reg                   wr_en
 );
-   reg   [9:0]   sample_cnt;
+   reg           [9:0]            sample_cnt;
 
-   reg    [CHN_NUM-1:0]    data_in_d1;
-   reg    [CHN_NUM-1:0]    data_in_d2;
-   reg    [CHN_NUM-1:0]    trigger_data;     //decide which data is being monitored according to mode_sel
-   reg                     trigger_flag;
-   reg                     trigger_ready;    //indicating a trigger is being processed
-  //  wire                    full;             //indicating RAM will be full in next clock cycle
-   wire   [CHN_NUM-1:0]    s_posedge;
-   wire   [CHN_NUM-1:0]    s_negedge;
-   wire   [CHN_NUM-1:0]    s_edge;
+   reg           [CHN_NUM-1:0]    data_in_d1;
+   reg           [CHN_NUM-1:0]    data_in_d2;
+   reg           [CHN_NUM-1:0]    trigger_data;     //decide which data is being monitored according to mode_sel
+   reg                            trigger_flag;
+   reg                            trigger_ready;    //indicating a trigger is being processed
+   wire          [CHN_NUM-1:0]    s_posedge;
+   wire          [CHN_NUM-1:0]    s_negedge;
+   wire          [CHN_NUM-1:0]    s_edge;
 
    always @(posedge iSysClk) begin
       if (~iRst) begin
@@ -108,7 +106,7 @@ always@(posedge iSysClk)begin
   always@(posedge iSysClk)begin
     if(~iRst)begin
       sample_cnt <= 11'd0;
-    end else if(wr_en && trigger_flag)begin
+    end else if(wr_en && trigger_en)begin
       sample_cnt <= sample_cnt + 1'b1;
     end else if (finished) begin
       sample_cnt <= 11'd0; 
@@ -117,22 +115,6 @@ always@(posedge iSysClk)begin
     end
   end
 
-  //  always @(posedge iSysClk) begin
-  //     if (~iRst) begin
-  //        trigger_ready <= 1'b0;
-  //     end
-  //     else if (trigger_en) begin
-  //        trigger_ready <= 1'b1;
-  //     end
-  //     else if (full) begin
-  //        trigger_ready <= 1'b0;
-  //     end
-  //     else begin
-  //        trigger_ready <= trigger_ready;
-  //     end
-  //  end
-  
-  //  assign full = (wr_addr == 10'h3ff);
 // wr_en 相当于data_valid信号
    always @(posedge iSysClk) begin
       if (~iRst) begin
@@ -145,7 +127,6 @@ always@(posedge iSysClk)begin
          wr_en <= 1'b0;
       end
    end
-
 
    always @(posedge iSysClk) begin
       if (~iRst) begin 
