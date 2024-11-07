@@ -3,7 +3,8 @@ module la_wave_display(
 	input                       pclk,
 	input    [23:0]             wave_color,
 // input                       ad_clk ,
-	input    [7:0]              ad_wr_data,
+  input                       trigger_en,
+ 	input    [7:0]              ad_wr_data,
    input                       ad_wr_en,
    input    [9:0]              ad_wr_addr,
    input    [9:0]              start_addr,
@@ -92,7 +93,7 @@ module la_wave_display(
       ram_addr <= 10'd0;
     end
     else if (region_active == 1'b1 && pos_de == 1'b1) begin
-      ram_addr <= rdaddress + start_addr;
+      ram_addr <= rdaddress + start_addr+1'b1;
     end
     else begin
       ram_addr <= ram_addr;
@@ -135,7 +136,7 @@ module la_wave_display(
   //  end
 
    always @(posedge pclk) begin
-      if (region_active) begin
+      if (region_active && ~trigger_en) begin
          if ((pos_y == CH0_H && q[0]) || (pos_y == CH0_L && ~q[0]) || (pos_y >=CH0_H && pos_y <= CH0_L && q_edge[0]) ||
              (pos_y == CH1_H && q[1]) || (pos_y == CH1_L && ~q[1]) || (pos_y >=CH1_H && pos_y <= CH1_L && q_edge[1]) ||
              (pos_y == CH2_H && q[2]) || (pos_y == CH2_L && ~q[2]) || (pos_y >=CH2_H && pos_y <= CH2_L && q_edge[2]) ||

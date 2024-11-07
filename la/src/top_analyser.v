@@ -70,6 +70,7 @@ wire                   [   7:0]         o_b_hdmi                   ;
       .ad_wr_data (  ad_wr_data           ), // input
       .ad_wr_en   (  ad_wr_en             ), // input
       .ad_wr_addr (  ad_wr_addr           ), // input
+      .trigger_en (  trigger_en           ), // input
       .start_addr (  start_addr  ),
       .i_hs       (  o_hs_grid            ), // input
       .i_vs       (  o_vs_grid            ), // input

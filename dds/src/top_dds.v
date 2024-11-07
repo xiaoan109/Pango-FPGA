@@ -21,7 +21,7 @@ module  top_dds
 (
     input   wire            sys_clk     ,   //系统时钟,50MHz
     input   wire            sys_rst_n   ,   //复位信号,低电平有效
-    input   wire    [3:0]   key         ,   //输入4位按键
+    // input   wire    [3:0]   wave_select         ,   //波形选择
 
     input  wire                 dds_icb_cmd_valid,//cmd有效
     output wire                 dds_icb_cmd_ready,//cmd准备好
@@ -50,12 +50,13 @@ assign dds_icb_rsp_err   = 1'b0;
 assign addr = dds_icb_cmd_addr;
 assign data_in = dds_icb_cmd_wdata;
 // reg define
-reg [31:0] reg1,reg2,reg3,reg4;
+reg [31:0] reg1,reg2,reg3,reg4,reg5;
 //  NAME |  ADDR |  FUNC 
 //  reg1 |  0x00 |  幅值
 //  reg2 |  0x04 |  频率
 //  reg3 |  0x08 |  最小分辨率
 //  reg4 |  0x0c |  相位
+//  reg5 |  0x10 |  波形选择
 
 always@(posedge sys_clk ) begin
     if(sys_rst_n == 1'b0)
@@ -64,6 +65,7 @@ always@(posedge sys_clk ) begin
         reg2 <= 32'd42949;
         reg3 <= 32'd0;
         reg4 <= 12'd1024;
+        reg5 <= 32'd1;
     end
     else if (icb_whsk == 1'b1)
     begin
@@ -72,6 +74,7 @@ always@(posedge sys_clk ) begin
             32'h04: reg2 <= data_in;
             32'h08: reg3 <= data_in;
             32'h0c: reg4 <= data_in;
+            32'h10: reg5 <= data_in;
             default:;
         endcase
     end
@@ -109,18 +112,19 @@ wire [8:0] amp_ctl;
 wire [31:0] freq_ctl;
 wire [31:0] min_ctl;
 wire [11:0] phase_ctl;
-
+wire [3:0]   wave_select ;   //波形选择
 
 assign amp_ctl = reg1;
 assign freq_ctl = reg2;
 assign min_ctl = reg3;
 assign phase_ctl = reg4;
+assign wave_select = reg5[3:0];
 
 //********************************************************************//
 //****************** Parameter and Internal Signal *******************//
 //********************************************************************//
 //wire  define
-wire    [3:0]   wave_select ;   //波形选择
+// wire    [3:0]   wave_select ;   //波形选择
 
 //dac_clka:DAC模块时钟
 // assign  dac_clk  = ~sys_clk;
@@ -142,13 +146,13 @@ dds     dds_inst
 );
 
 //----------------------- key_control_inst ------------------------
-key_control key_control_inst
-(
-    .sys_clk        (sys_clk    ),   //系统时钟,50MHz
-    .sys_rst_n      (sys_rst_n  ),   //复位信号,低电平有效
-    .key            (key        ),   //输入4位按键
+// key_control key_control_inst
+// (
+//     .sys_clk        (sys_clk    ),   //系统时钟,50MHz
+//     .sys_rst_n      (sys_rst_n  ),   //复位信号,低电平有效
+//     .key            (key        ),   //输入4位按键
 
-    .wave_select    (wave_select)    //输出波形选择
- );
+//     .wave_select    (wave_select)    //输出波形选择
+//  );
 
 endmodule
