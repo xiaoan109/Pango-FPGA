@@ -37,6 +37,8 @@ module dds_dso_top (
   wire        trig_edge;
   wire [ 4:0] v_scale;
   wire        fft_en;
+  wire        fir_en;
+  wire [11:0] trig_line;
 
   wire [19:0] ad_freq;  //AD脉冲信号的频率 
   wire [ 7:0] ad_vpp;  //AD输入信号峰峰值  
@@ -70,16 +72,6 @@ module dds_dso_top (
     .dac_data(da_data)  //输入DAC模块波形数据
   );
 
-  // key_filter #(
-  //   .CNT_MAX(CNT_MAX)  //计数器计数最大值
-  // ) u_key_filter (
-  //   .sys_clk  (sys_clk),    //系统时钟50Mhz
-  //   .sys_rst_n(sys_rst_n),  //全局复位
-  //   .key_in   (debug_key),     //按键输入信号
-
-  //   .key_flag(key_flag)  //按键消抖后标志信号
-  // );
-
 
   assign trig_level = 8'd127;
   assign deci_rate = 10'd1;
@@ -87,6 +79,8 @@ module dds_dso_top (
   assign v_scale = {1'b1, 4'd2};
   assign wave_run = 1'b1;
   assign fft_en = 1'b0;
+  assign fir_en = 1'b0;
+  assign trig_line = 12'd512;
 
   dso_top u_dso_top (
     .sys_clk   (sys_clk),     // input system clock 50MHz
@@ -113,6 +107,8 @@ module dds_dso_top (
     .trig_edge (trig_edge),
     .v_scale   (v_scale),
     .fft_en    (fft_en),
+    .fir_en    (fir_en),
+    .trig_line (trig_line),
     //measure regs
     .ad_freq   (ad_freq),     //AD脉冲信号的频率 
     .ad_vpp    (ad_vpp),      //AD输入信号峰峰值  
