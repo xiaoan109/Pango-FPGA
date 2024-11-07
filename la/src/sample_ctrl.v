@@ -7,7 +7,7 @@ module sample_ctrl #(
    input                          trigger_en,   //enable trigger
    input         [3-1:0]          chn_sel,
    input         [2:0]            mode_sel,
-   input         [CHN_NUM-1:0]    data_in,
+   input         [CHN_NUM-1:0]    data_in /* synthesis PAP_MARK_DEBUG="true" */,
    input         [9:0]            pre_num,
    output   reg  [9:0]            start_addr, /* synthesis PAP_MARK_DEBUG="true" */
    output   reg                   finished,
@@ -20,8 +20,7 @@ module sample_ctrl #(
    reg           [CHN_NUM-1:0]    data_in_d1;
    reg           [CHN_NUM-1:0]    data_in_d2;
    reg           [CHN_NUM-1:0]    trigger_data;     //decide which data is being monitored according to mode_sel
-   reg                            trigger_flag;
-   reg                            trigger_ready;    //indicating a trigger is being processed
+   reg                            trigger_flag  /* synthesis PAP_MARK_DEBUG="true" */;
    wire          [CHN_NUM-1:0]    s_posedge;
    wire          [CHN_NUM-1:0]    s_negedge;
    wire          [CHN_NUM-1:0]    s_edge;
@@ -65,8 +64,8 @@ module sample_ctrl #(
          clk_en_d2 <= clk_en_d1;
       end
   end
-  assign clk_en_edge = clk_en_d1 ^ clk_en_d2; 
 
+  assign clk_en_edge = clk_en_d1 ^ clk_en_d2; 
 
    always @(posedge iSysClk) begin
       if (~iRst) begin
@@ -80,7 +79,6 @@ module sample_ctrl #(
          trigger_flag <= 1'b0;
       end
    end
-
 
   always@(posedge iSysClk)begin
     if(~iRst)begin
@@ -106,7 +104,7 @@ always@(posedge iSysClk)begin
   always@(posedge iSysClk)begin
     if(~iRst)begin
       sample_cnt <= 11'd0;
-    end else if(wr_en && trigger_en)begin
+    end else if(wr_en && trigger_flag)begin
       sample_cnt <= sample_cnt + 1'b1;
     end else if (finished) begin
       sample_cnt <= 11'd0; 
