@@ -36,7 +36,16 @@ module tb_top ();
 
     #200;
     sys_rst_n <= 1'b1;
+	repeat(10000) @(posedge sys_clk);
     key <= 4'b1110;
+	repeat(10000) @(posedge sys_clk);
+    key <= 4'b1101;
+	repeat(10000) @(posedge sys_clk);
+    key <= 4'b1011;
+	repeat(10000) @(posedge sys_clk);
+    key <= 4'b0111;
+	repeat(10000) @(posedge sys_clk);
+	$stop;
   end
 
   always #10 sys_clk = ~sys_clk;
