@@ -49,3 +49,5 @@
 !/la/pnr/source/*
 !/la/pnr/*.pds
 !/la/src/**
+
+!/doc/**
