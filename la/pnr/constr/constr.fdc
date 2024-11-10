@@ -15,6 +15,18 @@ define_attribute {p:sys_rst_n} {PAP_IO_VCCIO} {3.3}
 define_attribute {p:sys_rst_n} {PAP_IO_STANDARD} {LVCMOS33}
 define_attribute {p:sys_rst_n} {PAP_IO_NONE} {TRUE}
 
+define_attribute {p:key0} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:key0} {PAP_IO_LOC} {L15}
+define_attribute {p:key0} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:key0} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:key0} {PAP_IO_NONE} {TRUE}
+
+define_attribute {p:key1} {PAP_IO_DIRECTION} {INPUT}
+define_attribute {p:key1} {PAP_IO_LOC} {J17}
+define_attribute {p:key1} {PAP_IO_VCCIO} {3.3}
+define_attribute {p:key1} {PAP_IO_STANDARD} {LVCMOS33}
+define_attribute {p:key1} {PAP_IO_NONE} {TRUE}
+
 define_attribute {p:b_out[7]} {PAP_IO_DIRECTION} {OUTPUT}
 define_attribute {p:b_out[7]} {PAP_IO_LOC} {P26}
 define_attribute {p:b_out[7]} {PAP_IO_VCCIO} {3.3}

@@ -49,7 +49,7 @@ parameter   Y_WIDTH = 4'd12;
     reg  [3:0]                  reset_delay_cnt;
 
 
-    pll_hdmi u_pll (
+    pll u_pll (
         .clkin1   (  sys_clk    ),//50MHz
         .clkout0  (  pix_clk    ),//148.5MHz
         .clkout1  (  cfg_clk    ),//10MHz
@@ -81,8 +81,8 @@ parameter   Y_WIDTH = 4'd12;
     	end
     end
     
-    assign rstn_out = (rstn_1ms == 16'h2710);
-    //assign rstn_out = 1'b1;
+    //assign rstn_out = (rstn_1ms == 16'h2710);
+    assign rstn_out = 1'b1;
 
     sync_vg #(
         .X_BITS               (  X_WIDTH              ), 

@@ -13,7 +13,6 @@ module wave_display(
 
    //inputs from cpu
    input                       trigger_en,
-   //input    [9:0]              offset,
    input                       right_shift,
    input                       left_shift,
    input    [5:0]              interval,
@@ -49,6 +48,7 @@ module wave_display(
 
    reg [9:0] ram_addr;
    reg [4:0] addr_cnt;
+   reg [9:0] offset;
 
    assign o_data = v_data;
    assign o_hs   = pos_hs;
@@ -96,8 +96,20 @@ module wave_display(
       end
    end
 
-   //wire [9:0] offset_addr;
-   //assign offset_addr = (right_shift ? 1024 - offset : offset) / interval;
+   always @(posedge pclk) begin
+      if (~rst_n) begin
+         offset <= 10'd0;
+      end
+      else if (left_shift) begin
+         offset <= offset + 1'b1;
+      end
+      else if (right_shift) begin
+         offset <= offset - 1'b1;
+      end
+      else begin
+         offset <= offset;
+      end
+   end
    
    wire [9:0] trig_start_addr;
    assign trig_start_addr = start_addr - (1024 - pre_num) - pre_num / interval;
@@ -106,14 +118,8 @@ module wave_display(
      if (~rst_n) begin
        ram_addr <= 10'd0;
      end
-     else if (right_shift) begin
-       ram_addr <= ram_addr - 1;
-     end
-     else if (left_shift) begin
-       ram_addr <= ram_addr + 1;
-     end
      else if (region_active == 1'b1 && pos_de == 1'b1) begin
-       ram_addr <= rdaddress + trig_start_addr + 1;
+       ram_addr <= rdaddress + trig_start_addr + offset + 1;
      end
      else begin
        ram_addr <= ram_addr;

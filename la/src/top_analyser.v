@@ -5,6 +5,8 @@ module top_analyser(
    output              iic_tx_scl,
    inout               iic_tx_sda,
    output              led_int,
+   input               key0,
+   input               key1,
    //hdmi_out
    output              pix_clk,
    output              o_hs_wave,
@@ -15,16 +17,14 @@ module top_analyser(
    output   [7:0]      b_out
    //params from cpu
    //input               trigger_en,
-   //input               right_shift,
-   //input               left_shift,
+
    //input    [5:0]      interval,
    //input    [9:0]      pre_num,
    //input    [2:0]      cpu_chn_sel,
    //input    [2:0]      cpu_mode_sel,
    //input    [3:0]      cpu_freq_sel,
    //input               uart_en,
-   //protocol analysis outs
-   //output   [7:0]      uart_data
+   //input               spi_en,
    );
 
    wire     [7:0]      wr_data;
@@ -32,43 +32,73 @@ module top_analyser(
    wire     [9:0]      wr_addr;
    wire     [9:0]      rd_addr;
    wire     [9:0]      start_addr;
+   wire                wr_over;
+   wire     [9:0]      rdaddress;
+
    wire                o_hs_grid;
    wire                o_vs_grid;
    wire                o_de_grid;
    wire     [23:0]     o_data_grid;
-   wire                wr_over;
-   wire     [9:0]      rdaddress;
-         
+
    wire                o_hs_hdmi;
    wire                o_vs_hdmi;
    wire                o_de_hdmi;
    wire     [7:0]      o_r_hdmi;
    wire     [7:0]      o_g_hdmi;
    wire     [7:0]      o_b_hdmi;
+
+   wire                o_hs_ui;
+   wire                o_vs_ui;
+   wire                o_de_ui;
+   wire     [23:0]     o_data_ui;
          
    wire                clken;
+   wire                right_shift;
+   wire                left_shift;
 
    wire                tx_data;
    wire     [7:0]      data_in;
    wire                finished;
 
    wire                trigger_en;
-   wire                right_shift;
-   wire                left_shift;
    wire     [4:0]      interval;
    wire     [9:0]      pre_num;
-   wire                cpu_chn_sel;
-   wire                cpu_mode_sel;
-   wire                cpu_freq_sel;
+   wire     [2:0]      cpu_chn_sel;
+   wire     [2:0]      cpu_mode_sel;
+   wire     [3:0]      cpu_freq_sel = 4'h8;
    wire                uart_en = 1'b1;
+   wire                spi_en;
+   wire                iic_en;
 
-   wire     [2:0]      chn_sel;
-   wire     [2:0]      mode_sel;
+   reg      [2:0]      chn_sel;
+   reg      [2:0]      mode_sel;
+   wire     [3:0]      freq_sel; 
 
-   assign chn_sel  = uart_en ? 3'b100 : cpu_chn_sel;
-   assign mode_sel = uart_en ? 3'b011 : cpu_mode_sel;
+   always @(*) begin
+      if (uart_en) begin
+         chn_sel  = 3'b100;
+      end
+      else if (spi_en) begin
+         chn_sel  = 3'b011;
+      end
+      else begin
+         chn_sel  = cpu_chn_sel;
+      end
+   end
+
+   always @(*) begin
+      if (uart_en) begin
+         mode_sel = 3'b011;
+      end
+      else if (spi_en) begin
+         mode_sel = 3'b011;
+      end
+      else begin
+         mode_sel = cpu_mode_sel;
+      end
+   end
+
    assign freq_sel = cpu_freq_sel;
-
 
    wave_display u_wave_display (
       .rst_n      (  sys_rst_n            ), // input
@@ -83,47 +113,65 @@ module top_analyser(
       .i_de       (  o_de_grid            ), // input
       .i_data     (  o_data_grid          ), // input
       .trigger_en (  trigger_en           ), // input
-      .right_shift(  0                    ), // input
-      .left_shift (  0                    ), // input
+      .right_shift(  right_shift          ), // input
+      .left_shift (  left_shift           ), // input
       .interval   (  16                   ), // input
-      .pre_num    (  1                  ), // input
+      .pre_num    (  32                   ), // input
       .o_hs       (  o_hs_wave            ), // output
       .o_vs       (  o_vs_wave            ), // output
       .o_de       (  o_de_wave            ), // output
       .o_data     (  {r_out,g_out,b_out}  )  // output
    );
 
-   
-   sample_ctrl u_sample_ctrl(
-      .iSysClk    (  sys_clk     ),   // input
-      .iRst       (  sys_rst_n   ),   // input
-      .clk_en     (  clken       ),   // input
-      .trigger_en (  trigger_en  ), // input
-      .chn_sel    (  chn_sel     ), // input
-      .mode_sel   (  mode_sel    ), // input
-      //.trigger_en (  trigger_en  ),   // input
-      //.chn_sel    (  3'b100      ),   // input
-      //.mode_sel   (  3'd2        ),   // input
-      .data_in    (  {3'b111,tx_data,4'b1111}     ),   // input
-      .wr_addr    (  wr_addr     ),   // output
-      .wr_data    (  wr_data     ),   // output
-      .wr_en      (  wr_en       ),
-      .start_addr (  start_addr  ),
-      .finished   (  finished    ),
-      .pre_num    (  1         )    // output
-   );
-
-   grid_display u_grid_display (
+   ui_display u_ui_display (
       .rst_n      (  sys_rst_n                     ), // input
       .pclk       (  pix_clk                       ), // input
       .i_hs       (  o_hs_hdmi                     ), // input
       .i_vs       (  o_vs_hdmi                     ), // input
       .i_de       (  o_de_hdmi                     ), // input
       .i_data     (  {o_r_hdmi,o_g_hdmi,o_b_hdmi}  ), // input
+      .mode_sel   (  mode_sel                      ), // input
+      .chn_sel    (  chn_sel                       ), // input
+      .freq_sel   (  freq_sel                      ), // input
+      .uart_en    (  uart_en                       ), // input
+      .spi_en     (  spi_en                        ), // input
+      .iic_en     (  iic_en                        ), // input
+      .o_hs       (  o_hs_ui                       ), // output
+      .o_vs       (  o_vs_ui                       ), // output
+      .o_de       (  o_de_ui                       ), // output
+      .o_data     (  o_data_ui                     )  // output
+   );
+
+   grid_display u_grid_display (
+      .rst_n      (  sys_rst_n                     ), // input
+      .pclk       (  pix_clk                       ), // input
+      .i_hs       (  o_hs_ui                       ), // input
+      .i_vs       (  o_vs_ui                       ), // input
+      .i_de       (  o_de_ui                       ), // input
+      .i_data     (  o_data_ui                     ), // input
       .o_hs       (  o_hs_grid                     ), // output
       .o_vs       (  o_vs_grid                     ), // output
       .o_de       (  o_de_grid                     ), // output
       .o_data     (  o_data_grid                   )  // output
+   );
+
+   sample_ctrl u_sample_ctrl(
+      .iSysClk    (  sys_clk     ),   // input
+      .iRst       (  sys_rst_n   ),   // input
+      .clk_en     (  clken       ),   // input
+      .trigger_en (  trigger_en  ),   // input
+      .chn_sel    (  chn_sel     ),   // input
+      .mode_sel   (  mode_sel    ),   // input
+      //.trigger_en (  trigger_en  ), // input
+      //.chn_sel    (  3'b100      ), // input
+      //.mode_sel   (  3'd2        ), // input
+      .data_in    (  {3'b111,tx_data,4'b1111}     ),   // input
+      .wr_addr    (  wr_addr     ),   // output
+      .wr_data    (  wr_data     ),   // output
+      .wr_en      (  wr_en       ),
+      .start_addr (  start_addr  ),
+      .finished   (  finished    ),
+      .pre_num    (  1           )    // output
    );
 
    pulse_gen u_pulse_gen (
@@ -136,7 +184,7 @@ module top_analyser(
    freq_div u_freq_div (
       .iSysClk    (  sys_clk   ), // input
       .iRst       (  sys_rst_n ), // input
-      .freq_sel   (  4'h8      ), // input
+      .freq_sel   (  freq_sel  ), // input
       .clken      (  clken     )  // output
    );
 
@@ -169,13 +217,20 @@ module top_analyser(
       .tx        (  tx_data       )  // output
    );  
 
-   //uart_detect u_uart_detect (
-   //   .sys_clk   (  sys_clk   ), // input
-   //   .sys_rst_n (  sys_rst_n ), // input
-   //   .tx_data   (  tx_data   ), // input
-   //   .wr_en     (  ad_wr_en  ), // input
-   //   .uart_en   (  uart_en   ), // input
-   //   .uart_data (  uart_data )  // output
-   //);
+  key_filter u0_key_filter (
+    .sys_clk   (  sys_clk     ), // input
+    .sys_rst_n (  sys_rst_n   ), // input
+    .key_in    (  key0        ), // input
+    .key_flag  (  left_shift  )  // output
+  );
 
+  key_filter u1_key_filter (
+    .sys_clk   (  sys_clk     ), // input
+    .sys_rst_n (  sys_rst_n   ), // input
+    .key_in    (  key1        ), // input
+    .key_flag  (  right_shift )  // output
+  );
+
+   // assign left_shift  = ~key0;
+   // assign right_shift = ~key1;
 endmodule
