@@ -47,9 +47,9 @@ module pattern_vg # (
     begin
         if (de_in)
         begin
-            r_out <= 8'd155;
-            g_out <= 8'd155;
-            b_out <= 8'd155;
+            r_out <= 8'd255;
+            g_out <= 8'd255;
+            b_out <= 8'd255;
         end
         else begin
             r_out <= 8'h00;

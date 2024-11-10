@@ -26,7 +26,7 @@ module grid_display (
   assign o_vs   = pos_vs;
   assign o_de   = pos_de;
   always @(posedge pclk) begin
-    if (pos_y >= 12'd9 && pos_y <= 12'd1075 && pos_x >= 12'd442 && pos_x <= 12'd1521)
+    if (pos_y >= 12'd9 && pos_y <= 12'd1075 && pos_x >= 12'd442 && pos_x <= 12'd1465)
       region_active <= 1'b1;
     else region_active <= 1'b0;
   end
@@ -37,7 +37,7 @@ module grid_display (
   end
 
   always @(posedge pclk) begin
-    if((region_active == 1'b1 && pos_de == 1'b1)&&((pos_y <= 12'd1055) && (pos_y >= 12'd32))&&(pos_x  == 12'd1521))
+    if((region_active == 1'b1 && pos_de == 1'b1)&&((pos_y <= 12'd1055) && (pos_y >= 12'd32))&&(pos_x  == 12'd1465))
       grid_y <= (grid_y == 7'd101) ? 7'd0 : grid_y + 7'd1;
     else if (pos_y >= 12'd1055) grid_y <= 7'd0;
     else grid_y <= grid_y;
