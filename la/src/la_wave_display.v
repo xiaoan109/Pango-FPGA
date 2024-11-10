@@ -2,10 +2,10 @@ module la_wave_display(
 	input                       rst_n,   
 	input                       pclk,
 	input    [23:0]             wave_color,
-	input    [7:0]              wr_data,
-   input                       wr_en,
-   input    [9:0]              wr_addr,
-   input    [9:0]              start_addr,
+	input    [7:0]              wr_data /* synthesis PAP_MARK_DEBUG="true" */,
+   input                       wr_en /* synthesis PAP_MARK_DEBUG="true" */,
+   input    [9:0]              wr_addr /* synthesis PAP_MARK_DEBUG="true" */,
+   input    [9:0]              start_addr /* synthesis PAP_MARK_DEBUG="true" */,
 	input                       i_hs,    
 	input                       i_vs,    
 	input                       i_de,	
@@ -34,9 +34,6 @@ module la_wave_display(
                CH6_H = 790,  CH6_L = 890  ,
                CH7_H = 910,  CH7_L = 1010 ;
 
-   reg      [3:0]              state;
-   reg      [10:0]             sample_cnt;
-   reg      [31:0]             wait_cnt;
    wire     [11:0]             pos_x;
    wire     [11:0]             pos_y;
    wire                        pos_hs;
@@ -80,7 +77,7 @@ module la_wave_display(
          rdaddress <= rdaddress;
       end
       else begin
-         rdaddress <= 10'd0;
+         rdaddress <= 10'b0;
       end
    end
 
@@ -99,10 +96,10 @@ module la_wave_display(
       end
    end
 
-   wire [9:0] trig_start_addr;
-   wire [9:0] offset_addr;
-
+   //wire [9:0] offset_addr;
    //assign offset_addr = (right_shift ? 1024 - offset : offset) / interval;
+   
+   wire [9:0] trig_start_addr;
    assign trig_start_addr = start_addr - (1024 - pre_num) - pre_num / interval;
 
    always@(posedge pclk) begin
@@ -110,10 +107,10 @@ module la_wave_display(
        ram_addr <= 10'd0;
      end
      else if (right_shift) begin
-       ram_addr <= ram_addr - interval;
+       ram_addr <= ram_addr - 1;
      end
      else if (left_shift) begin
-       ram_addr <= ram_addr + interval;
+       ram_addr <= ram_addr + 1;
      end
      else if (region_active == 1'b1 && pos_de == 1'b1) begin
        ram_addr <= rdaddress + trig_start_addr + 1;

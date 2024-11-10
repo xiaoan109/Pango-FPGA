@@ -57,30 +57,27 @@ module top_analyser(
    wire     [7:0]      o_b_hdmi;
          
    wire                clken;
-   wire                chn_sel;
-   wire                mode_sel;
-   wire                freq_sel;
 
    wire                tx_data;
    wire     [7:0]      data_in;
   //  wire                finished;
 
-   //wire                trigger_en;
-   //wire                right_shift;
-   //wire                left_shift;
-   //wire     [9:0]      pre_num;
-   //wire     [4:0]      interval;
+   wire                trigger_en;
+   wire                right_shift;
+   wire                left_shift;
+   wire     [4:0]      interval;
+   wire     [9:0]      pre_num;
+   wire                cpu_chn_sel;
+   wire                cpu_mode_sel;
+   wire                cpu_freq_sel;
+   wire                uart_en = 1'b1;
 
-   //assign chn_sel  = uart_en ? 3'b100 : cpu_chn_sel;
-   //assign mode_sel = uart_en ? 3'b011 : cpu_mode_sel;
-   //assign freq_sel = cpu_freq_sel;
+   wire     [2:0]      chn_sel;
+   wire     [2:0]      mode_sel;
 
-  assign  o_hs_hdmi   = i_hs_hdmi;
-  assign  o_vs_hdmi   = i_vs_hdmi;
-  assign  o_de_hdmi   = i_de_hdmi;
-  assign  o_r_hdmi   = i_r_hdmi;
-  assign  o_g_hdmi   = i_g_hdmi;
-  assign  o_b_hdmi   = i_b_hdmi;
+   assign chn_sel  = uart_en ? 3'b100 : cpu_chn_sel;
+   assign mode_sel = uart_en ? 3'b011 : cpu_mode_sel;
+   assign freq_sel = cpu_freq_sel;
 
 
    la_wave_display u_wave_display (
@@ -96,11 +93,10 @@ module top_analyser(
       .i_de       (  o_de_grid            ), // input
       .i_data     (  o_data_grid          ), // input
       .trigger_en (  trigger_en           ), // input
-      //.offset     (  256                  ), // input
       .right_shift(  0                    ), // input
       .left_shift (  0                    ), // input
       .interval   (  16                   ), // input
-      .pre_num    (  512                  ), // input
+      .pre_num    (  1                  ), // input
       .o_hs       (  o_hs_wave            ), // output
       .o_vs       (  o_vs_wave            ), // output
       .o_de       (  o_de_wave            ), // output
@@ -156,7 +152,7 @@ module top_analyser(
    freq_div u_freq_div (
       .iSysClk    (  sys_clk   ), // input
       .iRst       (  sys_rst_n ), // input
-      .freq_sel   (  4'h2      ), // input
+      .freq_sel   (  4'h8      ), // input
       .clken      (  clken     )  // output
    );
 
@@ -184,10 +180,16 @@ module top_analyser(
    //uart_tx u_uart_tx (
    //   .sys_clk   (  sys_clk   ), // input
    //   .sys_rst_n (  sys_rst_n ), // input
-   //   .pi_data   (  data_in   ), // input
-   //   .pi_flag   (  1'b1      ), // input
-   //   .tx        (  tx_data   )  // output
+   //   .test_data (  data_in   )  // output
    //);
+
+   uart_tx u_uart_tx (
+      .sys_clk   (  sys_clk       ), // input
+      .sys_rst_n (  sys_rst_n     ), // input
+      .pi_data   (  8'b10000010   ), // input
+      .pi_flag   (  1'b1          ), // input
+      .tx        (  tx_data       )  // output
+   );  
 
    //uart_detect u_uart_detect (
    //   .sys_clk   (  sys_clk   ), // input
