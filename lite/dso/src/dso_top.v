@@ -1,10 +1,10 @@
 module dso_top (
   input  wire       sys_clk,     // input system clock 50MHz
   input  wire       sys_rst_n,
-  output wire       rstn_out,
-  output wire       iic_tx_scl,
-  inout  wire       iic_tx_sda,
-  output wire       led_int,
+  // output wire       rstn_out,
+  // output wire       iic_tx_scl,
+  // inout  wire       iic_tx_sda,
+  // output wire       led_int,
   //hdmi_out
 
   input i_vs_hdmi ,

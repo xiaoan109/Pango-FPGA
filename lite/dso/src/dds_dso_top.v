@@ -44,6 +44,13 @@ module dds_dso_top (
   wire [ 7:0] ad_vpp;  //AD输入信号峰峰值  
   wire [ 7:0] ad_max;  //AD输入信号最大值  
   wire [ 7:0] ad_min;  //AD输入信号最小值  
+  
+  wire vs_hdmi;
+  wire hs_hdmi;
+  wire de_hdmi;
+  wire [7:0] r_hdmi;
+  wire [7:0] g_hdmi;
+  wire [7:0] b_hdmi;
 
   pll u_pll (
     .clkin1  (sys_clk),  //50MHz
@@ -71,6 +78,23 @@ module dds_dso_top (
 
     .dac_data(da_data)  //输入DAC模块波形数据
   );
+  
+  hdmi_top u_hdmi_top (
+	.sys_clk   (sys_clk),     // input system clock 50MHz
+	.rstn_out  (rstn_out),
+	.iic_tx_scl(iic_tx_scl),
+	.iic_tx_sda(iic_tx_sda),
+    .led_int   (led_int),
+    //hdmi_out
+    .pix_clk   (pix_clk),     //pixclk
+    .vs_out    (vs_hdmi),
+    .hs_out    (hs_hdmi),
+    .de_out    (de_hdmi),
+    .r_out     (r_hdmi ),
+    .g_out     (g_hdmi ),
+    .b_out     (b_hdmi)
+
+);
 
 
   assign trig_level = 8'd127;
@@ -85,10 +109,17 @@ module dds_dso_top (
   dso_top u_dso_top (
     .sys_clk   (sys_clk),     // input system clock 50MHz
     .sys_rst_n (sys_rst_n),
-    .rstn_out  (rstn_out),
-    .iic_tx_scl(iic_tx_scl),
-    .iic_tx_sda(iic_tx_sda),
-    .led_int   (led_int),
+    // .rstn_out  (rstn_out),
+    // .iic_tx_scl(iic_tx_scl),
+    // .iic_tx_sda(iic_tx_sda),
+    // .led_int   (led_int),
+	
+	.i_vs_hdmi(vs_hdmi),
+	.i_hs_hdmi(hs_hdmi),
+	.i_de_hdmi(de_hdmi),
+	.i_r_hdmi(r_hdmi),
+	.i_g_hdmi(g_hdmi),
+	.i_b_hdmi(b_hdmi),
 
     .pix_clk(pix_clk),  //pixclk
     .vs_out (vs_out),

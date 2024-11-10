@@ -8,6 +8,9 @@ module wav_display (
   input  [ 7:0] ad_buf_data,
   output [11:0] wave_rd_addr,
   input  [11:0] ad_buf_rd_addr,
+  input         fft_en,
+
+  input  [11:0] ram_rd_data,
   input         i_hs,
   input         i_vs,
   input         i_de,
@@ -17,8 +20,12 @@ module wav_display (
   output        o_de  /* synthesis PAP_MARK_DEBUG="true" */,
   output [23:0] o_data  /* synthesis PAP_MARK_DEBUG="true" */,
   output        wr_over,
-  input  [ 4:0] v_scale
+  input  [ 4:0] v_scale,
+  input  [11:0] trig_line
 );
+
+  localparam RED = 24'hff0000;
+  localparam BLUE = 24'h0000ff;
 
   wire [11:0] pos_x;
   wire [11:0] pos_y;
@@ -38,18 +45,37 @@ module wav_display (
   // assign ref_rd_addr = rdaddress[9:0];
   wire [11:0] wave_data;
   wire [11:0] scale_data;
+  wire [11:0] fft_data;
+  wire [11:0] sel_data;
   reg  [11:0] pre_data;
+  // reg  [ 9:0] v_shift_t;
+  reg  [ 4:0] v_scale_t;
+  reg  [11:0] trig_line_t;
   assign wave_data = {4'd0, 8'd255 - q};
-  assign scale_data = v_scale[4] ?  (12'd533 + ((wave_data - 12'd128) << v_scale[3:1])): (12'd533 + ((wave_data - 12'd128) >> v_scale[3:1]));  // 1/2/4 scale
-
+  assign scale_data = v_scale_t[4] ?  (12'd541 + ((wave_data - 12'd128) << v_scale_t[3:1])): (12'd541 + ((wave_data - 12'd128) >> v_scale_t[3:1]));  // 1/2/4 scale
+  assign fft_data = (12'd4095 - ram_rd_data) >> 2;
+  assign sel_data = fft_en ? fft_data : scale_data;
 
   assign o_data = v_data;
   assign o_hs = pos_hs;
   assign o_vs = pos_vs;
   assign o_de = pos_de;
 
+  //寄存输入的参数
+  always @(posedge pclk or negedge rst_n) begin
+    if (!rst_n) begin
+      // v_shift_t   <= 10'b0;
+      v_scale_t   <= 5'b0;
+      trig_line_t <= 12'b0;
+    end else begin
+      // v_shift_t   <= v_shift;
+      v_scale_t   <= v_scale;
+      trig_line_t <= trig_line;
+    end
+  end
+
   always @(posedge pclk) begin
-    if (pos_y >= 12'd9 && pos_y <= 12'd1075 && pos_x >= 12'd442 && pos_x <= 12'd1522)
+    if (pos_y >= 12'd9 && pos_y <= 12'd1075 && pos_x >= 12'd442 && pos_x <= 12'd1465)
       region_active <= 1'b1;
     else region_active <= 1'b0;
   end
@@ -61,20 +87,22 @@ module wav_display (
 
   always @(posedge pclk) begin
     if (region_active == 1'b1)
-      if ((pos_y >= pre_data && pos_y <= scale_data) || (pos_y <= pre_data && pos_y >= scale_data)) v_data <= wave_color;
+      if ((pos_y >= pre_data && pos_y <= sel_data) || (pos_y <= pre_data && pos_y >= sel_data))
+        v_data <= wave_color;
+      else if (pos_y == trig_line_t) v_data <= BLUE;
       else v_data <= pos_data;
     else v_data <= pos_data;
+
   end
 
   always @(posedge pclk) begin
-    if(region_active == 1'b1)
-      pre_data <= scale_data;
+    if (region_active == 1'b1) pre_data <= sel_data;
   end
 
   assign wave_rd_addr = rdaddress;
 
   //标志一帧波形绘制完毕
-  assign wr_over = (pos_x == 12'd1522) && (pos_y == 12'd1075);
+  assign wr_over = (pos_x == 12'd1465) && (pos_y == 12'd1075);
 
   ram1024x8 u_ram (
     .wr_data(ad_buf_data),          // input [7:0]
