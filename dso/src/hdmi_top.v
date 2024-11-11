@@ -31,6 +31,17 @@ module hdmi_top (
   parameter H_SYNC = 12'd44;
   parameter H_ACT = 12'd1920;
   parameter HV_OFFSET = 12'd0;
+  //MODE_720p
+  // parameter V_TOTAL = 12'd750  ;
+  // parameter V_FP = 12'd5       ;
+  // parameter V_BP = 12'd20      ;
+  // parameter V_SYNC = 12'd5     ;
+  // parameter V_ACT = 12'd720    ;
+  // parameter H_TOTAL = 12'd1650 ;
+  // parameter H_FP = 12'd110     ;
+  // parameter H_BP = 12'd220     ;
+  // parameter H_SYNC = 12'd40    ;
+  // parameter H_ACT = 12'd1280   ;
 
   wire                    cfg_clk;
   wire                    locked;
@@ -47,7 +58,7 @@ module hdmi_top (
 
   pll_hdmi u_pll (
     .clkin1  (sys_clk),  //50MHz
-    .clkout0 (pix_clk),  //148.5MHz
+    .clkout0 (pix_clk),  //148.5MHz -> 74.25MHz
     .clkout1 (cfg_clk),  //10MHz
     .pll_lock(locked)
   );

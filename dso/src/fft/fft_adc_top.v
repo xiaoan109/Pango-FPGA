@@ -1,14 +1,14 @@
 module fft_adc_top (
-  input wire sys_clk,   //ad_clk
-  input wire sys_rst_n,
+  input wire sys_clk,   //!ADC采样时钟
+  input wire sys_rst_n, //!系统复位，低电平有效
 
-  input wire [7:0] ad_data,
-  input wire       deci_valid,
-  input wire       fft_en  /* synthesis PAP_MARK_DEBUG="true" */,
+  input wire [7:0] ad_data,     //!ADC采样数据
+  input wire       deci_valid,  //!抽样有效信号
+  input wire       fft_en,      //!FFT频域显示开关
 
-  input wire rd_clk,
-  input wire [9:0] rd_addr  /* synthesis PAP_MARK_DEBUG="true" */,
-  output wire [11:0] ram_rd_data  /* synthesis PAP_MARK_DEBUG="true" */
+  input  wire        rd_clk,      //!FFT RAM读时钟
+  input  wire [ 9:0] rd_addr,     //!FFT RAM读地址
+  output wire [11:0] ram_rd_data  //!FFT RAM读数据
 );
 
 

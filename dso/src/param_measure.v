@@ -1,19 +1,19 @@
 module param_measure (
-  input wire clk,   // 时钟
-  input wire rst_n, // 复位信号
+  input wire clk,   //!系统时钟50MHz
+  input wire rst_n, //!系统复位，低电平有效
 
-  input wire [7:0] trig_level,  // 触发电平
+  input wire [7:0] trig_level,  //!触发电平
 
-  input wire       ad_clk,  // AD时钟
-  input wire [7:0] ad_data, // AD输入数据
+  input wire       ad_clk,  //!ADC时钟
+  input wire [7:0] ad_data, //!ADC输入数据
 
-  output wire ad_pulse,  //pulse_gen模块输出的脉冲信号,仅用于调试
+  output wire ad_pulse,  //!pulse_gen模块输出的脉冲信号,仅用于调试
 
-  output wire [19:0] ad_freq,   // 被测时钟频率输出
-  output wire [ 7:0] ad_vpp,    // AD峰峰值
-  output wire [ 7:0] ad_max,    // AD最大值
-  output wire [ 7:0] ad_min,    // AD最小值
-  input  wire        debug_clk
+  output wire [19:0] ad_freq,   //!被测时钟频率输出
+  output wire [ 7:0] ad_vpp,    //!ADC峰峰值
+  output wire [ 7:0] ad_max,    //!ADC最大值
+  output wire [ 7:0] ad_min,    //!ADC最小值
+  input  wire        debug_clk //!DEBUG时钟测试端口
 );
 
   //parameter define

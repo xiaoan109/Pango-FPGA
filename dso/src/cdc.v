@@ -1,14 +1,14 @@
 module cdc (
-  input clk1,
-  input rst1_n,
+  input wire clk1,   //!源时钟域时钟信号
+  input wire rst1_n, //!源时钟域复位信号，低电平有效
 
-  input clk2,
-  input rst2_n,
+  input wire clk2,   //!目的时钟域时钟信号
+  input wire rst2_n, //!目的时钟域复位信号，低电平有效
 
-  input a,
+  input wire a,  //!源时钟域单比特数据
 
-  output reg b_r,
-  output     busy
+  output reg  b_r,  //!目的时钟域单比特数据
+  output wire busy  //!跨时钟域处理进行标志
 );
 
   //--------------------------------------------

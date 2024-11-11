@@ -64,4 +64,6 @@ module eth_send_dds(
 			endcase
 		end
 	end
+	
+	assign tx_data = tx_data_reg;
 endmodule
