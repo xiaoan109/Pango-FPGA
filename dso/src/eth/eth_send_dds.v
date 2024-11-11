@@ -2,19 +2,19 @@ module eth_send_dds(
 	input             eth_tx_clk  ,
 	input             rst_n       ,
 	//用户接口
-    output            tx_start_en , //以太网开始发送信号
-    output     [31:0] tx_data     , //以太网待发送数据
-    output     [15:0] tx_byte_num , //以太网发送的有效字节数 单位:byte
-    input             tx_done     , //以太网发送完成信号
-    input             tx_req      ,  //读数据请求信号
+    output            tx_start_en /* synthesis PAP_MARK_DEBUG="1" */, //以太网开始发送信号
+    output     [31:0] tx_data     /* synthesis PAP_MARK_DEBUG="1" */, //以太网待发送数据
+    output     [15:0] tx_byte_num /* synthesis PAP_MARK_DEBUG="1" */, //以太网发送的有效字节数 单位:byte
+    input             tx_done     /* synthesis PAP_MARK_DEBUG="1" */, //以太网发送完成信号
+    input             tx_req      /* synthesis PAP_MARK_DEBUG="1" */,  //读数据请求信号
 	//dds发送使能
-	input             dds_ctrl_en ,
+	input             dds_ctrl_en /* synthesis PAP_MARK_DEBUG="1" */,
 	//dds配置
-	input      [ 3:0] wave_select ,   //输出波形选择
-    input      [ 8:0] amp_ctl     ,   //幅值
-    input      [31:0] freq_ctl    ,   //频率
-    input      [31:0] min_ctl     ,   //最小分辨率
-    input      [11:0] phase_ctl       //相位
+	input      [ 3:0] wave_select /* synthesis PAP_MARK_DEBUG="1" */,   //输出波形选择
+    input      [ 8:0] amp_ctl     /* synthesis PAP_MARK_DEBUG="1" */,   //幅值
+    input      [31:0] freq_ctl    /* synthesis PAP_MARK_DEBUG="1" */,   //频率
+    input      [31:0] min_ctl     /* synthesis PAP_MARK_DEBUG="1" */,   //最小分辨率
+    input      [11:0] phase_ctl   /* synthesis PAP_MARK_DEBUG="1" */    //相位
    );
    
 	reg        dds_ctrl_en_d0    ;
@@ -37,7 +37,7 @@ module eth_send_dds(
 	
 	assign tx_start_en = !dds_ctrl_en_d1 && dds_ctrl_en_d0;
 	
-	assign tx_byte_num = 16'd160; //5*8*4
+	assign tx_byte_num = 16'd20; //5*4
    
    
    always @(posedge eth_tx_clk or negedge rst_n) begin

@@ -1,22 +1,4 @@
 `timescale  1ns/1ns
-/////////////////////////////////////////////////////////////////////////
-// Author        : EmbedFire
-// Create Date   : 2023/04/07
-// Module Name   : tb_top_dds
-// Project Name  : top_dds
-// Target Devices: PGL22G-6MBG324
-// Tool Versions : Pango Design Suite 2022.2
-// Description   : DDS信号发生器仿真文件
-// 
-// Revision      : 
-// Additional Comments:
-// 
-// 实验平台: 野火_紫光PGL22G_FPGA开发板
-// 公司    : http://www.embedfire.com
-// 论坛    : http://www.firebbs.cn
-// 淘宝    : https://fire-stm32.taobao.com
-////////////////////////////////////////////////////////////////////////
-
 module  tb_top_dds();
 
 //**************************************************************//
