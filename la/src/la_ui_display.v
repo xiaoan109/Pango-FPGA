@@ -1,4 +1,4 @@
-module ui_display (
+module la_ui_display (
   input         rst_n,
   input         pclk,
   input         ad_clk,

@@ -37,7 +37,7 @@ module eth_send_dds(
 	
 	assign tx_start_en = !dds_ctrl_en_d1 && dds_ctrl_en_d0;
 	
-	assign tx_byte_num = 16'd160; //5*8*4
+	assign tx_byte_num = 16'd20; //5*4
    
    
    always @(posedge eth_tx_clk or negedge rst_n) begin
