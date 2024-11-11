@@ -10,12 +10,12 @@ module wav_display (
   input  wire [11:0] ad_buf_rd_addr,  //!输入ADC采样RAM读地址
   input  wire        fft_en,          //!FFT频域显示开启
   input  wire [11:0] ram_rd_data,     //!FFT RAM读数据
-  input  wire        i_hs,            //!HDMI输入场同步信号
-  input  wire        i_vs,            //!HDMI输入行同步信号
+  input  wire        i_hs,            //!HDMI输入行同步信号
+  input  wire        i_vs,            //!HDMI输入场同步信号
   input  wire        i_de,            //!HDMI输入数据有效信号
   input  wire [23:0] i_data,          //!HDMI输入数据RGB通道 
-  output wire        o_hs,            //!HDMI输出场同步信号
-  output wire        o_vs,            //!HDMI输出行同步信号
+  output wire        o_hs,            //!HDMI输出行同步信号
+  output wire        o_vs,            //!HDMI输出场同步信号
   output wire        o_de,            //!HDMI输出数据有效信号
   output wire [23:0] o_data,          //!HDMI输出数据RGB通道
   output wire        wr_over,         //!HDMI一帧绘制完成

@@ -3,8 +3,8 @@ module ui_display (
   input  wire        pclk,  //!HDMI像素时钟
   input  wire        ad_clk, //!ADC采样时钟
   input  wire        sys_clk,   //!系统时钟50MHz
-  input  wire        i_hs, //!HDMI输入场同步信号
-  input  wire        i_vs, //!HDMI输入行同步信号
+  input  wire        i_hs, //!HDMI输入行同步信号
+  input  wire        i_vs, //!HDMI输入场同步信号
   input  wire        i_de, //!HDMI输入数据有效信号
   input  wire [23:0] i_data,   //!HDMI输入数据RGB通道
   input  wire [19:0] ad_freq, //!ADC信号的频率
@@ -17,8 +17,8 @@ module ui_display (
   input  wire [ 9:0] deci_rate,//!示波器抽样率
   input  wire        fir_en,  //!FIR低通滤波开关
   input  wire [ 4:0] v_scale,//!示波器垂直缩放倍数(1/2/4倍)
-  output wire        o_hs,//!HDMI输出场同步信号
-  output wire        o_vs,//!HDMI输出行同步信号
+  output wire        o_hs,//!HDMI输出行同步信号
+  output wire        o_vs,//!HDMI输出场同步信号
   output wire        o_de,//!HDMI输出数据有效信号
   output wire [23:0] o_data //!HDMI输出数据RGB通道
 );
