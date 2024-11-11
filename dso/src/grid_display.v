@@ -1,14 +1,14 @@
 module grid_display (
-  input         rst_n,
-  input         pclk,
-  input         i_hs,
-  input         i_vs,
-  input         i_de,
-  input  [23:0] i_data,
-  output        o_hs,
-  output        o_vs,
-  output        o_de,
-  output [23:0] o_data
+  input  wire        rst_n,   //!系统复位，低电平有效
+  input  wire        pclk,    //!HDMI像素时钟
+  input  wire        i_hs,    //!HDMI输入场同步信号
+  input  wire        i_vs,    //!HDMI输入行同步信号
+  input  wire        i_de,    //!HDMI输入数据有效信号
+  input  wire [23:0] i_data,  //!HDMI输入数据RGB通道
+  output wire        o_hs,    //!HDMI输出场同步信号
+  output wire        o_vs,    //!HDMI输出行同步信号
+  output wire        o_de,    //!HDMI输出数据有效信号
+  output wire [23:0] o_data   //!HDMI输出数据RGB通道
 );
   wire [11:0] pos_x;
   wire [11:0] pos_y;

@@ -1,8 +1,8 @@
 module decimator (
-  input wire ad_clk,
-  input wire rst_n,
-  input wire [9:0] deci_rate,
-  output reg deci_valid
+  input wire ad_clk,//!ADC采样时钟
+  input wire rst_n, //!系统复位，低电平有效
+  input wire [9:0] deci_rate, //!示波器抽样率
+  output reg deci_valid //!示波器抽样有效信号
 );
   reg [9:0] deci_cnt;
 

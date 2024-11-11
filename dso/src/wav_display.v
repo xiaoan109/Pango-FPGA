@@ -1,27 +1,26 @@
 module wav_display (
-  input         rst_n,
-  input         pclk,
-  input  [23:0] wave_color,
-  input         ad_clk,
-  input         ad_buf_wr,
-  input  [11:0] ad_buf_wr_addr,
-  input  [ 7:0] ad_buf_data,
-  output [11:0] wave_rd_addr,
-  input  [11:0] ad_buf_rd_addr,
-  input         fft_en,
-
-  input  [11:0] ram_rd_data,
-  input         i_hs,
-  input         i_vs,
-  input         i_de,
-  input  [23:0] i_data,
-  output        o_hs  /* synthesis PAP_MARK_DEBUG="true" */,
-  output        o_vs  /* synthesis PAP_MARK_DEBUG="true" */,
-  output        o_de  /* synthesis PAP_MARK_DEBUG="true" */,
-  output [23:0] o_data  /* synthesis PAP_MARK_DEBUG="true" */,
-  output        wr_over,
-  input  [ 4:0] v_scale,
-  input  [11:0] trig_line
+  input  wire        rst_n,           //!系统复位，低电平有效
+  input  wire        pclk,            //!HDMI像素时钟
+  input  wire [23:0] wave_color,      //!波形绘制颜色
+  input  wire        ad_clk,          //!ADC采样时钟
+  input  wire        ad_buf_wr,       //!ADC采样RAM写使能
+  input  wire [11:0] ad_buf_wr_addr,  //!ADC采样RAM写地址
+  input  wire [ 7:0] ad_buf_data,     //!ADC采样RAM写数据
+  output wire [11:0] wave_rd_addr,    //!输出ADC采样RAM读地址
+  input  wire [11:0] ad_buf_rd_addr,  //!输入ADC采样RAM读地址
+  input  wire        fft_en,          //!FFT频域显示开启
+  input  wire [11:0] ram_rd_data,     //!FFT RAM读数据
+  input  wire        i_hs,            //!HDMI输入场同步信号
+  input  wire        i_vs,            //!HDMI输入行同步信号
+  input  wire        i_de,            //!HDMI输入数据有效信号
+  input  wire [23:0] i_data,          //!HDMI输入数据RGB通道 
+  output wire        o_hs,            //!HDMI输出场同步信号
+  output wire        o_vs,            //!HDMI输出行同步信号
+  output wire        o_de,            //!HDMI输出数据有效信号
+  output wire [23:0] o_data,          //!HDMI输出数据RGB通道
+  output wire        wr_over,         //!HDMI一帧绘制完成
+  input  wire [ 4:0] v_scale,         //!示波器垂直缩放倍数
+  input  wire [11:0] trig_line        //!触发电平绘制像素点
 );
 
   localparam RED = 24'hff0000;

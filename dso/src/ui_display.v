@@ -1,26 +1,26 @@
 module ui_display (
-  input         rst_n,
-  input         pclk,
-  input         ad_clk,
-  input         sys_clk,
-  input         i_hs,
-  input         i_vs,
-  input         i_de,
-  input  [23:0] i_data,
-  input  [19:0] ad_freq,
-  input  [ 7:0] ad_vpp,
-  input  [ 7:0] ad_max,
-  input  [ 7:0] ad_min,
-  input  [ 7:0] trig_level,
-  input         trig_edge,
-  input         fft_en,
-  input  [ 9:0] deci_rate,
-  input         fir_en,
-  input  [ 4:0] v_scale,
-  output        o_hs,
-  output        o_vs,
-  output        o_de,
-  output [23:0] o_data
+  input  wire        rst_n,  //!系统复位，低电平有效
+  input  wire        pclk,  //!HDMI像素时钟
+  input  wire        ad_clk, //!ADC采样时钟
+  input  wire        sys_clk,   //!系统时钟50MHz
+  input  wire        i_hs, //!HDMI输入场同步信号
+  input  wire        i_vs, //!HDMI输入行同步信号
+  input  wire        i_de, //!HDMI输入数据有效信号
+  input  wire [23:0] i_data,   //!HDMI输入数据RGB通道
+  input  wire [19:0] ad_freq, //!ADC信号的频率
+  input  wire [ 7:0] ad_vpp,  //!ADC信号峰峰值
+  input  wire [ 7:0] ad_max,  //!ADC信号最大值
+  input  wire [ 7:0] ad_min,  //!ADC信号最小值
+  input  wire [ 7:0] trig_level, //!示波器触发电平(0-255对应-5~5V)
+  input  wire        trig_edge, //!示波器触发类型(上升/下降)
+  input  wire        fft_en, //!FFT频域显示开关
+  input  wire [ 9:0] deci_rate,//!示波器抽样率
+  input  wire        fir_en,  //!FIR低通滤波开关
+  input  wire [ 4:0] v_scale,//!示波器垂直缩放倍数(1/2/4倍)
+  output wire        o_hs,//!HDMI输出场同步信号
+  output wire        o_vs,//!HDMI输出行同步信号
+  output wire        o_de,//!HDMI输出数据有效信号
+  output wire [23:0] o_data //!HDMI输出数据RGB通道
 );
 
 

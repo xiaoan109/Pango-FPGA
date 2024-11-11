@@ -14,7 +14,7 @@ module eth_udp_send(
     input       [31:0] tx_data     , //以太网待发送数据
     input       [15:0] tx_byte_num , //以太网发送的有效字节数 单位:byte
     output             tx_done     , //以太网发送完成信号
-    output             tx_req      ,  //读数据请求信号
+    output             tx_req      , //读数据请求信号
 	//GMII时钟
 	output             gmii_tx_clk
     );
@@ -50,7 +50,7 @@ wire          rec_pkt_done  ; //UDP单包数据接收完成信号
 wire          rec_en        ; //UDP接收的数据使能信号
 wire  [31:0]  rec_data      ; //UDP接收的数据
 wire  [15:0]  rec_byte_num  ; //UDP接收的有效字节数 单位:byte
-wire          udp_tx_done   ; //UDP发送完成信号
+wire          tx_done       ; //UDP发送完成信号
 wire          tx_req        ; //UDP读数据请求信号
 wire  [31:0]  tx_data       ; //UDP待发送数据
 wire  [15:0]  tx_byte_num   ; //UDP发送的有效字节数 单位:byte
@@ -117,7 +117,7 @@ udp
     .tx_start_en   (tx_start_en ),  //发送使能
     .tx_data       (tx_data     ),  //发送数据
     .tx_byte_num   (tx_byte_num ),  //发送长度
-    .tx_done       (udp_tx_done ),  //发送结束
+    .tx_done       (tx_done     ),  //发送结束
     .tx_req        (tx_req      )   //四字节发送使能
     );
 

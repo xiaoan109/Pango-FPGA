@@ -1,45 +1,45 @@
 // `define PDS_LITE
 module dso_top (
-  input  wire       sys_clk,     // input system clock 50MHz
-  input  wire       sys_rst_n,
+  input wire sys_clk,   //!系统时钟50MHz
+  input wire sys_rst_n, //!系统复位，低电平有效
   // output wire       rstn_out,
   // output wire       iic_tx_scl,
   // inout  wire       iic_tx_sda,
   // output wire       led_int,
   //hdmi_out
 
-  input i_vs_hdmi ,
-  input i_hs_hdmi ,
-  input i_de_hdmi ,
-  input [7:0] i_r_hdmi  ,
-  input [7:0] i_g_hdmi  ,
-  input [7:0] i_b_hdmi  ,
+  input wire       i_vs_hdmi,  //!HDMI输入场同步信号
+  input wire       i_hs_hdmi,  //!HDMI输入行同步信号
+  input wire       i_de_hdmi,  //!HDMI输入数据有效信号
+  input wire [7:0] i_r_hdmi,   //!HDMI输入数据R通道
+  input wire [7:0] i_g_hdmi,   //!HDMI输入数据G通道
+  input wire [7:0] i_b_hdmi,   //!HDMI输入数据B通道
 
-  input wire       pix_clk,     //pixclk
-  output wire       vs_out,
-  output wire       hs_out,
-  output wire       de_out,
-  output wire [7:0] r_out,
-  output wire [7:0] g_out,
-  output wire [7:0] b_out,
+  input  wire       pix_clk,  //!HDMI像素时钟
+  output wire       vs_out,   //!HDMI输出场同步信号
+  output wire       hs_out,   //!HDMI输出行同步信号
+  output wire       de_out,   //!HDMI输出数据有效信号
+  output wire [7:0] r_out,    //!HDMI输出数据R通道
+  output wire [7:0] g_out,    //!HDMI输出数据G通道
+  output wire [7:0] b_out,    //!HDMI输出数据B通道
 
-  input wire       ad_clk,
-  input wire [7:0] ad_data,
+  input wire       ad_clk,  //!ADC采样时钟
+  input wire [7:0] ad_data, //!ADC采样数据
 
   //ctrl regs
-  input wire [7:0] trig_level,  //触发电平
-  input wire [9:0] deci_rate,  //抽样率
-  input wire wave_run,
-  input wire trig_edge,
-  input wire [4:0] v_scale,
-  input wire fft_en,
-  input wire fir_en,
-  input wire [11:0] trig_line,
+  input wire [7:0] trig_level,  //!示波器触发电平(0-255对应-5~5V)
+  input wire [9:0] deci_rate,  //!示波器抽样率
+  input wire wave_run,  //!示波器RUN/STOP
+  input wire trig_edge,  //!示波器触发类型(上升/下降)
+  input wire [4:0] v_scale,  //!示波器垂直缩放倍数(1/2/4倍)
+  input wire fft_en,  //!FFT频域显示开关
+  input wire fir_en,  //!FIR低通滤波开关
+  input wire [11:0] trig_line,  //!触发电平绘制像素点
   //measure regs
-  output wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */,  //AD脉冲信号的频率 
-  output wire [7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */,  //AD输入信号峰峰值  
-  output wire [7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */,  //AD输入信号最大值  
-  output wire [7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */  //AD输入信号最小值  
+  output wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */,  //!ADC信号的频率
+  output wire [7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */,    //!ADC信号峰峰值
+  output wire [7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */,    //!ADC信号最大值
+  output wire [7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */     //!ADC信号最小值
 );
 
 
@@ -55,12 +55,12 @@ module dso_top (
   // wire        trig_edge;
   // wire [ 4:0] v_scale;
   // wire         fft_en;
- 
 
-  // wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */;  //AD脉冲信号的频率 
-  // wire [ 7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号峰峰值  
-  // wire [ 7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最大值  
-  // wire [ 7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最小值  
+
+  // wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */;  //AD脉冲信号的频率
+  // wire [ 7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号峰峰值
+  // wire [ 7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最大值
+  // wire [ 7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最小值
   wire        ad_pulse  /* synthesis PAP_MARK_DEBUG="true" */;
   wire        debug_clk;
   wire        deci_valid;
@@ -110,12 +110,12 @@ module dso_top (
 
   //   .clk_out(debug_clk)  // 输出时钟
   // );
-  assign  hdmi_hs_out = i_hs_hdmi;
-  assign  hdmi_vs_out = i_vs_hdmi;
-  assign  hdmi_de_out = i_de_hdmi;
-  assign  hdmi_r_out = i_r_hdmi;
-  assign  hdmi_g_out = i_g_hdmi;
-  assign  hdmi_b_out = i_b_hdmi;
+  assign hdmi_hs_out = i_hs_hdmi;
+  assign hdmi_vs_out = i_vs_hdmi;
+  assign hdmi_de_out = i_de_hdmi;
+  assign hdmi_r_out  = i_r_hdmi;
+  assign hdmi_g_out  = i_g_hdmi;
+  assign hdmi_b_out  = i_b_hdmi;
 
 
 
@@ -129,7 +129,7 @@ module dso_top (
 
 
 
-  //参数测量模块，测量输入波形峰峰值和频率    
+  //参数测量模块，测量输入波形峰峰值和频率
   param_measure #(
     .CLK_FS  (CLK_FS),   // 系统时钟频率值
     .DEBUG_EN(DEBUG_EN)
@@ -195,7 +195,7 @@ module dso_top (
     .fft_en    (fft_en),
     .deci_rate (deci_rate),
     .fir_en    (fir_en),
-	.v_scale   (v_scale),
+    .v_scale   (v_scale),
     .o_hs      (osd_hs_out),
     .o_vs      (osd_vs_out),
     .o_de      (osd_de_out),
@@ -284,7 +284,7 @@ module dso_top (
     .rd_addr    (wave_rd_addr),
     .ram_rd_data(ram_rd_data)
   );
-`elif
+  `elif
   assign ram_rd_data = 12'b0;
 `endif
 

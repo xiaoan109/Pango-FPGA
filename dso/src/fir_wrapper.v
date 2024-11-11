@@ -1,9 +1,9 @@
 module fir_wrapper (
-  input  wire       ad_clk,
-  input  wire       rst_n,
-  input  wire [7:0] ad_data,
-  input  wire       fir_en,
-  output wire [7:0] ad_data_out
+  input  wire       ad_clk, //!ADC采样时钟
+  input  wire       rst_n,  //!系统复位，低电平有效
+  input  wire [7:0] ad_data,  //!ADC采样数据
+  input  wire       fir_en, //!FIR低通滤波开关
+  output wire [7:0] ad_data_out //!ADC经FIR滤波后数据
 );
 
 

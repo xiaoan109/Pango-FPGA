@@ -1,7 +1,7 @@
 `define ETH_SLAVE
 module dds_dso_top (
-  input  wire       sys_clk,     // input system clock 50MHz
-  input  wire       sys_rst_n,
+  input  wire       sys_clk,     //!系统时钟50MHz
+  input  wire       sys_rst_n,   //!系统复位，低电平有效
 `ifdef ETH_SLAVE
   //以太网RGMII接口
   input              eth_rxc   , //RGMII接收数据时钟
@@ -13,27 +13,27 @@ module dds_dso_top (
   output             eth_rst_n , //以太网芯片复位信号，低电平有效
 `endif
   //hdmi iic
-  output wire       iic_tx_scl,
-  inout  wire       iic_tx_sda,
+  output wire       iic_tx_scl, //!HDMI芯片配置IIC时钟
+  inout  wire       iic_tx_sda, //!HDMI芯片配置IIC数据
   //hdmi init done
-  output wire       led_int,
+  output wire       led_int,   //!HDMI芯片配置完成指示
   //hdmi_out
-  output wire       rstn_out,
-  output wire       pix_clk,     //pixclk
-  output wire       vs_out,
-  output wire       hs_out,
-  output wire       de_out,
-  output wire [7:0] r_out,
-  output wire [7:0] g_out,
-  output wire [7:0] b_out,
+  output wire       rstn_out,  //!HDMI复位信号
+  output wire       pix_clk,   //!HDMI像素时钟
+  output wire       vs_out,    //!HDMI场同步信号
+  output wire       hs_out,    //!HDMI行同步信号
+  output wire       de_out,    //!HDMI数据有效信号
+  output wire [7:0] r_out,     //!HDMI数据R通道
+  output wire [7:0] g_out,     //!HDMI数据G通道
+  output wire [7:0] b_out,     //!HDMI数据B通道
   //adc
-  output wire       ad_clk,
-  input  wire [7:0] ad_data,
+  output wire       ad_clk,    //!ADC采样时钟
+  input  wire [7:0] ad_data,   //!ADC采样数据
   //key
   input wire [3:0] key,  //输入4位按键
   //dac
-  output wire       da_clk,  //输入DAC模块时钟
-  output wire [7:0] da_data  //输入DAC模块波形数据
+  output wire       da_clk,  //!输入DAC模块时钟
+  output wire [7:0] da_data  //!输入DAC模块数据
 );
 
   parameter CNT_MAX = 20'd999_999;  //计数器计数最大值
