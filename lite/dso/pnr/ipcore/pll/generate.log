@@ -1,6 +1,6 @@
 IP Generator (Version 2022.2-SP1-Lite build 132640)
-Start generating at 2024-11-10 15:55
-Instance: pll (D:\Files\Pango\Pango-FPGA\lite\dso\pnr\ipcore\pll\pll.idf)
+Start generating at 2024-11-10 23:00
+Instance: pll (D:\pangoPRJ\Pango-FPGA\lite\dso\pnr\ipcore\pll\pll.idf)
 IP: Pango PLL (1.5)
 Part: Logos-PGL50H-FBG484--6
 Create directory 'rtl' ...

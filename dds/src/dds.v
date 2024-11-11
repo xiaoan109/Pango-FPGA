@@ -111,6 +111,6 @@ rom_wave    rom_wave_inst
   .rd_data  (rd_data       )   //读出波形数据  
 );
 
-assign tmp_data = rd_data * amp_ctl; 
-assign data_out = tmp_data[15:8];
+assign tmp_data = (rd_data - 8'd128) * amp_ctl; 
+assign data_out = tmp_data[15:8] + 8'd128;
 endmodule

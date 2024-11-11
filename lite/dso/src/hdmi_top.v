@@ -47,7 +47,7 @@ module hdmi_top (
 
   pll_hdmi u_pll (
     .clkin1  (sys_clk),  //50MHz
-    .clkout0 (pix_clk),  //148.5MHz
+    .clkout0 (pix_clk),  //148.5MHz -> 74.25MHz
     .clkout1 (cfg_clk),  //10MHz
     .pll_lock(locked)
   );
