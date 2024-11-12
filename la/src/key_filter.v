@@ -1,20 +1,28 @@
+// +FHEADER =====================================================================
+// FilePath       : \pangoPRJ\Pango-FPGA\la\src\key_filter.v
+// Author         : zkwang2001 1922601163@qq.com
+// CreateDate     : 24-11-11
+// LastEditors    : zkwang2001 1922601163@qq.com
+// LastEditTime   : 24-11-12
+// Version        :
+// Description    : 
+//                  
+// 
+// Parameter       :
+//                  
+// 
+// IO Port         :
+//                  
+// 
+// Modification History
+//    Date   |   Author   |   Version   |   Change Description
+// ==============================================================================
+//  23-08-24 |     NJU    |     0.1     | Original Version
+//                  
+// 
+// -FHEADER =====================================================================
 `timescale  1ns/1ns
 ////////////////////////////////////////////////////////////////////////
-// Author        : EmbedFire
-// Create Date   : 2019/03/15
-// Module Name   : key_filter
-// Project Name  : top_dds
-// Target Devices: PGL22G-6MBG324
-// Tool Versions : Pango Design Suite 2022.2
-// Description   : 按键消抖模块
-//
-// Revision      : 
-// Additional Comments:
-// 
-// 实验平台: 野火_紫光PGL22G_FPGA开发板
-// 公司    : http://www.embedfire.com
-// 论坛    : http://www.firebbs.cn
-// 淘宝    : https://fire-stm32.taobao.com
 ////////////////////////////////////////////////////////////////////////
 
 module  key_filter
