@@ -78,13 +78,13 @@ module dds_dso_top (
 `ifdef ETH_SLAVE
 
 //开发板MAC地址
-parameter  BOARD_MAC = 48'h12_34_56_78_9a_bc;
+parameter  BOARD_MAC = 48'hff_ff_ff_ff_ff_ff;
 //开发板IP地址
-parameter  BOARD_IP  = {8'd192,8'd168,8'd0,8'd234};
+parameter  BOARD_IP  = {8'd192,8'd168,8'd0,8'd145};
 //目的MAC地址
-parameter  DES_MAC   = 48'hff_ff_ff_ff_ff_ff;
+parameter  DES_MAC   = 48'h12_34_56_78_9a_bc;
 //目的IP地址
-parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd145};
+parameter  DES_IP    = {8'd192,8'd168,8'd0,8'd234};
 
 wire          rec_pkt_done /* synthesis PAP_MARK_DEBUG="1" */; //UDP单包数据接收完成信号
 wire          rec_en       /* synthesis PAP_MARK_DEBUG="1" */; //UDP接收的数据使能信号
@@ -146,7 +146,7 @@ assign min_ctl = 32'd0;
 assign phase_ctl = 12'd1024;
 `endif
 
-dds_top u_dds_top (
+top_dds u_top_dds (
     .sys_clk        (da_clk     ),   //dac_clk
     .sys_rst_n      (sys_rst_n  ),   //复位信号,低电平有效
     .wave_select    (wave_select),   //输出波形选择
