@@ -32,6 +32,8 @@ Signal Generator, Oscilloscope, Logic Analyzer
 
 3.FPGA verification   :white_check_mark:
 
-4.FPGA cascade        :negative_squared_cross_mark: (Ethernet Data Path Checked)
+4.FPGA cascade        :white_check_mark: (Ethernet/2-Channel ADC&DAC)
+
+5.Double DDS module and DSO 2-Channel co-display :negative_squared_cross_mark:
 
 
