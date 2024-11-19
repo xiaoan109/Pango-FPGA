@@ -11,7 +11,7 @@ Signal Generator, Oscilloscope, Logic Analyzer
 🟩IN 5 WE TRUST
 
 # File tree
-:file_folder:**picorv32**: picorv32 soc template project
+:file_folder:**sparrow_soc**: comprehensive sparrow_soc soc project
 
 :file_folder:**dds**: signal generator
 
@@ -19,7 +19,9 @@ Signal Generator, Oscilloscope, Logic Analyzer
 
 :file_folder:**la**: logic analyzer
 
-:file_folder:**lite**: lite version dso(1024-fft supported)
+:file_folder:**dso_lite**: lite version dso(1024-fft supported)
+
+:file_folder:**slave_board**: slave_board to implement 2-channel device
 
 :file_folder:**doc**: documents
 
@@ -32,8 +34,6 @@ Signal Generator, Oscilloscope, Logic Analyzer
 
 3.FPGA verification   :white_check_mark:
 
-4.FPGA cascade        :white_check_mark: (Ethernet/2-Channel ADC&DAC)
-
-5.Double DDS module and DSO 2-Channel co-display :negative_squared_cross_mark:
+4.FPGA cascade        :white_check_mark: (Ethernet/2-Channel DDS & DSO)
 
 
