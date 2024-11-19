@@ -73,7 +73,7 @@ end
 
 ### Verilog头文件
 在RTL设计中，头文件`config.v`、`defines.v`分别有不同的功能。  
-**config.v**用于参数化配置小麻雀处理器的各项功能，实现弹性化设计，具体内容见[系统配置选项](/doc/使用手册/系统配置选项.md)。  
+**config.v**用于参数化配置小麻雀处理器的各项功能，实现弹性化设计，具体内容见[系统配置选项](/sparrow_soc/src/SparrowRV/doc/使用手册/系统配置选项.md)。  
 **defines.v**向全局Verilog源码提供通用的宏定义，并且内部`include`了`config.v`，不建议修改其内容。  
 
 ## 约束文件
@@ -111,7 +111,7 @@ set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets JTAG_TCK_IBUF]
 在FPGA工程的设置中，一般会有一个verilog include路径选项，`include`的文件都会从这里查找。在这个选项中添加`/rtl/`文件夹的路径。  
 
 4. 修改config.v  
-具体内容请参阅[系统配置选项](/doc/使用手册/系统配置选项.md)    
+具体内容请参阅[系统配置选项](/sparrow_soc/src/SparrowRV/doc/使用手册/系统配置选项.md)    
 `CPU_CLOCK_HZ`必须修改为处理器运行的频率  
 如果自建工程，需将`/rtl/config.h`的`PROG_FPGA_PATH`宏定义内容改为`inst.txt`的文件路径，通过`readmemh`将程序写进FPGA。  
 

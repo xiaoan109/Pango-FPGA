@@ -7,12 +7,12 @@
 IAP是一段按照以上流程固化在FPGA的程序，位于程序存储器的`0x0000-0x03FF`区域，大小为1024字节。处理器上电后，从`0x0000`开始取指，即运行IAP程序。  
 IAP程序通过SDRD外设访问SD卡，解析`MBR分区表`和`FAT32文件系统`，一路找到`SparrowRV_APP.bin`文件。  
 由于程序存储器的`0x0000-0x03FF`被IAP程序占用，因此`SparrowRV_APP.bin`被复制到起始地址为`0x0400`的区域。内存布局如下所示：  
-![IAP内存布局](/doc/图库/数据手册/IAP内存布局.svg)  
+![IAP内存布局](/sparrow_soc/src/SparrowRV/doc/图库/数据手册/IAP内存布局.svg)  
 复制完成后，PC跳转到`0x0400`，开始运行APP程序。  
 
 ## 操作流程
 ### 固化IAP程序
-为了便于使用，编译好的IAP程序位于`/bsp/SparrowRV_IAP.bin`，程序体积经过充分优化，可直接转成`inst.txt`然后参与FPGA综合，流程见[快速开始](/doc/使用手册/快速开始.md)的`FPGA实现`章节。  
+为了便于使用，编译好的IAP程序位于`/bsp/SparrowRV_IAP.bin`，程序体积经过充分优化，可直接转成`inst.txt`然后参与FPGA综合，流程见[快速开始](/sparrow_soc/src/SparrowRV/doc/使用手册/快速开始.md)的`FPGA实现`章节。  
 在FPGA工程中，需要将`sd_xxx`引脚分配到SD卡对应的IO管脚，让SDRD外设可以正常访问SD卡。如果外部电路没有上拉电阻，需要为`sd_cmd`和`sd_dat[3:0]`设置内部上拉，否则SD卡有概率进入SPI模式，引起启动失败。  
 
 ### 重新编译APP程序

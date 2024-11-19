@@ -28,7 +28,7 @@
 |6|SPI0_SCK|对接25Flash CLK|推挽输出|
 |7|SPI0_CS|对接25Flash /CS|推挽输出|
 
-![流程图](/doc/图库/数据手册/上电isp流程.svg)  
+![流程图](/sparrow_soc/src/SparrowRV/doc/图库/数据手册/上电isp流程.svg)  
 
 ### 直接启动
 `bootrom`不进行任何操作  
