@@ -2,11 +2,13 @@
 Signal Generator, Oscilloscope, Logic Analyzer
 
 # Team DUB
+👨‍🎓 :innocent:Yuheng Su, Postgraduate in NJUEE.
+
 👨‍🎓 :sweat_smile:Xuanji Wang, Postgraduate in NJUEE;
 
 👨‍🎓 :yum:Zikang Wang, Postgraduate in NJUEE;
 
-👨‍🎓 :innocent:Yuheng Su, Postgraduate in NJUEE.
+
 
 🟩IN 5 WE TRUST
 
