@@ -36,4 +36,9 @@
 !/la/pnr/*.pds
 !/la/src/**
 
+!/sparrow_soc/pnr/ipcore/**
+!/sparrow_soc/pnr/source/*
+!/sparrow_soc/pnr/*.pds
+!/sparrow_soc/src/**
+
 !/doc/**

@@ -14,7 +14,7 @@ wire [31:0] min_ctl;
 wire [11:0] phase_ctl;
 
 
-assign amp_ctl = 9'd256;
+assign amp_ctl = 9'd128;
 assign freq_ctl = 32'd8589935;
 assign min_ctl = 32'd0;
 assign phase_ctl = 12'd0;
