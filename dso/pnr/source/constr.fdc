@@ -1,6 +1,14 @@
 #------------------------------系统时钟周期约束-----------------------------------
 create_clock -name {clk} [get_ports {sys_clk}] -period {20} -waveform {0.000 10.000}
-create_clock -name {eth_rxc} [get_ports {eth_rxc}] -period {8} -waveform {0.000 4.000}
+create_generated_clock -name {dac_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout0}] -master_clock [get_clocks {clk}] -multiply_by {12} -divide_by {5}
+create_generated_clock -name {adc_clk} -source [get_ports {sys_clk}] [get_nets {u_pll.clkout1}] -master_clock [get_clocks {clk}] -multiply_by {3} -divide_by {5}
+create_generated_clock -name {cfg_clk} -source [get_ports {sys_clk}] [get_nets {u_hdmi_top.u_pll.clkout1}] -master_clock [get_clocks {clk}] -multiply_by {1} -divide_by {5}
+create_generated_clock -name {pix_clk} -source [get_ports {sys_clk}] [get_nets {u_hdmi_top.u_pll.clkout0}] -master_clock [get_clocks {clk}] -multiply_by {297} -divide_by {200}
+
+set_clock_groups -name dac_clk -asynchronous -group [get_clocks {dac_clk}]
+set_clock_groups -name adc_clk -asynchronous -group [get_clocks {adc_clk}]
+set_clock_groups -name cfg_clk -asynchronous -group [get_clocks {cfg_clk}]
+set_clock_groups -name pix_clk -asynchronous -group [get_clocks {pix_clk}]
 
 #------------------------------系统时钟-----------------------------------
 define_attribute {p:sys_clk} {PAP_IO_DIRECTION} {INPUT}
@@ -496,93 +504,88 @@ define_attribute {p:key[0]} {PAP_IO_VCCIO} {3.3}
 define_attribute {p:key[0]} {PAP_IO_STANDARD} {LVCMOS33}
 define_attribute {p:key[0]} {PAP_IO_NONE} {TRUE}
 
-#define_attribute {p:debug_key} {PAP_IO_DIRECTION} {INPUT}
-#define_attribute {p:debug_key} {PAP_IO_LOC} {J19}
-#define_attribute {p:debug_key} {PAP_IO_VCCIO} {3.3}
-#define_attribute {p:debug_key} {PAP_IO_STANDARD} {LVCMOS33}
-#define_attribute {p:debug_key} {PAP_IO_NONE} {TRUE}
 
 
 #ETH1
-define_attribute {p:eth_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_txd[3]} {PAP_IO_LOC} {A18}
-define_attribute {p:eth_txd[3]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_txd[3]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_txd[3]} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_txd[3]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_txd[3]} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_txd[2]} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_txd[2]} {PAP_IO_LOC} {C18}
-define_attribute {p:eth_txd[2]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_txd[2]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_txd[2]} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_txd[2]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_txd[2]} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_txd[1]} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_txd[1]} {PAP_IO_LOC} {D17}
-define_attribute {p:eth_txd[1]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_txd[1]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_txd[1]} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_txd[1]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_txd[1]} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_txd[0]} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_txd[0]} {PAP_IO_LOC} {F17}
-define_attribute {p:eth_txd[0]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_txd[0]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_txd[0]} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_txd[0]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_txd[0]} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_rxd[3]} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rxd[3]} {PAP_IO_LOC} {H13}
-define_attribute {p:eth_rxd[3]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rxd[3]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rxd[3]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rxd[2]} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rxd[2]} {PAP_IO_LOC} {G13}
-define_attribute {p:eth_rxd[2]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rxd[2]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rxd[2]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rxd[1]} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rxd[1]} {PAP_IO_LOC} {H11}
-define_attribute {p:eth_rxd[1]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rxd[1]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rxd[1]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rxd[0]} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rxd[0]} {PAP_IO_LOC} {H10}
-define_attribute {p:eth_rxd[0]} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rxd[0]} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rxd[0]} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rst_n} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_rst_n} {PAP_IO_LOC} {B20}
-define_attribute {p:eth_rst_n} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rst_n} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rst_n} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_rst_n} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rst_n} {PAP_IO_SLEW} {SLOW}
-define_attribute {p:eth_tx_ctl} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_tx_ctl} {PAP_IO_LOC} {B18}
-define_attribute {p:eth_tx_ctl} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_tx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_tx_ctl} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_tx_ctl} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_tx_ctl} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_txc} {PAP_IO_DIRECTION} {OUTPUT}
-define_attribute {p:eth_txc} {PAP_IO_LOC} {G16}
-define_attribute {p:eth_txc} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_txc} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_txc} {PAP_IO_DRIVE} {4}
-define_attribute {p:eth_txc} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_txc} {PAP_IO_SLEW} {FAST}
-define_attribute {p:eth_rx_ctl} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rx_ctl} {PAP_IO_LOC} {F9}
-define_attribute {p:eth_rx_ctl} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rx_ctl} {PAP_IO_NONE} {TRUE}
-define_attribute {p:eth_rxc} {PAP_IO_DIRECTION} {INPUT}
-define_attribute {p:eth_rxc} {PAP_IO_LOC} {F14}
-define_attribute {p:eth_rxc} {PAP_IO_VCCIO} {3.3}
-define_attribute {p:eth_rxc} {PAP_IO_STANDARD} {LVCMOS33}
-define_attribute {p:eth_rxc} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_txd[3]} {PAP_IO_LOC} {A18}
+#define_attribute {p:eth_txd[3]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_txd[3]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_txd[3]} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_txd[3]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txd[3]} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_txd[2]} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_txd[2]} {PAP_IO_LOC} {C18}
+#define_attribute {p:eth_txd[2]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_txd[2]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_txd[2]} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_txd[2]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txd[2]} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_txd[1]} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_txd[1]} {PAP_IO_LOC} {D17}
+#define_attribute {p:eth_txd[1]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_txd[1]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_txd[1]} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_txd[1]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txd[1]} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_txd[0]} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_txd[0]} {PAP_IO_LOC} {F17}
+#define_attribute {p:eth_txd[0]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_txd[0]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_txd[0]} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_txd[0]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txd[0]} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_rxd[3]} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rxd[3]} {PAP_IO_LOC} {H13}
+#define_attribute {p:eth_rxd[3]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rxd[3]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rxd[3]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rxd[2]} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rxd[2]} {PAP_IO_LOC} {G13}
+#define_attribute {p:eth_rxd[2]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rxd[2]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rxd[2]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rxd[1]} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rxd[1]} {PAP_IO_LOC} {H11}
+#define_attribute {p:eth_rxd[1]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rxd[1]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rxd[1]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rxd[0]} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rxd[0]} {PAP_IO_LOC} {H10}
+#define_attribute {p:eth_rxd[0]} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rxd[0]} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rxd[0]} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rst_n} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_rst_n} {PAP_IO_LOC} {B20}
+#define_attribute {p:eth_rst_n} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rst_n} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rst_n} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_rst_n} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rst_n} {PAP_IO_SLEW} {SLOW}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_LOC} {B18}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_tx_ctl} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_txc} {PAP_IO_DIRECTION} {OUTPUT}
+#define_attribute {p:eth_txc} {PAP_IO_LOC} {G16}
+#define_attribute {p:eth_txc} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_txc} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_txc} {PAP_IO_DRIVE} {4}
+#define_attribute {p:eth_txc} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_txc} {PAP_IO_SLEW} {FAST}
+#define_attribute {p:eth_rx_ctl} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rx_ctl} {PAP_IO_LOC} {F9}
+#define_attribute {p:eth_rx_ctl} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rx_ctl} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rx_ctl} {PAP_IO_NONE} {TRUE}
+#define_attribute {p:eth_rxc} {PAP_IO_DIRECTION} {INPUT}
+#define_attribute {p:eth_rxc} {PAP_IO_LOC} {F14}
+#define_attribute {p:eth_rxc} {PAP_IO_VCCIO} {3.3}
+#define_attribute {p:eth_rxc} {PAP_IO_STANDARD} {LVCMOS33}
+#define_attribute {p:eth_rxc} {PAP_IO_NONE} {TRUE}
 
 #ETH2
 #define_attribute {p:eth_txd[3]} {PAP_IO_DIRECTION} {OUTPUT}

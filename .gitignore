@@ -1,32 +1,21 @@
 *.*
 *
 !*/
-!/picorv32/bench/**
-!/picorv32/ip/**
-!/picorv32/pnr/ipcore/**
-!/picorv32/pnr/source/*
-!/picorv32/pnr/*.pds
-!/picorv32/pnr/*.hex
-!/picorv32/simulation/file_list.f
-!/picorv32/simulation/ram.hex
-!/picorv32/simulation/sim.bat
-!/picorv32/simulation/sim.tcl
-!/picorv32/simulation/wave.do
-!/picorv32/simulation/file_list.f
-!/picorv32/software/**
-!/picorv32/src/**
 
 !/dds/bench/**
 !/dds/dat/**
-!/dds/ip/**
 !/dds/pnr/ipcore/**
 !/dds/pnr/source/*
 !/dds/pnr/*.pds
 !/dds/src/**
 
+!/slave_board/pnr/ipcore/**
+!/slave_board/pnr/source/*
+!/slave_board/pnr/*.pds
+!/slave_board/src/**
+
 !/dso/bench/**
 !/dso/dat/**
-!/dso/ip/**
 !/dso/pnr/ipcore/**
 !/dso/pnr/source/*
 !/dso/pnr/*.pds
@@ -36,7 +25,6 @@
 
 !/lite/dso/bench/**
 !/lite/dso/dat/**
-!/lite/dso/ip/**
 !/lite/dso/pnr/ipcore/**
 !/lite/dso/pnr/source/*
 !/lite/dso/pnr/*.pds
@@ -44,7 +32,6 @@
 
 !/la/bench/**
 !/la/dat/**
-!/la/ip/**
 !/la/pnr/ipcore/**
 !/la/pnr/source/*
 !/la/pnr/*.pds

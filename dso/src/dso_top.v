@@ -2,19 +2,15 @@
 module dso_top (
   input wire sys_clk,   //!系统时钟50MHz
   input wire sys_rst_n, //!系统复位，低电平有效
-  // output wire       rstn_out,
-  // output wire       iic_tx_scl,
-  // inout  wire       iic_tx_sda,
-  // output wire       led_int,
-  //hdmi_out
 
+  //hdmi_in
   input wire       i_vs_hdmi,  //!HDMI输入场同步信号
   input wire       i_hs_hdmi,  //!HDMI输入行同步信号
   input wire       i_de_hdmi,  //!HDMI输入数据有效信号
   input wire [7:0] i_r_hdmi,   //!HDMI输入数据R通道
   input wire [7:0] i_g_hdmi,   //!HDMI输入数据G通道
   input wire [7:0] i_b_hdmi,   //!HDMI输入数据B通道
-
+  //hdmi_out
   input  wire       pix_clk,  //!HDMI像素时钟
   output wire       vs_out,   //!HDMI输出场同步信号
   output wire       hs_out,   //!HDMI输出行同步信号
@@ -36,32 +32,19 @@ module dso_top (
   input wire fir_en,  //!FIR低通滤波开关
   input wire [11:0] trig_line,  //!触发电平绘制像素点
   //measure regs
-  output wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */,  //!ADC信号的频率
-  output wire [7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */,    //!ADC信号峰峰值
-  output wire [7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */,    //!ADC信号最大值
-  output wire [7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */     //!ADC信号最小值
+  output wire [19:0] ad_freq ,    //!ADC信号的频率
+  output wire [7:0] ad_vpp   ,    //!ADC信号峰峰值
+  output wire [7:0] ad_max   ,    //!ADC信号最大值
+  output wire [7:0] ad_min        //!ADC信号最小值
 );
 
 
   //parameter define
   parameter CLK_FS = 26'd50_000_000;  // 基准时钟频率值
-  parameter DEBUG_EN = 1'b0;
 
   wire [23:0] pixel_data;
 
-  // wire [ 7:0] trig_level;  //触发电平
-  // wire [ 9:0] deci_rate;  //抽样率
-  // wire        wave_run;
-  // wire        trig_edge;
-  // wire [ 4:0] v_scale;
-  // wire         fft_en;
-
-
-  // wire [19:0] ad_freq  /* synthesis PAP_MARK_DEBUG="true" */;  //AD脉冲信号的频率
-  // wire [ 7:0] ad_vpp  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号峰峰值
-  // wire [ 7:0] ad_max  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最大值
-  // wire [ 7:0] ad_min  /* synthesis PAP_MARK_DEBUG="true" */;  //AD输入信号最小值
-  wire        ad_pulse  /* synthesis PAP_MARK_DEBUG="true" */;
+  wire        ad_pulse;
   wire        debug_clk;
   wire        deci_valid;
 
@@ -95,21 +78,6 @@ module dso_top (
 
   wire [ 7:0] ad_filter_data;
 
-  // assign trig_level = 8'd127;
-  // assign deci_rate = 10'd1;
-  // assign trig_edge = 1'b1;
-  // assign v_scale = {1'b1, 4'd2};
-  // assign wave_run = 1'b1;
-  // assign fft_en = 1'b1;
-
-  // clk_test #(
-  //   .DIV_N(26'd500)  //100KHz
-  // ) u_clk_test (
-  //   .clk_in(sys_clk),   // 输入时钟
-  //   .rst_n (sys_rst_n), // 复位信号
-
-  //   .clk_out(debug_clk)  // 输出时钟
-  // );
   assign hdmi_hs_out = i_hs_hdmi;
   assign hdmi_vs_out = i_vs_hdmi;
   assign hdmi_de_out = i_de_hdmi;
@@ -131,8 +99,7 @@ module dso_top (
 
   //参数测量模块，测量输入波形峰峰值和频率
   param_measure #(
-    .CLK_FS  (CLK_FS),   // 系统时钟频率值
-    .DEBUG_EN(DEBUG_EN)
+    .CLK_FS  (CLK_FS)   // 系统时钟频率值
   ) u_param_measure (
     .clk  (sys_clk),
     .rst_n(sys_rst_n),
@@ -145,8 +112,7 @@ module dso_top (
     .ad_freq  (ad_freq),   // 频率
     .ad_vpp   (ad_vpp),    // 峰峰值
     .ad_max   (ad_max),
-    .ad_min   (ad_min),
-    .debug_clk(debug_clk)
+    .ad_min   (ad_min)
   );
 
   //抽样控制模块
@@ -157,27 +123,9 @@ module dso_top (
     .deci_valid(deci_valid)
   );
 
-
-  // //output color bar
-  // hdmi_top u_hdmi_top (
-  //   .sys_clk   (sys_clk),      // input system clock 50MHz
-  //   .rstn_out  (rstn_out),
-  //   .iic_tx_scl(iic_tx_scl),
-  //   .iic_tx_sda(iic_tx_sda),
-  //   .led_int   (led_int),
-  //   //hdmi_out
-  //   .pix_clk   (pix_clk),      //pixclk
-  //   .vs_out    (hdmi_vs_out),
-  //   .hs_out    (hdmi_hs_out),
-  //   .de_out    (hdmi_de_out),
-  //   .r_out     (hdmi_r_out),
-  //   .g_out     (hdmi_g_out),
-  //   .b_out     (hdmi_b_out)
-  // );
-
   //output osd
 
-  ui_display u_ui_display (
+  dso_ui_display u_dso_ui_display (
     .rst_n     (sys_rst_n),
     .pclk      (pix_clk),
     .ad_clk    (ad_clk),
@@ -204,7 +152,7 @@ module dso_top (
 
 
   //output grid
-  grid_display u_grid_display (
+  dso_grid_display u_dso_grid_display (
     .rst_n (sys_rst_n),
     .pclk  (pix_clk),
     .i_hs  (osd_hs_out),
@@ -218,7 +166,7 @@ module dso_top (
   );
 
   //output hdmi wave
-  wav_display u_wav_display (
+  dso_wave_display u_dso_wave_display (
     .rst_n         (sys_rst_n),
     .pclk          (pix_clk),
     .wave_color    (24'hff0000),

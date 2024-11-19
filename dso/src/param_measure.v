@@ -12,16 +12,14 @@ module param_measure (
   output wire [19:0] ad_freq,   //!被测时钟频率输出
   output wire [ 7:0] ad_vpp,    //!ADC峰峰值
   output wire [ 7:0] ad_max,    //!ADC最大值
-  output wire [ 7:0] ad_min,    //!ADC最小值
-  input  wire        debug_clk //!DEBUG时钟测试端口
+  output wire [ 7:0] ad_min     //!ADC最小值
 );
 
   //parameter define
   parameter CLK_FS = 26'd50_000_000;  // 基准时钟频率值
-  parameter DEBUG_EN = 1'b0;
 
   //脉冲生成模块
-  pulse_gen u_pulse_gen (
+  ad_pulse_gen u_ad_pulse_gen (
     .rst_n(rst_n),  //系统复位，低电平有效
 
     .trig_level(trig_level),  // 触发电平
@@ -38,7 +36,7 @@ module param_measure (
     .clk_fs(clk),
     .rst_n (rst_n),
 
-    .clk_fx(DEBUG_EN ? debug_clk : ad_pulse),  // 被测时钟信号
+    .clk_fx(ad_pulse),  // 被测时钟信号
     .data_fx(ad_freq)  // 被测时钟频率输出
   );
 

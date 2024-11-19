@@ -8,7 +8,7 @@ module  dds
     input   wire    [31:0]  freq_ctl  ,   //频率
     input   wire    [31:0]  min_ctl  ,   //最小分辨率
     input   wire    [11:0]  phase_ctl  ,   //相位
-    output  wire    [7:0]   data_out        //波形输出
+    output  wire    [7:0]   data_out    /*synthesis PAP_MARK_DEBUG="true"*/      //波形输出
 );
 
 
@@ -30,13 +30,13 @@ reg     [11:0]  rom_addr_reg;   //相位调制后的相位码
 reg     [13:0]  rom_addr    ;   //ROM读地址
 
 wire [7:0] rd_data;
-wire [31:0] tmp_data;
+wire [16:0] tmp_data;
 
 //********************************************************************//
 //***************************** Main Code ****************************//
 //********************************************************************//
 //fre_add:相位累加器
-always@(posedge sys_clk or negedge sys_rst_n)
+always@(negedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         fre_add <=  32'd0;
     else
@@ -46,7 +46,7 @@ always@(posedge sys_clk or negedge sys_rst_n)
 wire [31:0] fre_add_shift;
 assign fre_add_shift = fre_add << min_ctl;
 //rom_addr:ROM读地址
-always@(posedge sys_clk or negedge sys_rst_n)
+always@(negedge sys_clk or negedge sys_rst_n)
     if(sys_rst_n == 1'b0)
         begin
             rom_addr        <=  14'd0;
@@ -89,10 +89,18 @@ rom_wave    rom_wave_inst
 (
   .addr     (rom_addr       ),  //rom的读地址       
   .clk      (sys_clk        ),  //读时钟       
-  .rst      (1'b0           ),  //复位信号，高电平有效       
+  .rst      (!sys_rst_n           ),  //复位信号，高电平有效       
   .rd_data  (rd_data       )   //读出波形数据  
 );
 
-assign tmp_data = rd_data * amp_ctl; 
-assign data_out = tmp_data[15:8];
+mult8x9 u_mult8x9 (
+  .a(rd_data - 8'd128),         // input [7:0]
+  .b(amp_ctl),                  // input [8:0]
+  .clk(sys_clk),                // input
+  .rst(!sys_rst_n),             // input
+  .ce(1'b1),                    // input
+  .p(tmp_data)                  // output [16:0]
+);
+// assign tmp_data = rd_data * amp_ctl; 
+assign data_out = tmp_data[15:8] + 8'd128;
 endmodule
