@@ -1,7 +1,7 @@
 # 小麻雀处理器
-[![rvlogo](/doc/图库/Readme/rvlogo.bmp)RISC-V官网收录](https://riscv.org/exchange/?_sf_s=sparrowrv)  
-[![teelogo](/doc/图库/Readme/giteetj.bmp)Gitee推荐项目](https://gitee.com/explore/risc-v)  
-[![book](/doc/图库/Readme/book.png)处理器文档导航页](/doc/文档导航.md)  
+[![rvlogo](doc/图库/Readme/rvlogo.bmp)RISC-V官网收录](https://riscv.org/exchange/?_sf_s=sparrowrv)  
+[![teelogo](doc/图库/Readme/giteetj.bmp)Gitee推荐项目](https://gitee.com/explore/risc-v)  
+[![book](doc/图库/Readme/book.png)处理器文档导航页](doc/文档导航.md)  
 
 
 ## 简介
@@ -19,13 +19,13 @@
 - 参数化配置，设计具备极强的伸缩性  
 
 **系统功能框图**  
-![soc架构](/doc/图库/Readme/soc架构.svg)  
+![soc架构](doc/图库/Readme/soc架构.svg)  
 
-详细内容及使用教程请参阅[**处理器文档导航页**](/doc/文档导航.md)  
+详细内容及使用教程请参阅[**处理器文档导航页**](doc/文档导航.md)  
 
 ## 工程组织框架
 小麻雀处理器包含了RTL、软件、硬件设计。  
-![组织框架](/doc/图库/Readme/工程结构.svg)  
+![组织框架](doc/图库/Readme/工程结构.svg)  
 - SoC RTL设计由硬件描述语言HDL完成，实现了小麻雀内核及配套的总线系统和常用外设。  
 - 软件设计包含了BSP、相关例程及IAP程序，实现了C语言开发，使用固件库封装了底层硬件操作。  
 - 硬件设计包含了FPGA例程和参考设计，指导使用者将小麻雀处理器放在FPGA上运行。  
