@@ -21,14 +21,13 @@
 !/dso/pnr/*.pds
 !/dso/src/**
 
-!/lite/README.md
 
-!/lite/dso/bench/**
-!/lite/dso/dat/**
-!/lite/dso/pnr/ipcore/**
-!/lite/dso/pnr/source/*
-!/lite/dso/pnr/*.pds
-!/lite/dso/src/**
+!/dso_lite/bench/**
+!/dso_lite/dat/**
+!/dso_lite/pnr/ipcore/**
+!/dso_lite/pnr/source/*
+!/dso_lite/pnr/*.pds
+!/dso_lite/src/**
 
 !/la/bench/**
 !/la/dat/**

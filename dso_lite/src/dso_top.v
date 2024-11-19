@@ -1,4 +1,4 @@
-// `define PDS_LITE
+`define PDS_LITE
 module dso_top (
   input wire sys_clk,   //!系统时钟50MHz
   input wire sys_rst_n, //!系统复位，低电平有效
