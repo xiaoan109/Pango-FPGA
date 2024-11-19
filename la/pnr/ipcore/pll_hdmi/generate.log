@@ -1,7 +1,8 @@
-IP Generator (Version 2022.2-SP1-Lite build 132640)
-Start generating at 2024-11-11 10:07
-Instance: pll_hdmi (D:\pangoPRJ\Pango-FPGA\lite\dso\pnr\ipcore\pll_hdmi\pll_hdmi.idf)
-IP: Pango PLL (1.5)
+IP Generator (Version 2022.1 build 99559)
+Check out license ...
+Start generating at 2024-11-19 20:00
+Instance: pll_hdmi (D:\Files\Pango\Pango-FPGA\la\pnr\ipcore\pll_hdmi\pll_hdmi.idf)
+IP: PLL (1.5)
 Part: Logos-PGL50H-FBG484--6
 Create directory 'rtl' ...
 Copy 'ipml_pll_wrapper_v1_4.v.xml' ...
