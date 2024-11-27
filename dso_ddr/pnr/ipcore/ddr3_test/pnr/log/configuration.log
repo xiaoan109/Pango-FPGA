@@ -1,0 +1,934 @@
+[Info] [2023-2-23 21:59:52] /***************************Start Configuration***************************/
+[Info] [2023-2-23 21:59:52] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-2-23 21:59:52] Version: 99559
+[Info] [2023-2-23 21:59:53] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-23 21:59:53] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-23 21:59:56] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-2-23 21:59:56] Client Local host name:admin
+[Debug] [2023-2-23 21:59:56] Client Local Address:192.168.3.6
+[Debug] [2023-2-23 21:59:56] Server Address:127.0.0.1, Port:65420
+[Info] [2023-2-23 21:59:56] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-2-23 21:59:56] Finish.
+[Info] [2023-2-23 21:59:56] Connect server succeeded
+[Debug] [2023-2-23 21:59:56] Send RPC:1
+[Debug] [2023-2-23 21:59:56] Send cmd [check version information:40005] OK
+[Debug] [2023-2-23 21:59:56] Send RPC:2
+[Debug] [2023-2-23 21:59:56] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-2-23 21:59:56] Begin to send initialize chain cmd...
+[Debug] [2023-2-23 21:59:56] Send RPC:3
+[Debug] [2023-2-23 21:59:56] Send cmd [Open config cable:20001] OK
+[Debug] [2023-2-23 21:59:56] End to send initialize chain cmd.
+[Debug] [2023-2-23 21:59:56] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-2-23 21:59:57] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2023-2-23 21:59:57] begin the exec of open cable cmd...
+[Debug] [2023-2-23 21:59:57] Begin to deal with chain from server...
+[Debug] [2023-2-23 21:59:57] Begin to set user chain...
+[Debug] [2023-2-23 21:59:57] End to set user chain.
+[Debug] [2023-2-23 21:59:57] Begin to update graphic item and tree item ...
+[Debug] [2023-2-23 21:59:57] End to update graphic item and tree item ...
+[Info] [2023-2-23 21:59:59] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-2-23 21:59:59] begin to get device info from CFG file...
+[Debug] [2023-2-23 21:59:59] end to get device info from CFG file...
+[Debug] [2023-2-23 21:59:59] Begin to update graphic item and tree item ...
+[Debug] [2023-2-23 21:59:59] End to update graphic item and tree item ...
+[Debug] [2023-2-23 21:59:59] End to deal wiht chain from server.
+[Debug] [2023-2-23 21:59:59] end the exec of open cable cmd.
+[Debug] [2023-2-23 21:59:59] COMMAND[Open config cable] execute successfully, takes 3.2 secs.
+[Debug] [2023-2-23 22:00:00] Begin to send programming cmd...
+[Debug] [2023-2-23 22:00:00] Send RPC:4
+[Debug] [2023-2-23 22:00:00] Begin to send program data.
+[Debug] [2023-2-23 22:00:00] End to send program data.
+[Debug] [2023-2-23 22:00:00] Send cmd [Program:20002] OK
+[Debug] [2023-2-23 22:00:01] The value of Progress is 6
+[Debug] [2023-2-23 22:00:01] The value of Progress is 10
+[Debug] [2023-2-23 22:00:01] The value of Progress is 15
+[Debug] [2023-2-23 22:00:01] The value of Progress is 20
+[Debug] [2023-2-23 22:00:01] The value of Progress is 25
+[Debug] [2023-2-23 22:00:01] The value of Progress is 30
+[Debug] [2023-2-23 22:00:01] The value of Progress is 35
+[Debug] [2023-2-23 22:00:01] The value of Progress is 40
+[Debug] [2023-2-23 22:00:01] The value of Progress is 45
+[Debug] [2023-2-23 22:00:02] The value of Progress is 50
+[Debug] [2023-2-23 22:00:02] The value of Progress is 55
+[Debug] [2023-2-23 22:00:02] The value of Progress is 60
+[Debug] [2023-2-23 22:00:02] The value of Progress is 65
+[Debug] [2023-2-23 22:00:02] The value of Progress is 70
+[Debug] [2023-2-23 22:00:02] The value of Progress is 75
+[Debug] [2023-2-23 22:00:02] The value of Progress is 80
+[Debug] [2023-2-23 22:00:02] The value of Progress is 85
+[Debug] [2023-2-23 22:00:02] The value of Progress is 90
+[Debug] [2023-2-23 22:00:02] The value of Progress is 95
+[Debug] [2023-2-23 22:00:02] The value of Progress is 100
+[Debug] [2023-2-23 22:00:02] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-2-23 22:00:02] End to send programming cmd.
+[Info] [2023-2-23 22:00:26] /***************************End Configration***************************/
+[Info] [2023-2-23 22:08:21] /***************************Start Configuration***************************/
+[Info] [2023-2-23 22:08:21] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-2-23 22:08:21] Version: 99559
+[Info] [2023-2-23 22:08:22] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-23 22:08:22] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-23 22:08:24] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-2-23 22:08:24] Client Local host name:admin
+[Debug] [2023-2-23 22:08:24] Client Local Address:192.168.3.6
+[Debug] [2023-2-23 22:08:24] Server Address:127.0.0.1, Port:65420
+[Info] [2023-2-23 22:08:24] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-2-23 22:08:24] Finish.
+[Info] [2023-2-23 22:08:24] Connect server succeeded
+[Debug] [2023-2-23 22:08:24] Send RPC:1
+[Debug] [2023-2-23 22:08:24] Send cmd [check version information:40005] OK
+[Debug] [2023-2-23 22:08:24] Send RPC:2
+[Debug] [2023-2-23 22:08:24] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-2-23 22:08:24] Begin to send initialize chain cmd...
+[Debug] [2023-2-23 22:08:24] Send RPC:3
+[Debug] [2023-2-23 22:08:24] Send cmd [Open config cable:20001] OK
+[Debug] [2023-2-23 22:08:24] End to send initialize chain cmd.
+[Debug] [2023-2-23 22:08:24] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-2-23 22:08:25] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-2-23 22:08:26] begin the exec of open cable cmd...
+[Debug] [2023-2-23 22:08:26] Begin to deal with chain from server...
+[Debug] [2023-2-23 22:08:26] Begin to set user chain...
+[Debug] [2023-2-23 22:08:26] End to set user chain.
+[Debug] [2023-2-23 22:08:26] Begin to update graphic item and tree item ...
+[Debug] [2023-2-23 22:08:26] End to update graphic item and tree item ...
+[Info] [2023-2-23 22:08:29] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-2-23 22:08:29] begin to get device info from CFG file...
+[Debug] [2023-2-23 22:08:29] end to get device info from CFG file...
+[Debug] [2023-2-23 22:08:29] Begin to update graphic item and tree item ...
+[Debug] [2023-2-23 22:08:29] End to update graphic item and tree item ...
+[Debug] [2023-2-23 22:08:29] End to deal wiht chain from server.
+[Debug] [2023-2-23 22:08:29] end the exec of open cable cmd.
+[Debug] [2023-2-23 22:08:29] COMMAND[Open config cable] execute successfully, takes 5.0 secs.
+[Debug] [2023-2-23 22:08:30] Begin to send programming cmd...
+[Debug] [2023-2-23 22:08:30] Send RPC:4
+[Debug] [2023-2-23 22:08:30] Begin to send program data.
+[Debug] [2023-2-23 22:08:30] End to send program data.
+[Debug] [2023-2-23 22:08:30] Send cmd [Program:20002] OK
+[Debug] [2023-2-23 22:08:31] The value of Progress is 6
+[Debug] [2023-2-23 22:08:31] The value of Progress is 10
+[Debug] [2023-2-23 22:08:31] The value of Progress is 15
+[Debug] [2023-2-23 22:08:31] The value of Progress is 20
+[Debug] [2023-2-23 22:08:31] The value of Progress is 25
+[Debug] [2023-2-23 22:08:31] The value of Progress is 30
+[Debug] [2023-2-23 22:08:31] The value of Progress is 35
+[Debug] [2023-2-23 22:08:31] The value of Progress is 40
+[Debug] [2023-2-23 22:08:31] The value of Progress is 45
+[Debug] [2023-2-23 22:08:31] The value of Progress is 50
+[Debug] [2023-2-23 22:08:32] The value of Progress is 55
+[Debug] [2023-2-23 22:08:32] The value of Progress is 60
+[Debug] [2023-2-23 22:08:32] The value of Progress is 65
+[Debug] [2023-2-23 22:08:32] The value of Progress is 70
+[Debug] [2023-2-23 22:08:32] The value of Progress is 75
+[Debug] [2023-2-23 22:08:32] The value of Progress is 80
+[Debug] [2023-2-23 22:08:32] The value of Progress is 85
+[Debug] [2023-2-23 22:08:32] The value of Progress is 90
+[Debug] [2023-2-23 22:08:32] The value of Progress is 95
+[Debug] [2023-2-23 22:08:32] The value of Progress is 100
+[Debug] [2023-2-23 22:08:32] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-2-23 22:08:32] End to send programming cmd.
+[Info] [2023-2-23 22:10:18] /***************************End Configration***************************/
+[Info] [2023-2-27 09:11:41] /***************************Start Configuration***************************/
+[Info] [2023-2-27 09:11:41] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-2-27 09:11:41] Version: 99559
+[Info] [2023-2-27 09:11:42] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-27 09:11:42] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-27 09:11:44] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-2-27 09:11:44] Client Local host name:admin
+[Debug] [2023-2-27 09:11:44] Client Local Address:192.168.3.6
+[Debug] [2023-2-27 09:11:44] Server Address:127.0.0.1, Port:65420
+[Info] [2023-2-27 09:11:45] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-2-27 09:11:45] Finish.
+[Info] [2023-2-27 09:11:45] Connect server succeeded
+[Debug] [2023-2-27 09:11:45] Send RPC:1
+[Debug] [2023-2-27 09:11:45] Send cmd [check version information:40005] OK
+[Debug] [2023-2-27 09:11:45] Send RPC:2
+[Debug] [2023-2-27 09:11:45] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-2-27 09:11:45] Begin to send initialize chain cmd...
+[Debug] [2023-2-27 09:11:45] Send RPC:3
+[Debug] [2023-2-27 09:11:45] Send cmd [Open config cable:20001] OK
+[Debug] [2023-2-27 09:11:45] End to send initialize chain cmd.
+[Debug] [2023-2-27 09:11:45] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-2-27 09:11:46] COMMAND[get_cable_paras] execute successfully, takes 0.9 secs.
+[Debug] [2023-2-27 09:11:46] begin the exec of open cable cmd...
+[Debug] [2023-2-27 09:11:46] Begin to deal with chain from server...
+[Debug] [2023-2-27 09:11:46] Begin to set user chain...
+[Debug] [2023-2-27 09:11:46] End to set user chain.
+[Debug] [2023-2-27 09:11:46] Begin to update graphic item and tree item ...
+[Debug] [2023-2-27 09:11:46] End to update graphic item and tree item ...
+[Info] [2023-2-27 09:11:48] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/08_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-2-27 09:11:48] begin to get device info from CFG file...
+[Debug] [2023-2-27 09:11:48] end to get device info from CFG file...
+[Debug] [2023-2-27 09:11:48] Begin to update graphic item and tree item ...
+[Debug] [2023-2-27 09:11:48] End to update graphic item and tree item ...
+[Debug] [2023-2-27 09:11:48] End to deal wiht chain from server.
+[Debug] [2023-2-27 09:11:48] end the exec of open cable cmd.
+[Debug] [2023-2-27 09:11:48] COMMAND[Open config cable] execute successfully, takes 3.4 secs.
+[Debug] [2023-2-27 09:11:50] Begin to send programming cmd...
+[Debug] [2023-2-27 09:11:50] Send RPC:4
+[Debug] [2023-2-27 09:11:50] Begin to send program data.
+[Debug] [2023-2-27 09:11:50] End to send program data.
+[Debug] [2023-2-27 09:11:50] Send cmd [Program:20002] OK
+[Debug] [2023-2-27 09:11:50] The value of Progress is 6
+[Debug] [2023-2-27 09:11:50] The value of Progress is 10
+[Debug] [2023-2-27 09:11:50] The value of Progress is 15
+[Debug] [2023-2-27 09:11:50] The value of Progress is 20
+[Debug] [2023-2-27 09:11:50] The value of Progress is 25
+[Debug] [2023-2-27 09:11:50] The value of Progress is 30
+[Debug] [2023-2-27 09:11:50] The value of Progress is 35
+[Debug] [2023-2-27 09:11:50] The value of Progress is 40
+[Debug] [2023-2-27 09:11:51] The value of Progress is 45
+[Debug] [2023-2-27 09:11:51] The value of Progress is 50
+[Debug] [2023-2-27 09:11:51] The value of Progress is 55
+[Debug] [2023-2-27 09:11:51] The value of Progress is 60
+[Debug] [2023-2-27 09:11:51] The value of Progress is 65
+[Debug] [2023-2-27 09:11:51] The value of Progress is 70
+[Debug] [2023-2-27 09:11:51] The value of Progress is 75
+[Debug] [2023-2-27 09:11:51] The value of Progress is 80
+[Debug] [2023-2-27 09:11:51] The value of Progress is 85
+[Debug] [2023-2-27 09:11:51] The value of Progress is 90
+[Debug] [2023-2-27 09:11:51] The value of Progress is 95
+[Debug] [2023-2-27 09:11:51] The value of Progress is 100
+[Debug] [2023-2-27 09:11:52] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-2-27 09:11:52] End to send programming cmd.
+[Info] [2023-2-27 09:17:37] /***************************End Configration***************************/
+[Info] [2023-2-28 21:18:06] /***************************Start Configuration***************************/
+[Info] [2023-2-28 21:18:06] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-2-28 21:18:06] Version: 99559
+[Info] [2023-2-28 21:18:07] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-28 21:18:07] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-2-28 21:18:09] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-2-28 21:18:09] Client Local host name:admin
+[Debug] [2023-2-28 21:18:09] Client Local Address:192.168.3.6
+[Debug] [2023-2-28 21:18:09] Server Address:127.0.0.1, Port:65420
+[Info] [2023-2-28 21:18:09] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-2-28 21:18:09] Finish.
+[Info] [2023-2-28 21:18:09] Connect server succeeded
+[Debug] [2023-2-28 21:18:09] Send RPC:1
+[Debug] [2023-2-28 21:18:09] Send cmd [check version information:40005] OK
+[Debug] [2023-2-28 21:18:09] Send RPC:2
+[Debug] [2023-2-28 21:18:09] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-2-28 21:18:09] Begin to send initialize chain cmd...
+[Debug] [2023-2-28 21:18:09] Send RPC:3
+[Debug] [2023-2-28 21:18:09] Send cmd [Open config cable:20001] OK
+[Debug] [2023-2-28 21:18:09] End to send initialize chain cmd.
+[Debug] [2023-2-28 21:18:09] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-2-28 21:18:10] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-2-28 21:18:10] begin the exec of open cable cmd...
+[Debug] [2023-2-28 21:18:10] Begin to deal with chain from server...
+[Debug] [2023-2-28 21:18:10] Begin to set user chain...
+[Debug] [2023-2-28 21:18:10] End to set user chain.
+[Debug] [2023-2-28 21:18:10] Begin to update graphic item and tree item ...
+[Debug] [2023-2-28 21:18:10] End to update graphic item and tree item ...
+[Info] [2023-2-28 21:18:12] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-2-28 21:18:12] begin to get device info from CFG file...
+[Debug] [2023-2-28 21:18:12] end to get device info from CFG file...
+[Debug] [2023-2-28 21:18:12] Begin to update graphic item and tree item ...
+[Debug] [2023-2-28 21:18:12] End to update graphic item and tree item ...
+[Debug] [2023-2-28 21:18:12] End to deal wiht chain from server.
+[Debug] [2023-2-28 21:18:12] end the exec of open cable cmd.
+[Debug] [2023-2-28 21:18:12] COMMAND[Open config cable] execute successfully, takes 3.0 secs.
+[Debug] [2023-2-28 21:18:13] Begin to send programming cmd...
+[Debug] [2023-2-28 21:18:13] Send RPC:4
+[Debug] [2023-2-28 21:18:13] Begin to send program data.
+[Debug] [2023-2-28 21:18:13] End to send program data.
+[Debug] [2023-2-28 21:18:13] Send cmd [Program:20002] OK
+[Debug] [2023-2-28 21:18:14] The value of Progress is 6
+[Debug] [2023-2-28 21:18:14] The value of Progress is 10
+[Debug] [2023-2-28 21:18:14] The value of Progress is 15
+[Debug] [2023-2-28 21:18:14] The value of Progress is 20
+[Debug] [2023-2-28 21:18:14] The value of Progress is 25
+[Debug] [2023-2-28 21:18:14] The value of Progress is 30
+[Debug] [2023-2-28 21:18:14] The value of Progress is 35
+[Debug] [2023-2-28 21:18:14] The value of Progress is 40
+[Debug] [2023-2-28 21:18:14] The value of Progress is 45
+[Debug] [2023-2-28 21:18:14] The value of Progress is 50
+[Debug] [2023-2-28 21:18:14] The value of Progress is 55
+[Debug] [2023-2-28 21:18:15] The value of Progress is 60
+[Debug] [2023-2-28 21:18:15] The value of Progress is 65
+[Debug] [2023-2-28 21:18:15] The value of Progress is 70
+[Debug] [2023-2-28 21:18:15] The value of Progress is 75
+[Debug] [2023-2-28 21:18:15] The value of Progress is 80
+[Debug] [2023-2-28 21:18:15] The value of Progress is 85
+[Debug] [2023-2-28 21:18:15] The value of Progress is 90
+[Debug] [2023-2-28 21:18:15] The value of Progress is 95
+[Debug] [2023-2-28 21:18:15] The value of Progress is 100
+[Debug] [2023-2-28 21:18:15] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-2-28 21:18:15] End to send programming cmd.
+[Info] [2023-2-28 21:19:04] /***************************End Configration***************************/
+[Info] [2023-3-1 17:06:03] /***************************Start Configuration***************************/
+[Info] [2023-3-1 17:06:03] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-1 17:06:03] Version: 99559
+[Info] [2023-3-1 17:06:04] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-1 17:06:04] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-1 17:06:06] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-1 17:06:06] Client Local host name:admin
+[Debug] [2023-3-1 17:06:06] Client Local Address:192.168.3.6
+[Debug] [2023-3-1 17:06:06] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-1 17:06:06] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-1 17:06:06] Finish.
+[Info] [2023-3-1 17:06:06] Connect server succeeded
+[Debug] [2023-3-1 17:06:06] Send RPC:1
+[Debug] [2023-3-1 17:06:06] Send cmd [check version information:40005] OK
+[Debug] [2023-3-1 17:06:06] Send RPC:2
+[Debug] [2023-3-1 17:06:06] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-1 17:06:06] Begin to send initialize chain cmd...
+[Debug] [2023-3-1 17:06:06] Send RPC:3
+[Debug] [2023-3-1 17:06:06] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-1 17:06:06] End to send initialize chain cmd.
+[Debug] [2023-3-1 17:06:06] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-1 17:06:06] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-3-1 17:06:07] begin the exec of open cable cmd...
+[Debug] [2023-3-1 17:06:07] Begin to deal with chain from server...
+[Debug] [2023-3-1 17:06:07] Begin to set user chain...
+[Debug] [2023-3-1 17:06:07] End to set user chain.
+[Debug] [2023-3-1 17:06:07] Begin to update graphic item and tree item ...
+[Debug] [2023-3-1 17:06:07] End to update graphic item and tree item ...
+[Info] [2023-3-1 17:06:09] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-1 17:06:09] begin to get device info from CFG file...
+[Debug] [2023-3-1 17:06:09] end to get device info from CFG file...
+[Debug] [2023-3-1 17:06:09] Begin to update graphic item and tree item ...
+[Debug] [2023-3-1 17:06:09] End to update graphic item and tree item ...
+[Debug] [2023-3-1 17:06:09] End to deal wiht chain from server.
+[Debug] [2023-3-1 17:06:09] end the exec of open cable cmd.
+[Debug] [2023-3-1 17:06:09] COMMAND[Open config cable] execute successfully, takes 3.4 secs.
+[Debug] [2023-3-1 17:06:11] Begin to send programming cmd...
+[Debug] [2023-3-1 17:06:11] Send RPC:4
+[Debug] [2023-3-1 17:06:11] Begin to send program data.
+[Debug] [2023-3-1 17:06:11] End to send program data.
+[Debug] [2023-3-1 17:06:11] Send cmd [Program:20002] OK
+[Debug] [2023-3-1 17:06:11] The value of Progress is 6
+[Debug] [2023-3-1 17:06:11] The value of Progress is 10
+[Debug] [2023-3-1 17:06:11] The value of Progress is 15
+[Debug] [2023-3-1 17:06:11] The value of Progress is 20
+[Debug] [2023-3-1 17:06:11] The value of Progress is 25
+[Debug] [2023-3-1 17:06:11] The value of Progress is 30
+[Debug] [2023-3-1 17:06:11] The value of Progress is 35
+[Debug] [2023-3-1 17:06:11] The value of Progress is 40
+[Debug] [2023-3-1 17:06:12] The value of Progress is 45
+[Debug] [2023-3-1 17:06:12] The value of Progress is 50
+[Debug] [2023-3-1 17:06:12] The value of Progress is 55
+[Debug] [2023-3-1 17:06:12] The value of Progress is 60
+[Debug] [2023-3-1 17:06:12] The value of Progress is 65
+[Debug] [2023-3-1 17:06:12] The value of Progress is 70
+[Debug] [2023-3-1 17:06:12] The value of Progress is 75
+[Debug] [2023-3-1 17:06:12] The value of Progress is 80
+[Debug] [2023-3-1 17:06:12] The value of Progress is 85
+[Debug] [2023-3-1 17:06:12] The value of Progress is 90
+[Debug] [2023-3-1 17:06:12] The value of Progress is 95
+[Debug] [2023-3-1 17:06:13] The value of Progress is 100
+[Debug] [2023-3-1 17:06:13] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-3-1 17:06:13] End to send programming cmd.
+[Info] [2023-3-1 17:07:14] /***************************End Configration***************************/
+[Info] [2023-3-1 17:09:40] /***************************Start Configuration***************************/
+[Info] [2023-3-1 17:09:40] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-1 17:09:40] Version: 99559
+[Info] [2023-3-1 17:09:41] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-1 17:09:41] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-1 17:09:42] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-1 17:09:42] Client Local host name:admin
+[Debug] [2023-3-1 17:09:42] Client Local Address:192.168.3.6
+[Debug] [2023-3-1 17:09:42] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-1 17:09:43] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-1 17:09:43] Finish.
+[Info] [2023-3-1 17:09:43] Connect server succeeded
+[Debug] [2023-3-1 17:09:43] Send RPC:1
+[Debug] [2023-3-1 17:09:43] Send cmd [check version information:40005] OK
+[Debug] [2023-3-1 17:09:43] Send RPC:2
+[Debug] [2023-3-1 17:09:43] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-1 17:09:43] Begin to send initialize chain cmd...
+[Debug] [2023-3-1 17:09:43] Send RPC:3
+[Debug] [2023-3-1 17:09:43] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-1 17:09:43] End to send initialize chain cmd.
+[Debug] [2023-3-1 17:09:43] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-1 17:09:43] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2023-3-1 17:09:44] begin the exec of open cable cmd...
+[Debug] [2023-3-1 17:09:44] Begin to deal with chain from server...
+[Debug] [2023-3-1 17:09:44] Begin to set user chain...
+[Debug] [2023-3-1 17:09:44] End to set user chain.
+[Debug] [2023-3-1 17:09:44] Begin to update graphic item and tree item ...
+[Debug] [2023-3-1 17:09:44] End to update graphic item and tree item ...
+[Info] [2023-3-1 17:09:46] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-1 17:09:46] begin to get device info from CFG file...
+[Debug] [2023-3-1 17:09:46] end to get device info from CFG file...
+[Debug] [2023-3-1 17:09:46] Begin to update graphic item and tree item ...
+[Debug] [2023-3-1 17:09:46] End to update graphic item and tree item ...
+[Debug] [2023-3-1 17:09:46] End to deal wiht chain from server.
+[Debug] [2023-3-1 17:09:46] end the exec of open cable cmd.
+[Debug] [2023-3-1 17:09:46] COMMAND[Open config cable] execute successfully, takes 3.5 secs.
+[Debug] [2023-3-1 17:09:47] Begin to send programming cmd...
+[Debug] [2023-3-1 17:09:47] Send RPC:4
+[Debug] [2023-3-1 17:09:47] Begin to send program data.
+[Debug] [2023-3-1 17:09:47] End to send program data.
+[Debug] [2023-3-1 17:09:47] Send cmd [Program:20002] OK
+[Debug] [2023-3-1 17:09:47] The value of Progress is 6
+[Debug] [2023-3-1 17:09:48] The value of Progress is 10
+[Debug] [2023-3-1 17:09:48] The value of Progress is 15
+[Debug] [2023-3-1 17:09:48] The value of Progress is 20
+[Debug] [2023-3-1 17:09:48] The value of Progress is 25
+[Debug] [2023-3-1 17:09:48] The value of Progress is 30
+[Debug] [2023-3-1 17:09:48] The value of Progress is 35
+[Debug] [2023-3-1 17:09:48] The value of Progress is 40
+[Debug] [2023-3-1 17:09:48] The value of Progress is 45
+[Debug] [2023-3-1 17:09:48] The value of Progress is 50
+[Debug] [2023-3-1 17:09:48] The value of Progress is 55
+[Debug] [2023-3-1 17:09:48] The value of Progress is 60
+[Debug] [2023-3-1 17:09:49] The value of Progress is 65
+[Debug] [2023-3-1 17:09:49] The value of Progress is 70
+[Debug] [2023-3-1 17:09:49] The value of Progress is 75
+[Debug] [2023-3-1 17:09:49] The value of Progress is 80
+[Debug] [2023-3-1 17:09:49] The value of Progress is 85
+[Debug] [2023-3-1 17:09:49] The value of Progress is 90
+[Debug] [2023-3-1 17:09:49] The value of Progress is 95
+[Debug] [2023-3-1 17:09:49] The value of Progress is 100
+[Debug] [2023-3-1 17:09:49] COMMAND[Program] execute successfully, takes 2.2 secs.
+[Debug] [2023-3-1 17:09:49] End to send programming cmd.
+[Info] [2023-3-1 17:09:55] /***************************End Configration***************************/
+[Info] [2023-3-3 17:04:17] /***************************Start Configuration***************************/
+[Info] [2023-3-3 17:04:17] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 17:04:17] Version: 99559
+[Info] [2023-3-3 17:04:18] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:04:18] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:04:20] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 17:04:20] Client Local host name:admin
+[Debug] [2023-3-3 17:04:20] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 17:04:20] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 17:04:20] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 17:04:20] Finish.
+[Info] [2023-3-3 17:04:20] Connect server succeeded
+[Debug] [2023-3-3 17:04:20] Send RPC:1
+[Debug] [2023-3-3 17:04:20] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 17:04:20] Send RPC:2
+[Debug] [2023-3-3 17:04:20] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 17:04:20] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 17:04:20] Send RPC:3
+[Debug] [2023-3-3 17:04:20] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 17:04:20] End to send initialize chain cmd.
+[Debug] [2023-3-3 17:04:20] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 17:04:21] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-3-3 17:04:21] begin the exec of open cable cmd...
+[Debug] [2023-3-3 17:04:21] Begin to deal with chain from server...
+[Debug] [2023-3-3 17:04:21] Begin to set user chain...
+[Debug] [2023-3-3 17:04:21] End to set user chain.
+[Debug] [2023-3-3 17:04:21] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:04:21] End to update graphic item and tree item ...
+[Info] [2023-3-3 17:04:23] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 17:04:23] begin to get device info from CFG file...
+[Debug] [2023-3-3 17:04:23] end to get device info from CFG file...
+[Debug] [2023-3-3 17:04:23] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:04:23] End to update graphic item and tree item ...
+[Debug] [2023-3-3 17:04:23] End to deal wiht chain from server.
+[Debug] [2023-3-3 17:04:23] end the exec of open cable cmd.
+[Debug] [2023-3-3 17:04:23] COMMAND[Open config cable] execute successfully, takes 2.9 secs.
+[Debug] [2023-3-3 17:04:24] Begin to send programming cmd...
+[Debug] [2023-3-3 17:04:24] Send RPC:4
+[Debug] [2023-3-3 17:04:24] Begin to send program data.
+[Debug] [2023-3-3 17:04:24] End to send program data.
+[Debug] [2023-3-3 17:04:24] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 17:04:24] The value of Progress is 6
+[Debug] [2023-3-3 17:04:24] The value of Progress is 10
+[Debug] [2023-3-3 17:04:24] The value of Progress is 15
+[Debug] [2023-3-3 17:04:24] The value of Progress is 20
+[Debug] [2023-3-3 17:04:24] The value of Progress is 25
+[Debug] [2023-3-3 17:04:24] The value of Progress is 30
+[Debug] [2023-3-3 17:04:24] The value of Progress is 35
+[Debug] [2023-3-3 17:04:25] The value of Progress is 40
+[Debug] [2023-3-3 17:04:25] The value of Progress is 45
+[Debug] [2023-3-3 17:04:25] The value of Progress is 50
+[Debug] [2023-3-3 17:04:25] The value of Progress is 55
+[Debug] [2023-3-3 17:04:25] The value of Progress is 60
+[Debug] [2023-3-3 17:04:25] The value of Progress is 65
+[Debug] [2023-3-3 17:04:25] The value of Progress is 70
+[Debug] [2023-3-3 17:04:25] The value of Progress is 75
+[Debug] [2023-3-3 17:04:25] The value of Progress is 80
+[Debug] [2023-3-3 17:04:25] The value of Progress is 85
+[Debug] [2023-3-3 17:04:25] The value of Progress is 90
+[Debug] [2023-3-3 17:04:26] The value of Progress is 95
+[Debug] [2023-3-3 17:04:26] The value of Progress is 100
+[Debug] [2023-3-3 17:04:26] COMMAND[Program] execute successfully, takes 2.2 secs.
+[Debug] [2023-3-3 17:04:26] End to send programming cmd.
+[Info] [2023-3-3 17:13:31] /***************************End Configration***************************/
+[Info] [2023-3-3 17:36:47] /***************************Start Configuration***************************/
+[Info] [2023-3-3 17:36:47] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 17:36:47] Version: 99559
+[Info] [2023-3-3 17:36:48] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:36:48] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:36:50] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 17:36:50] Client Local host name:admin
+[Debug] [2023-3-3 17:36:50] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 17:36:50] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 17:36:50] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 17:36:50] Finish.
+[Info] [2023-3-3 17:36:50] Connect server succeeded
+[Debug] [2023-3-3 17:36:50] Send RPC:1
+[Debug] [2023-3-3 17:36:50] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 17:36:50] Send RPC:2
+[Debug] [2023-3-3 17:36:50] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 17:36:50] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 17:36:50] Send RPC:3
+[Debug] [2023-3-3 17:36:50] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 17:36:50] End to send initialize chain cmd.
+[Debug] [2023-3-3 17:36:50] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 17:36:51] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2023-3-3 17:36:52] begin the exec of open cable cmd...
+[Debug] [2023-3-3 17:36:52] Begin to deal with chain from server...
+[Debug] [2023-3-3 17:36:52] Begin to set user chain...
+[Debug] [2023-3-3 17:36:52] End to set user chain.
+[Debug] [2023-3-3 17:36:52] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:36:52] End to update graphic item and tree item ...
+[Info] [2023-3-3 17:36:53] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 17:36:53] begin to get device info from CFG file...
+[Debug] [2023-3-3 17:36:53] end to get device info from CFG file...
+[Debug] [2023-3-3 17:36:53] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:36:53] End to update graphic item and tree item ...
+[Debug] [2023-3-3 17:36:53] End to deal wiht chain from server.
+[Debug] [2023-3-3 17:36:53] end the exec of open cable cmd.
+[Debug] [2023-3-3 17:36:53] COMMAND[Open config cable] execute successfully, takes 2.9 secs.
+[Debug] [2023-3-3 17:36:54] Begin to send programming cmd...
+[Debug] [2023-3-3 17:36:54] Send RPC:4
+[Debug] [2023-3-3 17:36:54] Begin to send program data.
+[Debug] [2023-3-3 17:36:54] End to send program data.
+[Debug] [2023-3-3 17:36:54] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 17:36:55] The value of Progress is 6
+[Debug] [2023-3-3 17:36:55] The value of Progress is 10
+[Debug] [2023-3-3 17:36:55] The value of Progress is 15
+[Debug] [2023-3-3 17:36:55] The value of Progress is 20
+[Debug] [2023-3-3 17:36:55] The value of Progress is 25
+[Debug] [2023-3-3 17:36:55] The value of Progress is 30
+[Debug] [2023-3-3 17:36:55] The value of Progress is 35
+[Debug] [2023-3-3 17:36:55] The value of Progress is 40
+[Debug] [2023-3-3 17:36:55] The value of Progress is 45
+[Debug] [2023-3-3 17:36:55] The value of Progress is 50
+[Debug] [2023-3-3 17:36:55] The value of Progress is 55
+[Debug] [2023-3-3 17:36:55] The value of Progress is 60
+[Debug] [2023-3-3 17:36:56] The value of Progress is 65
+[Debug] [2023-3-3 17:36:56] The value of Progress is 70
+[Debug] [2023-3-3 17:36:56] The value of Progress is 75
+[Debug] [2023-3-3 17:36:56] The value of Progress is 80
+[Debug] [2023-3-3 17:36:56] The value of Progress is 85
+[Debug] [2023-3-3 17:36:56] The value of Progress is 90
+[Debug] [2023-3-3 17:36:56] The value of Progress is 95
+[Debug] [2023-3-3 17:36:56] The value of Progress is 100
+[Debug] [2023-3-3 17:36:56] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-3-3 17:36:56] End to send programming cmd.
+[Info] [2023-3-3 17:37:01] /***************************End Configration***************************/
+[Info] [2023-3-3 17:40:36] /***************************Start Configuration***************************/
+[Info] [2023-3-3 17:40:36] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 17:40:36] Version: 99559
+[Info] [2023-3-3 17:40:37] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:40:37] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:40:39] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 17:40:39] Client Local host name:admin
+[Debug] [2023-3-3 17:40:39] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 17:40:39] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 17:40:39] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 17:40:39] Finish.
+[Info] [2023-3-3 17:40:39] Connect server succeeded
+[Debug] [2023-3-3 17:40:39] Send RPC:1
+[Debug] [2023-3-3 17:40:39] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 17:40:39] Send RPC:2
+[Debug] [2023-3-3 17:40:39] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 17:40:39] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 17:40:39] Send RPC:3
+[Debug] [2023-3-3 17:40:39] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 17:40:39] End to send initialize chain cmd.
+[Debug] [2023-3-3 17:40:39] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 17:40:40] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2023-3-3 17:40:41] begin the exec of open cable cmd...
+[Debug] [2023-3-3 17:40:41] Begin to deal with chain from server...
+[Debug] [2023-3-3 17:40:41] Begin to set user chain...
+[Debug] [2023-3-3 17:40:41] End to set user chain.
+[Debug] [2023-3-3 17:40:41] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:40:41] End to update graphic item and tree item ...
+[Info] [2023-3-3 17:40:42] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 17:40:42] begin to get device info from CFG file...
+[Debug] [2023-3-3 17:40:42] end to get device info from CFG file...
+[Debug] [2023-3-3 17:40:42] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:40:42] End to update graphic item and tree item ...
+[Debug] [2023-3-3 17:40:42] End to deal wiht chain from server.
+[Debug] [2023-3-3 17:40:42] end the exec of open cable cmd.
+[Debug] [2023-3-3 17:40:42] COMMAND[Open config cable] execute successfully, takes 3.0 secs.
+[Debug] [2023-3-3 17:40:44] Begin to send programming cmd...
+[Debug] [2023-3-3 17:40:44] Send RPC:4
+[Debug] [2023-3-3 17:40:44] Begin to send program data.
+[Debug] [2023-3-3 17:40:44] End to send program data.
+[Debug] [2023-3-3 17:40:44] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 17:40:44] The value of Progress is 6
+[Debug] [2023-3-3 17:40:44] The value of Progress is 10
+[Debug] [2023-3-3 17:40:44] The value of Progress is 15
+[Debug] [2023-3-3 17:40:44] The value of Progress is 20
+[Debug] [2023-3-3 17:40:44] The value of Progress is 25
+[Debug] [2023-3-3 17:40:44] The value of Progress is 30
+[Debug] [2023-3-3 17:40:44] The value of Progress is 35
+[Debug] [2023-3-3 17:40:44] The value of Progress is 40
+[Debug] [2023-3-3 17:40:44] The value of Progress is 45
+[Debug] [2023-3-3 17:40:45] The value of Progress is 50
+[Debug] [2023-3-3 17:40:45] The value of Progress is 55
+[Debug] [2023-3-3 17:40:45] The value of Progress is 60
+[Debug] [2023-3-3 17:40:45] The value of Progress is 65
+[Debug] [2023-3-3 17:40:45] The value of Progress is 70
+[Debug] [2023-3-3 17:40:45] The value of Progress is 75
+[Debug] [2023-3-3 17:40:45] The value of Progress is 80
+[Debug] [2023-3-3 17:40:45] The value of Progress is 85
+[Debug] [2023-3-3 17:40:45] The value of Progress is 90
+[Debug] [2023-3-3 17:40:45] The value of Progress is 95
+[Debug] [2023-3-3 17:40:45] The value of Progress is 100
+[Debug] [2023-3-3 17:40:46] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-3-3 17:40:46] End to send programming cmd.
+[Info] [2023-3-3 17:44:46] /***************************End Configration***************************/
+[Info] [2023-3-3 17:47:25] /***************************Start Configuration***************************/
+[Info] [2023-3-3 17:47:25] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 17:47:25] Version: 99559
+[Info] [2023-3-3 17:47:26] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:47:26] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:47:28] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 17:47:28] Client Local host name:admin
+[Debug] [2023-3-3 17:47:28] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 17:47:28] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 17:47:28] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 17:47:28] Finish.
+[Info] [2023-3-3 17:47:28] Connect server succeeded
+[Debug] [2023-3-3 17:47:28] Send RPC:1
+[Debug] [2023-3-3 17:47:28] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 17:47:28] Send RPC:2
+[Debug] [2023-3-3 17:47:28] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 17:47:28] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 17:47:28] Send RPC:3
+[Debug] [2023-3-3 17:47:28] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 17:47:28] End to send initialize chain cmd.
+[Debug] [2023-3-3 17:47:28] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 17:47:29] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-3-3 17:47:29] begin the exec of open cable cmd...
+[Debug] [2023-3-3 17:47:29] Begin to deal with chain from server...
+[Debug] [2023-3-3 17:47:29] Begin to set user chain...
+[Debug] [2023-3-3 17:47:29] End to set user chain.
+[Debug] [2023-3-3 17:47:29] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:47:29] End to update graphic item and tree item ...
+[Info] [2023-3-3 17:47:31] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 17:47:31] begin to get device info from CFG file...
+[Debug] [2023-3-3 17:47:31] end to get device info from CFG file...
+[Debug] [2023-3-3 17:47:31] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:47:31] End to update graphic item and tree item ...
+[Debug] [2023-3-3 17:47:31] End to deal wiht chain from server.
+[Debug] [2023-3-3 17:47:31] end the exec of open cable cmd.
+[Debug] [2023-3-3 17:47:31] COMMAND[Open config cable] execute successfully, takes 3.1 secs.
+[Debug] [2023-3-3 17:47:32] Begin to send programming cmd...
+[Debug] [2023-3-3 17:47:32] Send RPC:4
+[Debug] [2023-3-3 17:47:32] Begin to send program data.
+[Debug] [2023-3-3 17:47:32] End to send program data.
+[Debug] [2023-3-3 17:47:32] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 17:47:32] The value of Progress is 6
+[Debug] [2023-3-3 17:47:32] The value of Progress is 10
+[Debug] [2023-3-3 17:47:32] The value of Progress is 15
+[Debug] [2023-3-3 17:47:32] The value of Progress is 20
+[Debug] [2023-3-3 17:47:32] The value of Progress is 25
+[Debug] [2023-3-3 17:47:33] The value of Progress is 30
+[Debug] [2023-3-3 17:47:33] The value of Progress is 35
+[Debug] [2023-3-3 17:47:33] The value of Progress is 40
+[Debug] [2023-3-3 17:47:33] The value of Progress is 45
+[Debug] [2023-3-3 17:47:33] The value of Progress is 50
+[Debug] [2023-3-3 17:47:33] The value of Progress is 55
+[Debug] [2023-3-3 17:47:33] The value of Progress is 60
+[Debug] [2023-3-3 17:47:33] The value of Progress is 65
+[Debug] [2023-3-3 17:47:33] The value of Progress is 70
+[Debug] [2023-3-3 17:47:33] The value of Progress is 75
+[Debug] [2023-3-3 17:47:33] The value of Progress is 80
+[Debug] [2023-3-3 17:47:33] The value of Progress is 85
+[Debug] [2023-3-3 17:47:34] The value of Progress is 90
+[Debug] [2023-3-3 17:47:34] The value of Progress is 95
+[Debug] [2023-3-3 17:47:34] The value of Progress is 100
+[Debug] [2023-3-3 17:47:34] COMMAND[Program] execute successfully, takes 1.9 secs.
+[Debug] [2023-3-3 17:47:34] End to send programming cmd.
+[Info] [2023-3-3 17:50:25] /***************************End Configration***************************/
+[Info] [2023-3-3 17:54:18] /***************************Start Configuration***************************/
+[Info] [2023-3-3 17:54:18] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 17:54:18] Version: 99559
+[Info] [2023-3-3 17:54:19] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:54:19] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 17:54:20] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 17:54:20] Client Local host name:admin
+[Debug] [2023-3-3 17:54:20] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 17:54:20] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 17:54:21] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 17:54:21] Finish.
+[Info] [2023-3-3 17:54:21] Connect server succeeded
+[Debug] [2023-3-3 17:54:21] Send RPC:1
+[Debug] [2023-3-3 17:54:21] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 17:54:21] Send RPC:2
+[Debug] [2023-3-3 17:54:21] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 17:54:21] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 17:54:21] Send RPC:3
+[Debug] [2023-3-3 17:54:21] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 17:54:21] End to send initialize chain cmd.
+[Debug] [2023-3-3 17:54:21] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 17:54:21] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-3-3 17:54:22] begin the exec of open cable cmd...
+[Debug] [2023-3-3 17:54:22] Begin to deal with chain from server...
+[Debug] [2023-3-3 17:54:22] Begin to set user chain...
+[Debug] [2023-3-3 17:54:22] End to set user chain.
+[Debug] [2023-3-3 17:54:22] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:54:22] End to update graphic item and tree item ...
+[Info] [2023-3-3 17:54:24] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 17:54:24] begin to get device info from CFG file...
+[Debug] [2023-3-3 17:54:24] end to get device info from CFG file...
+[Debug] [2023-3-3 17:54:24] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 17:54:24] End to update graphic item and tree item ...
+[Debug] [2023-3-3 17:54:24] End to deal wiht chain from server.
+[Debug] [2023-3-3 17:54:24] end the exec of open cable cmd.
+[Debug] [2023-3-3 17:54:24] COMMAND[Open config cable] execute successfully, takes 3.0 secs.
+[Debug] [2023-3-3 17:54:25] Begin to send programming cmd...
+[Debug] [2023-3-3 17:54:25] Send RPC:4
+[Debug] [2023-3-3 17:54:25] Begin to send program data.
+[Debug] [2023-3-3 17:54:25] End to send program data.
+[Debug] [2023-3-3 17:54:25] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 17:54:25] The value of Progress is 6
+[Debug] [2023-3-3 17:54:25] The value of Progress is 10
+[Debug] [2023-3-3 17:54:25] The value of Progress is 15
+[Debug] [2023-3-3 17:54:25] The value of Progress is 20
+[Debug] [2023-3-3 17:54:25] The value of Progress is 25
+[Debug] [2023-3-3 17:54:25] The value of Progress is 30
+[Debug] [2023-3-3 17:54:25] The value of Progress is 35
+[Debug] [2023-3-3 17:54:26] The value of Progress is 40
+[Debug] [2023-3-3 17:54:26] The value of Progress is 45
+[Debug] [2023-3-3 17:54:26] The value of Progress is 50
+[Debug] [2023-3-3 17:54:26] The value of Progress is 55
+[Debug] [2023-3-3 17:54:26] The value of Progress is 60
+[Debug] [2023-3-3 17:54:26] The value of Progress is 65
+[Debug] [2023-3-3 17:54:26] The value of Progress is 70
+[Debug] [2023-3-3 17:54:26] The value of Progress is 75
+[Debug] [2023-3-3 17:54:26] The value of Progress is 80
+[Debug] [2023-3-3 17:54:26] The value of Progress is 85
+[Debug] [2023-3-3 17:54:26] The value of Progress is 90
+[Debug] [2023-3-3 17:54:26] The value of Progress is 95
+[Debug] [2023-3-3 17:54:27] The value of Progress is 100
+[Debug] [2023-3-3 17:54:27] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-3-3 17:54:27] End to send programming cmd.
+[Info] [2023-3-3 17:54:30] /***************************End Configration***************************/
+[Info] [2023-3-3 20:00:13] /***************************Start Configuration***************************/
+[Info] [2023-3-3 20:00:13] Path: D:/pango/PDS_2022.1/bin
+[Info] [2023-3-3 20:00:13] Version: 99559
+[Info] [2023-3-3 20:00:14] Current Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 20:00:14] PDS Dir Path: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2023-3-3 20:00:16] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2023-3-3 20:00:16] Client Local host name:admin
+[Debug] [2023-3-3 20:00:16] Client Local Address:192.168.3.6
+[Debug] [2023-3-3 20:00:16] Server Address:127.0.0.1, Port:65420
+[Info] [2023-3-3 20:00:16] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2023-3-3 20:00:16] Finish.
+[Info] [2023-3-3 20:00:16] Connect server succeeded
+[Debug] [2023-3-3 20:00:16] Send RPC:1
+[Debug] [2023-3-3 20:00:16] Send cmd [check version information:40005] OK
+[Debug] [2023-3-3 20:00:16] Send RPC:2
+[Debug] [2023-3-3 20:00:16] Send cmd [get_cable_paras:40011] OK
+[Debug] [2023-3-3 20:00:16] Begin to send initialize chain cmd...
+[Debug] [2023-3-3 20:00:16] Send RPC:3
+[Debug] [2023-3-3 20:00:16] Send cmd [Open config cable:20001] OK
+[Debug] [2023-3-3 20:00:16] End to send initialize chain cmd.
+[Debug] [2023-3-3 20:00:16] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2023-3-3 20:00:16] COMMAND[get_cable_paras] execute successfully, takes 0.8 secs.
+[Debug] [2023-3-3 20:00:19] begin the exec of open cable cmd...
+[Debug] [2023-3-3 20:00:19] Begin to deal with chain from server...
+[Debug] [2023-3-3 20:00:19] Begin to set user chain...
+[Debug] [2023-3-3 20:00:19] End to set user chain.
+[Debug] [2023-3-3 20:00:19] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 20:00:19] End to update graphic item and tree item ...
+[Info] [2023-3-3 20:00:21] set OpenLastPath: C:/Users/w/Desktop/MES50HP/MES50HP_v1/2_Demo/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2023-3-3 20:00:21] begin to get device info from CFG file...
+[Debug] [2023-3-3 20:00:21] end to get device info from CFG file...
+[Debug] [2023-3-3 20:00:21] Begin to update graphic item and tree item ...
+[Debug] [2023-3-3 20:00:21] End to update graphic item and tree item ...
+[Debug] [2023-3-3 20:00:21] End to deal wiht chain from server.
+[Debug] [2023-3-3 20:00:21] end the exec of open cable cmd.
+[Debug] [2023-3-3 20:00:21] COMMAND[Open config cable] execute successfully, takes 5.9 secs.
+[Debug] [2023-3-3 20:00:23] Begin to send programming cmd...
+[Debug] [2023-3-3 20:00:23] Send RPC:4
+[Debug] [2023-3-3 20:00:23] Begin to send program data.
+[Debug] [2023-3-3 20:00:23] End to send program data.
+[Debug] [2023-3-3 20:00:23] Send cmd [Program:20002] OK
+[Debug] [2023-3-3 20:00:23] The value of Progress is 6
+[Debug] [2023-3-3 20:00:23] The value of Progress is 10
+[Debug] [2023-3-3 20:00:23] The value of Progress is 15
+[Debug] [2023-3-3 20:00:23] The value of Progress is 20
+[Debug] [2023-3-3 20:00:23] The value of Progress is 25
+[Debug] [2023-3-3 20:00:23] The value of Progress is 30
+[Debug] [2023-3-3 20:00:23] The value of Progress is 35
+[Debug] [2023-3-3 20:00:23] The value of Progress is 40
+[Debug] [2023-3-3 20:00:24] The value of Progress is 45
+[Debug] [2023-3-3 20:00:24] The value of Progress is 50
+[Debug] [2023-3-3 20:00:24] The value of Progress is 55
+[Debug] [2023-3-3 20:00:24] The value of Progress is 60
+[Debug] [2023-3-3 20:00:24] The value of Progress is 65
+[Debug] [2023-3-3 20:00:24] The value of Progress is 70
+[Debug] [2023-3-3 20:00:24] The value of Progress is 75
+[Debug] [2023-3-3 20:00:24] The value of Progress is 80
+[Debug] [2023-3-3 20:00:24] The value of Progress is 85
+[Debug] [2023-3-3 20:00:24] The value of Progress is 90
+[Debug] [2023-3-3 20:00:24] The value of Progress is 95
+[Debug] [2023-3-3 20:00:25] The value of Progress is 100
+[Debug] [2023-3-3 20:00:25] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2023-3-3 20:00:25] End to send programming cmd.
+[Info] [2023-3-3 20:00:27] /***************************End Configration***************************/
+[Info] [2024-10-14 09:29:35] /***************************Start Configuration***************************/
+[Info] [2024-10-14 09:29:35] Path: D:/Tools/pango/PDS_2022.1/bin
+[Info] [2024-10-14 09:29:35] Version: 99559
+[Info] [2024-10-14 09:29:36] Current Path: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2024-10-14 09:29:36] PDS Dir Path: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2024-10-14 09:29:38] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2024-10-14 09:29:38] Client Local host name:Y9000P
+[Debug] [2024-10-14 09:29:38] Client Local Address:26.126.13.116
+[Debug] [2024-10-14 09:29:38] Client Local Address:172.19.96.1
+[Debug] [2024-10-14 09:29:38] Client Local Address:192.168.238.1
+[Debug] [2024-10-14 09:29:38] Client Local Address:192.168.70.1
+[Debug] [2024-10-14 09:29:38] Client Local Address:172.28.146.109
+[Debug] [2024-10-14 09:29:38] Server Address:127.0.0.1, Port:65420
+[Info] [2024-10-14 09:29:38] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2024-10-14 09:29:38] Finish.
+[Info] [2024-10-14 09:29:38] Connect server succeeded
+[Debug] [2024-10-14 09:29:38] Send RPC:1
+[Debug] [2024-10-14 09:29:38] Send cmd [check version information:40005] OK
+[Debug] [2024-10-14 09:29:38] Send RPC:2
+[Debug] [2024-10-14 09:29:38] Send cmd [get_cable_paras:40011] OK
+[Debug] [2024-10-14 09:29:38] Begin to send initialize chain cmd...
+[Debug] [2024-10-14 09:29:38] Send RPC:3
+[Debug] [2024-10-14 09:29:38] Send cmd [Open config cable:20001] OK
+[Debug] [2024-10-14 09:29:38] End to send initialize chain cmd.
+[Debug] [2024-10-14 09:29:38] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2024-10-14 09:29:39] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2024-10-14 09:29:39] begin the exec of open cable cmd...
+[Debug] [2024-10-14 09:29:39] Begin to deal with chain from server...
+[Debug] [2024-10-14 09:29:39] Begin to set user chain...
+[Debug] [2024-10-14 09:29:39] End to set user chain.
+[Debug] [2024-10-14 09:29:39] Begin to update graphic item and tree item ...
+[Debug] [2024-10-14 09:29:39] End to update graphic item and tree item ...
+[Info] [2024-10-14 09:29:41] set OpenLastPath: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2024-10-14 09:29:41] begin to get device info from CFG file...
+[Debug] [2024-10-14 09:29:41] end to get device info from CFG file...
+[Debug] [2024-10-14 09:29:41] Begin to update graphic item and tree item ...
+[Debug] [2024-10-14 09:29:41] End to update graphic item and tree item ...
+[Debug] [2024-10-14 09:29:41] End to deal wiht chain from server.
+[Debug] [2024-10-14 09:29:41] end the exec of open cable cmd.
+[Debug] [2024-10-14 09:29:41] COMMAND[Open config cable] execute successfully, takes 2.7 secs.
+[Debug] [2024-10-14 09:29:43] Begin to send programming cmd...
+[Debug] [2024-10-14 09:29:43] Send RPC:4
+[Debug] [2024-10-14 09:29:43] Begin to send program data.
+[Debug] [2024-10-14 09:29:43] End to send program data.
+[Debug] [2024-10-14 09:29:43] Send cmd [Program:20002] OK
+[Debug] [2024-10-14 09:29:43] The value of Progress is 6
+[Debug] [2024-10-14 09:29:43] The value of Progress is 10
+[Debug] [2024-10-14 09:29:43] The value of Progress is 15
+[Debug] [2024-10-14 09:29:43] The value of Progress is 20
+[Debug] [2024-10-14 09:29:43] The value of Progress is 25
+[Debug] [2024-10-14 09:29:43] The value of Progress is 30
+[Debug] [2024-10-14 09:29:43] The value of Progress is 35
+[Debug] [2024-10-14 09:29:44] The value of Progress is 40
+[Debug] [2024-10-14 09:29:44] The value of Progress is 45
+[Debug] [2024-10-14 09:29:44] The value of Progress is 50
+[Debug] [2024-10-14 09:29:44] The value of Progress is 55
+[Debug] [2024-10-14 09:29:44] The value of Progress is 60
+[Debug] [2024-10-14 09:29:44] The value of Progress is 65
+[Debug] [2024-10-14 09:29:44] The value of Progress is 70
+[Debug] [2024-10-14 09:29:44] The value of Progress is 75
+[Debug] [2024-10-14 09:29:44] The value of Progress is 80
+[Debug] [2024-10-14 09:29:44] The value of Progress is 85
+[Debug] [2024-10-14 09:29:44] The value of Progress is 90
+[Debug] [2024-10-14 09:29:45] The value of Progress is 95
+[Debug] [2024-10-14 09:29:45] The value of Progress is 100
+[Debug] [2024-10-14 09:29:45] COMMAND[Program] execute successfully, takes 2.0 secs.
+[Debug] [2024-10-14 09:29:45] End to send programming cmd.
+[Debug] [2024-10-14 09:31:36] begin to add pango device by bitstream file.
+[Debug] [2024-10-14 09:31:37] bin file name is empty and end add pango device.
+[Debug] [2024-10-14 09:31:38] Begin to send programming cmd...
+[Debug] [2024-10-14 09:31:38] Send RPC:5
+[Debug] [2024-10-14 09:31:38] Begin to send program data.
+[Debug] [2024-10-14 09:31:38] End to send program data.
+[Debug] [2024-10-14 09:31:38] Send cmd [Program:20002] OK
+[Debug] [2024-10-14 09:31:39] The value of Progress is 6
+[Debug] [2024-10-14 09:31:39] The value of Progress is 10
+[Debug] [2024-10-14 09:31:39] The value of Progress is 15
+[Debug] [2024-10-14 09:31:39] The value of Progress is 20
+[Debug] [2024-10-14 09:31:39] The value of Progress is 25
+[Debug] [2024-10-14 09:31:39] The value of Progress is 30
+[Debug] [2024-10-14 09:31:39] The value of Progress is 35
+[Debug] [2024-10-14 09:31:39] The value of Progress is 40
+[Debug] [2024-10-14 09:31:39] The value of Progress is 45
+[Debug] [2024-10-14 09:31:39] The value of Progress is 50
+[Debug] [2024-10-14 09:31:39] The value of Progress is 55
+[Debug] [2024-10-14 09:31:40] The value of Progress is 60
+[Debug] [2024-10-14 09:31:40] The value of Progress is 65
+[Debug] [2024-10-14 09:31:40] The value of Progress is 70
+[Debug] [2024-10-14 09:31:40] The value of Progress is 75
+[Debug] [2024-10-14 09:31:40] The value of Progress is 80
+[Debug] [2024-10-14 09:31:40] The value of Progress is 85
+[Debug] [2024-10-14 09:31:40] The value of Progress is 90
+[Debug] [2024-10-14 09:31:40] The value of Progress is 95
+[Debug] [2024-10-14 09:31:40] The value of Progress is 100
+[Debug] [2024-10-14 09:31:40] COMMAND[Program] execute successfully, takes 2.1 secs.
+[Debug] [2024-10-14 09:31:40] End to send programming cmd.
+[Info] [2024-10-14 09:31:47] /***************************End Configration***************************/
+[Info] [2024-10-14 14:42:23] /***************************Start Configuration***************************/
+[Info] [2024-10-14 14:42:23] Path: D:/Tools/pango/PDS_2022.1/bin
+[Info] [2024-10-14 14:42:23] Version: 99559
+[Info] [2024-10-14 14:42:24] Current Path: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2024-10-14 14:42:24] PDS Dir Path: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr
+[Info] [2024-10-14 14:42:26] Configuration is not connect with server. connect first then scan chain.
+[Debug] [2024-10-14 14:42:26] Client Local host name:Y9000P
+[Debug] [2024-10-14 14:42:26] Client Local Address:26.26.26.1
+[Debug] [2024-10-14 14:42:26] Client Local Address:26.126.13.116
+[Debug] [2024-10-14 14:42:26] Client Local Address:172.19.96.1
+[Debug] [2024-10-14 14:42:26] Client Local Address:192.168.238.1
+[Debug] [2024-10-14 14:42:26] Client Local Address:192.168.70.1
+[Debug] [2024-10-14 14:42:26] Client Local Address:172.28.146.109
+[Debug] [2024-10-14 14:42:26] Server Address:127.0.0.1, Port:65420
+[Info] [2024-10-14 14:42:27] Connect OK, Server: 127.0.0.1  Port: 65420
+[Debug] [2024-10-14 14:42:27] Finish.
+[Info] [2024-10-14 14:42:27] Connect server succeeded
+[Debug] [2024-10-14 14:42:27] Send RPC:1
+[Debug] [2024-10-14 14:42:27] Send cmd [check version information:40005] OK
+[Debug] [2024-10-14 14:42:27] Send RPC:2
+[Debug] [2024-10-14 14:42:27] Send cmd [get_cable_paras:40011] OK
+[Debug] [2024-10-14 14:42:27] Begin to send initialize chain cmd...
+[Debug] [2024-10-14 14:42:27] Send RPC:3
+[Debug] [2024-10-14 14:42:27] Send cmd [Open config cable:20001] OK
+[Debug] [2024-10-14 14:42:27] End to send initialize chain cmd.
+[Debug] [2024-10-14 14:42:27] COMMAND[check version information] execute successfully, takes 0.0 secs.
+[Debug] [2024-10-14 14:42:28] COMMAND[get_cable_paras] execute successfully, takes 0.7 secs.
+[Debug] [2024-10-14 14:42:28] begin the exec of open cable cmd...
+[Debug] [2024-10-14 14:42:28] Begin to deal with chain from server...
+[Debug] [2024-10-14 14:42:28] Begin to set user chain...
+[Debug] [2024-10-14 14:42:28] End to set user chain.
+[Debug] [2024-10-14 14:42:28] Begin to update graphic item and tree item ...
+[Debug] [2024-10-14 14:42:28] End to update graphic item and tree item ...
+[Info] [2024-10-14 14:42:34] set OpenLastPath: D:/Files/Pango/examples/07_ddr3_test/ipcore/ddr3_test/pnr/generate_bitstream/test_ddr.sbit
+[Debug] [2024-10-14 14:42:34] begin to get device info from CFG file...
+[Debug] [2024-10-14 14:42:34] end to get device info from CFG file...
+[Debug] [2024-10-14 14:42:34] Begin to update graphic item and tree item ...
+[Debug] [2024-10-14 14:42:34] End to update graphic item and tree item ...
+[Debug] [2024-10-14 14:42:34] End to deal wiht chain from server.
+[Debug] [2024-10-14 14:42:34] end the exec of open cable cmd.
+[Debug] [2024-10-14 14:42:34] COMMAND[Open config cable] execute successfully, takes 6.8 secs.
+[Debug] [2024-10-14 14:42:35] Begin to send programming cmd...
+[Debug] [2024-10-14 14:42:35] Send RPC:4
+[Debug] [2024-10-14 14:42:35] Begin to send program data.
+[Debug] [2024-10-14 14:42:35] End to send program data.
+[Debug] [2024-10-14 14:42:35] Send cmd [Program:20002] OK
+[Debug] [2024-10-14 14:42:35] The value of Progress is 6
+[Debug] [2024-10-14 14:42:35] The value of Progress is 10
+[Debug] [2024-10-14 14:42:36] The value of Progress is 15
+[Debug] [2024-10-14 14:42:36] The value of Progress is 20
+[Debug] [2024-10-14 14:42:36] The value of Progress is 25
+[Debug] [2024-10-14 14:42:36] The value of Progress is 30
+[Debug] [2024-10-14 14:42:36] The value of Progress is 35
+[Debug] [2024-10-14 14:42:36] The value of Progress is 40
+[Debug] [2024-10-14 14:42:36] The value of Progress is 45
+[Debug] [2024-10-14 14:42:36] The value of Progress is 50
+[Debug] [2024-10-14 14:42:36] The value of Progress is 55
+[Debug] [2024-10-14 14:42:36] The value of Progress is 60
+[Debug] [2024-10-14 14:42:36] The value of Progress is 65
+[Debug] [2024-10-14 14:42:37] The value of Progress is 70
+[Debug] [2024-10-14 14:42:37] The value of Progress is 75
+[Debug] [2024-10-14 14:42:37] The value of Progress is 80
+[Debug] [2024-10-14 14:42:37] The value of Progress is 85
+[Debug] [2024-10-14 14:42:37] The value of Progress is 90
+[Debug] [2024-10-14 14:42:37] The value of Progress is 95
+[Debug] [2024-10-14 14:42:37] The value of Progress is 100
+[Debug] [2024-10-14 14:42:37] COMMAND[Program] execute successfully, takes 2.1 secs.
+[Debug] [2024-10-14 14:42:37] End to send programming cmd.
+[Info] [2024-10-14 14:42:41] /***************************End Configration***************************/
