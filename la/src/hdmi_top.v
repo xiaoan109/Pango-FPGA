@@ -9,7 +9,7 @@ module hdmi_top(
     inout             iic_tx_sda    ,
     output            led_int       ,
 //hdmi_out 
-    output            pix_clk       ,//pixclk                           
+    output            pix_clk       ,/* synthesis PAP_MARK_DEBUG="true" */                         
     output            vs_out        , 
     output            hs_out        , 
     output            de_out        ,

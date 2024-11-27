@@ -1,7 +1,31 @@
+// +FHEADER =====================================================================
+// FilePath       : \LA_final\source\freq_div.v
+// Author         : zkwang2001 1922601163@qq.com
+// CreateDate     : 24-11-24
+// LastEditors    : zkwang2001 1922601163@qq.com
+// LastEditTime   : 24-11-25
+// Version        :
+// Description    : 
+//                  
+// 
+// Parameter       :
+//                  
+// 
+// IO Port         :
+//                  
+// 
+// Modification History
+//    Date   |   Author   |   Version   |   Change Description
+// ==============================================================================
+//  23-08-24 |     NJU    |     0.1     | Original Version
+//                  
+// 
+// -FHEADER =====================================================================
 module freq_div(
    input           iSysClk,
    input           iRst,
    input   [3:0]   freq_sel,
+   output reg  [31:0]  samp_freq, 
    output          clken
 );
    reg        clk_div;
@@ -28,22 +52,22 @@ module freq_div(
 
    always @(freq_sel) begin
       case(freq_sel)
-         4'h0: div_num = 20'd500000;   //100Hz
-         4'h1: div_num = 20'd100000;   //500Hz
-         4'h2: div_num = 20'd50000;    //1kHz
-         4'h3: div_num = 20'd10000;    //5kHz
-         4'h4: div_num = 20'd5000;     //10kHz
-         4'h5: div_num = 20'd2000;     //25kHz
-         4'h6: div_num = 20'd1000;     //50kHz
-         4'h7: div_num = 20'd500;      //100kHz
-         4'h8: div_num = 20'd200;      //250kHz
-         4'h9: div_num = 20'd100;      //500kHz
-         4'ha: div_num = 20'd50;       //1MHz 
-         4'hb: div_num = 20'd25;       //2MHz
-         4'hc: div_num = 20'd10;       //5MHz
-         4'hd: div_num = 20'd5;        //10MHz
-         4'he: div_num = 20'd2;        //25MHz
-         4'hf: div_num = 20'd1;        //50MHz
+         4'h0: begin div_num = 20'd500000;   samp_freq = 32'd100;     end    //100Hz
+         4'h1: begin div_num = 20'd100000;   samp_freq = 32'd500;     end    //500Hz
+         4'h2: begin div_num = 20'd50000;    samp_freq = 32'd1000;     end     //1kHz
+         4'h3: begin div_num = 20'd10000;    samp_freq = 32'd5000;     end     //5kHz
+         4'h4: begin div_num = 20'd5000;   samp_freq = 32'd10000;     end      //10kHz
+         4'h5: begin div_num = 20'd2000;   samp_freq = 32'd25000;     end      //25kHz
+         4'h6: begin div_num = 20'd1000;   samp_freq = 32'd50000;    end      //50kHz
+         4'h7: begin div_num = 20'd500;    samp_freq = 32'd100000;     end       //100kHz
+         4'h8: begin div_num = 20'd200;    samp_freq = 32'd250000;     end       //250kHz
+         4'h9: begin div_num = 20'd100;    samp_freq = 32'd500000;     end       //500kHz
+         4'ha: begin div_num = 20'd50;   samp_freq = 32'd1000000;     end        //1MHz 
+         4'hb: begin div_num = 20'd25;   samp_freq = 32'd2000000;     end        //2MHz
+         4'hc: begin div_num = 20'd10;   samp_freq = 32'd5000000;     end        //5MHz
+         4'hd: begin div_num = 20'd5;    samp_freq = 32'd10000000;     end         //10MHz
+         4'he: begin div_num = 20'd2;    samp_freq = 32'd25000000;     end         //25MHz
+         4'hf: begin div_num = 20'd1;    samp_freq = 32'd50000000;    end         //50MHz
       endcase
    end
 endmodule

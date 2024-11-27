@@ -1,9 +1,9 @@
 // +FHEADER =====================================================================
-// FilePath       : \pangoPRJ\RISC-V\rtl\SparrowRV\rtl\soc\icb_top_la.v
+// FilePath       : \pangoPRJ\Pango-FPGA\sparrow_soc\src\SparrowRV\rtl\soc\icb_top_la.v
 // Author         : zkwang2001 1922601163@qq.com
 // CreateDate     : 24-10-30
 // LastEditors    : zkwang2001 1922601163@qq.com
-// LastEditTime   : 24-11-11
+// LastEditTime   : 24-11-26
 // Version        :
 // Description    : 
 //                  
@@ -164,10 +164,6 @@ module icb_top_la(
      top_analyser u_top_analyser (
       .sys_clk(sys_clk),
       .sys_rst_n(sys_rst_n),
-      // .rstn_out(rstn_out),
-      // .iic_tx_scl(iic_tx_scl),
-      // .iic_tx_sda(iic_tx_sda),
-      // .led_int(led_int),
       .i_vs_hdmi                         (i_vs_hdmi                    ),
       .i_hs_hdmi                         (i_hs_hdmi                    ),
       .i_de_hdmi                         (i_de_hdmi                    ),
@@ -184,6 +180,8 @@ module icb_top_la(
       .b_out(b_out),
       .key0(key0),
       .key1(key1),
+      .key2(),
+      .key3(),
       .pre_num(pre_num),
       .finished(finished),
       .data_in(data_in),
@@ -191,6 +189,9 @@ module icb_top_la(
       .cpu_chn_sel(chn_sel),
       .cpu_mode_sel(mode_sel),
       .uart_en(uart_en),
+      .data_freq(),//数据波特率
+      .uart_data_valid(),
+      .trigger_logic(), // 0: and 1 :or
       .interval(interval),
       .spi_data(spi_data),
       .spi_en(spi_en),
